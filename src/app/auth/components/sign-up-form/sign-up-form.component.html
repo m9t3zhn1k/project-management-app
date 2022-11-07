@@ -1,0 +1,70 @@
+<div class="sign-up__container">
+  <h2 class="sign-up__title">Create a new account</h2>
+  <p class="sign-up__subtitle">It's quick and easy</p>
+  <form class="sign-up__form" [formGroup]="signUpForm" (ngSubmit)="submitForm()" novalidate>
+    <div class="sign-up__input-container">
+      <input
+        formControlName="userName"
+        autofocus
+        type="text"
+        autocomplete="name"
+        class="sign-up__input"
+        [class.error]="signUpForm.controls['userName'].invalid && signUpForm.controls['userName'].touched"
+        placeholder="Name" />
+      <p
+        *ngIf="signUpForm.controls['userName'].invalid && signUpForm.controls['userName'].touched"
+        class="sign-up__error-message"
+      >
+        {{
+          signUpForm.controls['userName'].errors?.error
+        }}
+      </p>
+      <input
+        formControlName="userLogin"
+        type="text"
+        class="sign-up__input"
+        [class.error]="signUpForm.controls['userLogin'].invalid && signUpForm.controls['userLogin'].touched"
+        placeholder="Login" />
+      <p
+        *ngIf="signUpForm.controls['userLogin'].invalid && signUpForm.controls['userLogin'].touched"
+        class="sign-up__error-message"
+      >
+        {{
+          signUpForm.controls['userLogin'].errors?.error
+        }}
+      </p>
+      <input
+        formControlName="userNewPassword"
+        type="password"
+        class="sign-up__input"
+        [class.error]="signUpForm.controls['userNewPassword'].invalid && signUpForm.controls['userNewPassword'].touched"
+        placeholder="New password" />
+      <p
+        *ngIf="signUpForm.controls['userNewPassword'].invalid && signUpForm.controls['userNewPassword'].touched"
+        class="sign-up__error-message"
+      >
+        {{
+          signUpForm.controls['userNewPassword'].errors?.error
+        }}
+      </p>
+      <input
+        formControlName="userNewPasswordConfirm"
+        type="password"
+        class="sign-up__input"
+        [class.error]="signUpForm.controls['userNewPasswordConfirm'].invalid && signUpForm.controls['userNewPasswordConfirm'].touched"
+        placeholder="Confirm new password" />
+      <p
+        *ngIf="(signUpForm.errors?.error || signUpForm.controls['userNewPasswordConfirm'].invalid) && signUpForm.controls['userNewPasswordConfirm'].touched"
+        class="sign-up__error-message"
+      >
+        {{
+          signUpForm.controls['userNewPasswordConfirm'].invalid ?
+          'Please enter a confirmational password' :
+          this.signUpForm.errors?.error
+        }}
+      </p>
+    </div>
+    <button [disabled]="signUpForm.invalid" type="submit" class="sign-up__submit-button">Sign up</button>
+    <a class="sign-up__link" routerLink="/auth/login">Already have an account?</a>
+  </form>
+</div>

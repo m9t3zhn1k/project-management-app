@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '../styles/fonts.scss';
+@import '../styles/reset.scss';
+
+@layer base {
+  html {
+    @apply min-h-screen font-main ;
+  }
+  
+  body {
+    @apply min-h-screen text-text-dark;
+  }
+
+  button {
+    @apply cursor-pointer disabled:cursor-auto placeholder:select-none;
+  }
+}
+
+@layer components {
+  .root {
+    @apply flex flex-col min-h-inh;
+  }
+
+  .main {
+    @apply flex-auto flex-shrink-0 relative;
+  }
+
+  .page {
+    @apply max-w-[1200px] p-2 block mx-auto box-content absolute left-0 right-0 top-0 bottom-0;
+  }
+}
