@@ -19,6 +19,7 @@ module.exports = {
       'caramel': '#d8727d',
       'red': '#c71616',
       'transparent': 'transparent',
+      'semi-grey': '#78748680',
     },
     fontFamily: {
       main: ['Inter', 'sans-serif'],

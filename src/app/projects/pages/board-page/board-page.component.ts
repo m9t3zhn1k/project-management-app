@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IBoard, IColumnWithTasks } from '@app/shared/models';
+import { IBoard, IColumnWithTasks, ITask } from '@app/shared/models';
 import { mockBoards, mockColumns, mockTasks } from '@app/mocks';
 
 @Component({
@@ -12,12 +12,17 @@ export class BoardPageComponent {
 
   columns: IColumnWithTasks[] = [];
 
+  isModalVisible: boolean = true;
+
+  taskToEdit: ITask = new ITask();
+
   constructor() {
     this.board = mockBoards[1];
     this.columns = mockColumns.map((item) => {
       const { id, title, order } = item;
       return { id, title, order, tasks: mockTasks };
     });
+    // this.taskToEdit = mockTasks[0];
   }
 
   addColumn(): void {

@@ -5,9 +5,10 @@ import { ProjectsRoutingModule } from './projects-routing.module';
 import { ColumnComponent } from './components/column/column.component';
 import { BoardPageComponent } from './pages/board-page/board-page.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
+import { TaskModalComponent } from './components/task-modal/task-modal.component';
 
 @NgModule({
-  declarations: [BoardPageComponent, ColumnComponent, TaskCardComponent],
+  declarations: [BoardPageComponent, ColumnComponent, TaskCardComponent, TaskModalComponent],
   imports: [CommonModule, ProjectsRoutingModule, FormsModule, ReactiveFormsModule],
 })
 export class ProjectsModule {}

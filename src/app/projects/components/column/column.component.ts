@@ -41,7 +41,7 @@ export class ColumnComponent implements OnChanges {
 
   columnNameChange(): void {
     this.columnTitle = this.columnTitle.trim();
-    if (this.columnTitle.length === 0) {
+    if (this.columnTitle.length) {
       this.columnTitle = this.currentTitle;
     } else {
       this.currentTitle = this.columnTitle;
