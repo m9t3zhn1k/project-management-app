@@ -1,1 +1,12 @@
-<p>BOARD</p>
+<article class="board">
+  <h2 class="board__title">{{ board.title }}</h2>
+  <p class="board__description">{{ board.description }}</p>
+  <div class="board__all-columns">
+    <app-column *ngFor="let column of this.columns" [column]="column"></app-column>
+    <section class="board__column column">
+      <button class="column__button-add-column" title="Add new column" (click)="addColumn()">
+        Add new column<br /><span>+</span>
+      </button>
+    </section>
+  </div>
+</article>

@@ -1,0 +1,31 @@
+.board {
+  @apply flex flex-col w-full p-5 lg:h-[80vh] md:h-[75vh] sm:h-[70vh];
+
+  &__title {
+    @apply text-text-dark text-xl;
+  }
+
+  &__description {
+    @apply pb-4 text-text-dark;
+  }
+
+  &__all-columns {
+    @apply grow-0 flex flex-row gap-2 h-full;
+  }
+
+  &__column {
+    @apply relative flex flex-col items-center flex-shrink-0 h-20 border-2 border-bg-disabled
+    border-dashed opacity-50 w-72 rounded-xl hover:bg-white hover:border-solid hover:opacity-100
+    hover:drop-shadow-[0_3px_3px_rgba(0,0,0,0.1)] transition duration-75;
+  }
+}
+
+.column {
+  &__button-add-column {
+    @apply w-full h-full text-text-dark;
+
+    span {
+      @apply text-3xl;
+    }
+  }
+}

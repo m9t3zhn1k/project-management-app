@@ -1,0 +1,31 @@
+.task {
+  @apply w-full p-2 mb-2 bg-white rounded-xl;
+
+  &__header {
+    @apply flex justify-between;
+  }
+
+  &__title {
+    @apply text-text-dark text-lg font-semibold;
+  }
+
+  &__button-edit {
+    @apply px-[5px] rounded-md opacity-30 hover:opacity-100 hover:bg-light-blue transition;
+  }
+
+  &__description {
+    @apply text-text-grey text-xs h-[45px];
+  }
+
+  &__footer {
+    @apply flex justify-between items-center;
+  }
+
+  &__user {
+    @apply flex items-center justify-center w-7 h-7 bg-malva rounded-3xl text-text-dark;
+  }
+
+  &__files {
+    @apply flex items-center gap-2 text-text-grey text-xs;
+  }
+}

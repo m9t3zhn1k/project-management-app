@@ -1,0 +1,50 @@
+$colors: red, blue, green, indigo, gold, pink, orange;
+
+@each $color in $colors {
+  $value: #{$color};
+  .color-#{$color} {
+    border-color: $value;
+  }
+  .column__header.color-#{$color}::before {
+    content: '●';
+    color: $value;
+  }
+}
+
+.column {
+  @apply flex flex-col p-2 max-h-full bg-bg-grey w-72 rounded-xl relative overflow-auto;
+
+  &__header {
+    @apply pb-1 mb-4 border-b-4 flex justify-between text-lg font-medium;
+  }
+
+  &__title {
+    @apply px-1 text-text-dark bg-transparent rounded-md w-52 hover:bg-white focus:bg-white transition duration-100;
+  }
+
+  &__button-delete {
+    @apply px-1 rounded-md opacity-30 hover:opacity-100 hover:bg-caramel transition;
+  }
+
+  &__tasks {
+    @apply overflow-auto mb-3 mr-[-8px] drop-shadow-[0_3px_1px_rgba(0,0,0,0.1)];
+    scrollbar-gutter: stable;
+
+    &::-webkit-scrollbar {
+      @apply w-[8px];
+    }
+    &::-webkit-scrollbar-track {
+      @apply bg-transparent rounded-xl;
+    }
+    &::-webkit-scrollbar-thumb {
+      @apply border-[3px] border-solid border-transparent rounded-xl bg-light-blue
+      bg-clip-content;
+    }
+  }
+
+  &__button-add-task {
+    @apply w-full p-2 mb-2 text-xl bg-white border-2 border-bg-disabled border-dashed
+     opacity-50 rounded-xl hover:bg-white hover:border-solid hover:opacity-100
+     hover:drop-shadow-[0_3px_3px_rgba(0,0,0,0.1)] transition duration-75;
+  }
+}
