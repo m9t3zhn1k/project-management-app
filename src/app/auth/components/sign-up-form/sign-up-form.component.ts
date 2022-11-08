@@ -9,6 +9,8 @@ import { ValidatorsModule } from '../../validators/validators.module';
   styleUrls: ['./sign-up-form.component.scss'],
 })
 export class SignUpFormComponent {
+  isModalOpened: boolean = false;
+
   signUpForm: FormGroup = new FormGroup(
     {
       userName: new FormControl<string>('', this.customValidators.name),

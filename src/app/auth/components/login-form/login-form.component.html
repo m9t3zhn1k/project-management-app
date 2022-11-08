@@ -3,6 +3,7 @@
   <form class="login__form" [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
     <div class="login__input-container">
       <input
+        appAutoFocus
         formControlName="userLogin"
         type="text"
         class="login__input"
