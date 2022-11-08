@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { MockUserName } from '@app/mocks';
+import { mockUserName } from '@app/mocks';
 import { ITask } from '@app/shared/models';
 
-const CharForBadUsername = '?';
+const charForBadUsername = '?';
 
 @Component({
   selector: 'app-task-card',
@@ -12,19 +12,21 @@ const CharForBadUsername = '?';
 export class TaskCardComponent implements OnChanges {
   @Input() task: ITask = new ITask();
 
-  userChar: string = CharForBadUsername;
+  userChar: string = charForBadUsername;
 
-  userName: string = MockUserName;
+  userName: string = mockUserName;
 
   ngOnChanges(): void {
     this.userChar = this.getFirstChar(this.task.userId ?? '');
   }
 
   getFirstChar(userId: string): string {
-    if (!userId) return CharForBadUsername;
+    if (!userId) {
+      return charForBadUsername;
+    }
     // TODO: get user name from userService
-    this.userName = MockUserName;
-    return this.userName.length > 1 ? this.userName[0] : CharForBadUsername;
+    this.userName = mockUserName;
+    return this.userName.length > 1 ? this.userName[0] : charForBadUsername;
   }
 
   editTask(): void {

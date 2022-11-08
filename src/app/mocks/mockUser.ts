@@ -1,1 +1,1 @@
-export const MockUserName = 'Mock User';
+export const mockUserName = 'Mock User';
