@@ -27,7 +27,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": ["src/app/app.component.scss"],
+            "styles": ["src/styles.scss"],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/styles/"
