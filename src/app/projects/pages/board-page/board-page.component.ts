@@ -12,7 +12,7 @@ export class BoardPageComponent {
 
   columns: IColumnWithTasks[] = [];
 
-  isModalVisible: boolean = true;
+  isModalVisible: boolean = false;
 
   taskToEdit: ITask = new ITask();
 
@@ -26,6 +26,11 @@ export class BoardPageComponent {
   }
 
   addColumn(): void {
-    // TODO: show column add modal
+    this.columns.push({
+      id: '0',
+      title: '',
+      order: this.columns.length,
+      tasks: [],
+    });
   }
 }

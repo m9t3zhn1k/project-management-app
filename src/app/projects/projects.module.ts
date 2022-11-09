@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DirectivesModule } from '@app/shared/directives/directives.module';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ColumnComponent } from './components/column/column.component';
 import { BoardPageComponent } from './pages/board-page/board-page.component';
@@ -9,6 +10,6 @@ import { TaskModalComponent } from './components/task-modal/task-modal.component
 
 @NgModule({
   declarations: [BoardPageComponent, ColumnComponent, TaskCardComponent, TaskModalComponent],
-  imports: [CommonModule, ProjectsRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, ProjectsRoutingModule, FormsModule, ReactiveFormsModule, DirectivesModule],
 })
 export class ProjectsModule {}
