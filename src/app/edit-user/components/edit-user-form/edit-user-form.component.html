@@ -1,0 +1,81 @@
+<div class="edit-user__container">
+  <h2 class="edit-user__title">Edit user</h2>
+  <form class="edit-user__form" [formGroup]="editUserForm" (ngSubmit)="submitForm()" novalidate>
+    <div class="edit-user__input-container">
+      <input
+        formControlName="userName"
+        type="text"
+        autocomplete="name"
+        class="edit-user__input"
+        [class.error]="editUserForm.controls['userName'].invalid && editUserForm.controls['userName'].touched"
+        placeholder="Name" />
+      <p
+        *ngIf="editUserForm.controls['userName'].invalid && editUserForm.controls['userName'].touched"
+        class="edit-user__error-message"
+      >
+        {{
+          editUserForm.controls['userName'].errors?.error
+        }}
+      </p>
+      <input
+        formControlName="userLogin"
+        type="text"
+        class="edit-user__input"
+        [class.error]="editUserForm.controls['userLogin'].invalid && editUserForm.controls['userLogin'].touched"
+        placeholder="Login" />
+      <p
+        *ngIf="editUserForm.controls['userLogin'].invalid && editUserForm.controls['userLogin'].touched"
+        class="edit-user__error-message"
+      >
+        {{
+          editUserForm.controls['userLogin'].errors?.error
+        }}
+      </p>
+      <input
+        appAutoFocus
+        formControlName="userPassword"
+        type="password"
+        class="edit-user__input"
+        [class.error]="editUserForm.controls['userPassword'].invalid && editUserForm.controls['userPassword'].touched"
+        placeholder="Current password" />
+      <p
+        *ngIf="editUserForm.controls['userPassword'].invalid && editUserForm.controls['userPassword'].touched"
+        class="edit-user__error-message"
+      >
+        Password must be at least 8 characters long
+      </p>
+      <input
+        formControlName="userNewPassword"
+        type="password"
+        class="edit-user__input"
+        [class.error]="editUserForm.controls['userNewPassword'].invalid && editUserForm.controls['userNewPassword'].touched"
+        placeholder="New password" />
+      <p
+        *ngIf="editUserForm.controls['userNewPassword'].invalid && editUserForm.controls['userNewPassword'].touched"
+        class="edit-user__error-message"
+      >
+        {{
+          editUserForm.controls['userNewPassword'].errors?.error
+        }}
+      </p>
+      <input
+        formControlName="userNewPasswordConfirm"
+        type="password"
+        class="edit-user__input"
+        [class.error]="editUserForm.controls['userNewPasswordConfirm'].invalid && editUserForm.controls['userNewPasswordConfirm'].touched"
+        placeholder="Confirm new password" />
+      <p
+        *ngIf="(editUserForm.errors?.error || editUserForm.controls['userNewPasswordConfirm'].invalid) && editUserForm.controls['userNewPasswordConfirm'].touched"
+        class="edit-user__error-message"
+      >
+        {{
+          editUserForm.controls['userNewPasswordConfirm'].invalid ?
+          'Please enter a confirmational password' :
+          this.editUserForm.errors?.error
+        }}
+      </p>
+    </div>
+    <button [disabled]="editUserForm.invalid" type="submit" class="edit-user__submit-button">Save changes</button>
+    <button type="submit" class="edit-user__back-button">Back</button>
+  </form>
+</div>
