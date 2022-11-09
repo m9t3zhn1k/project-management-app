@@ -1,0 +1,16 @@
+<div class="column__task task">
+  <div class="task__header">
+    <p class="task__title">{{ task.title }}</p>
+    <button class="task__button-edit" title="Edit task" (click)="editTask()">
+      <img src="/assets/icons/pencil.svg" alt="Edit task" height="18" width="18" />
+    </button>
+  </div>
+  <p class="task__description">{{ task.description }}</p>
+  <div class="task__footer">
+    <label class="task__user" [title]="userName">{{ userChar }}</label>
+    <div class="task__files">
+      <img src="/assets/icons/files.svg" alt="Folder sign" height="16" width="16" />
+      <span>{{ task.files.length }} files</span>
+    </div>
+  </div>
+</div>

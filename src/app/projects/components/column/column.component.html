@@ -1,0 +1,12 @@
+<section class="board__column column">
+  <header class="{{ color }} column__header">
+    <input type="search" [(ngModel)]="columnTitle" (blur)="columnNameChange()" class="column__title" />
+    <button class="column__button-delete" title="Delete column" (click)="deleteColumn()">
+      <img src="/assets/icons/trash.svg" alt="Delete column" height="18" width="22" />
+    </button>
+  </header>
+  <div class="column__tasks">
+    <app-task-card *ngFor="let task of column.tasks" [task]="task"></app-task-card>
+  </div>
+  <button class="column__button-add-task" title="Add new task">+</button>
+</section>

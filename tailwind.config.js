@@ -1,7 +1,7 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
-  content: [
-    './src/**/*.{html,ts}',
-  ],
+  content: ['./src/**/*.{html,ts}'],
   theme: {
     colors: {
       'text-dark': '#0d062d',
@@ -38,4 +38,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
