@@ -1,0 +1,65 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/constants';
+@import '../../../../styles/components.scss';
+
+.header {
+  box-shadow: 1px 1px #d1d5db;
+  
+  .logo-link {
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      fill: $purple;
+      transition: $transitionAll300;
+    }
+  }
+
+  .logo-link:hover {
+    svg {
+      fill: $orange;
+    }
+  }
+  
+  .search-form,
+  .search-input {
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 26rem;
+    background-color: $bgGrey;
+  }
+
+  .new-board {
+    color: $purple;
+    border-bottom: 3px solid $orange;
+  }
+
+  .search-input {
+    padding: 0 0.5rem;
+    color: $purple;
+  }
+
+  .nav-link {
+    color: $purple;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      height: 3px;
+      background-color: $orange;
+      width: 10%;
+      transition: $transitionAll300;
+    }
+    
+    &:hover:before {
+      width: 100%;
+    }
+
+    &_active::before {
+      width: 100%;
+    }
+  }
+
+}

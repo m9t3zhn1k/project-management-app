@@ -1,7 +1,30 @@
-<div>
-  <p routerLink="">LOGO</p>
-  <button routerLink="/auth/login">Login</button>
-  <button routerLink="/auth/sign-up">Sign up</button>
-  <button routerLink="/auth/edit">Edit user</button>
-  <hr>
-</div>
+<header class="header fixed top-0 left-0 w-full">
+  <div class="container mx-auto px-4">
+    <div class="header__wrapper flex justify-between items-center h-20">
+        <div class="logo flex items-center gap-x-4">
+          <a class="logo-link" routerLink="">
+            <svg-icon name="logo"></svg-icon>
+          </a>
+          <div class="lang flex items-center gap-x-2">
+            <a class="tab-inline lang-link" routerLink="/ru" [routerLinkActive]="'tab-inline_active'">ru</a>
+            <a class="tab-inline lang-link" routerLink="/eng" [routerLinkActive]="'tab-inline_active'">eng</a>
+            <button class="new-board" *ngIf="false">New board</button>
+          </div>
+        </div>
+        <form class="search-form flex items-center gap-x-2 rounded-md" *ngIf="false">
+          <img src="../../../../assets/images/search.png" alt="Search">
+          <input 
+              class="search-input rounded-md" 
+              type="search" name="search" 
+              placeholder="Search tasks..."
+              autocomplete="off"
+            >
+        </form>
+        <nav class="nav header__nav flex items-center gap-x-4">
+          <a class="nav-link" *ngIf="false" routerLink="/auth/edit" [routerLinkActive]="'nav-link_active'">Edit user</a>
+          <a class="nav-link" *ngIf="true" routerLink="/auth/login" [routerLinkActive]="'nav-link_active'">Login</a>
+          <a class="btn-inline" routerLink="/auth/sign-up" [routerLinkActive]="'btn-inline_active'">Sign up</a>
+        </nav>
+    </div>
+  </div>
+</header>

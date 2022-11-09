@@ -1,8 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './styles/fonts.scss';
-@import './styles/reset.scss';
+@import './styles/fonts';
+@import './styles/reset';
+@import './styles/constants';
 
 @layer base {
   html {
@@ -25,6 +26,8 @@
 
   .main {
     @apply flex-auto flex-shrink-0 relative;
+    margin-top: $headerHeight;
+
   }
 
   .page {

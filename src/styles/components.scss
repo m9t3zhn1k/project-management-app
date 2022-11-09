@@ -1,0 +1,49 @@
+@import './colors';
+@import './constants';
+
+.btn-inline {
+  background-color: $orange;
+  border-radius: 0.375rem;
+  border: 1px solid $orange;
+  padding: 0.5rem;
+  color: $white;
+  outline: none;
+  transition: $transitionAll300;
+
+  &:hover {
+    background-color: $white;
+    border-color: $purple;
+    color: $purple;
+  }
+
+  &_active {
+    background-color: $white;
+    border: none;
+    color: $purple;
+    position: relative;
+    padding: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      background-color: $orange;
+      bottom: -2px;
+      height: 3px;
+      width: 100%;
+    }
+  }
+}
+
+.tab-inline {
+  background-color: $purple;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.375rem;
+  transition: $transitionAll300;
+  color: $white;
+
+  &_active,
+  &:hover {
+    background-color: $orange;
+  }
+}
