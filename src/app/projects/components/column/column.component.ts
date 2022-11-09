@@ -42,9 +42,9 @@ export class ColumnComponent implements OnChanges {
   columnNameChange(): void {
     this.columnTitle = this.columnTitle.trim();
     if (this.columnTitle.length) {
-      this.columnTitle = this.currentTitle;
-    } else {
       this.currentTitle = this.columnTitle;
+    } else {
+      this.columnTitle = this.currentTitle;
     }
     // TODO: save new name
   }
