@@ -1,0 +1,61 @@
+.modal {
+  &__wrapper {
+    @apply fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none bg-semi-grey;
+  }
+  &__container {
+    @apply relative flex items-center justify-center w-auto h-full pointer-events-none;
+  }
+  &__window {
+    @apply relative flex flex-col w-full text-text-dark bg-white border-none rounded-xl shadow-lg
+    outline-none pointer-events-auto max-w-[500px] bg-clip-padding;
+  }
+  &__header {
+    @apply flex items-center justify-between flex-shrink-0 p-4 pb-2 rounded-t-md;
+  }
+  &__title {
+    @apply text-xl font-medium leading-normal text-text-dark;
+  }
+  &__button-top-close {
+    @apply flex justify-center items-center text-xs box-content w-6 h-6 text-white
+    bg-bg-blue-lilac rounded-md focus:opacity-100 hover:opacity-75
+    hover:bg-bg-blue-lilac-hover;
+  }
+  &__content {
+    @apply relative p-4 pt-0;
+  }
+}
+.task-form {
+  &__input-container {
+    @apply flex flex-col;
+  }
+  &__input {
+    @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mb-1 placeholder-text-grey
+    focus:border-bg-blue-lilac sm:text-sm;
+
+    &.error {
+      @apply border-red;
+    }
+  }
+  &__error-message {
+    @apply mt-0 ml-2 text-xs text-red;
+  }
+  &__label {
+    @apply text-sm pt-2 ml-2;
+  }
+  &__textarea {
+    @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mb-1 placeholder-text-grey focus:border-bg-blue-lilac sm:text-sm;
+  }
+  &__footer {
+    @apply flex flex-wrap items-center gap-2 justify-end flex-shrink-0 pt-4;
+  }
+  &__button-close {
+    @apply rounded-md border border-transparent bg-bg-blue-lilac py-2 px-4 text-sm font-medium transition-all text-white hover:bg-bg-blue-lilac-hover;
+  }
+  &__button-save {
+    @apply rounded-md border border-transparent bg-bg-blue-lilac py-2 px-4 text-sm font-medium transition-all text-white hover:bg-bg-blue-lilac-hover;
+
+    &:disabled {
+      @apply bg-bg-disabled;
+    }
+  }
+}

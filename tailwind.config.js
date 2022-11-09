@@ -20,6 +20,7 @@ module.exports = {
       'caramel': '#d8727d',
       'red': '#c71616',
       'transparent': 'transparent',
+      'semi-grey': '#78748680',
       'backdrop': '#00000033',
     },
     fontFamily: {
