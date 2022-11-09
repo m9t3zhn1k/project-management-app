@@ -1,0 +1,27 @@
+.modal {
+  @apply mt-[15vh] mx-auto bg-white rounded-lg w-full max-w-xs sm:max-w-sm md:max-w-md overflow-hidden;
+
+  &__notice {
+    @apply px-8 py-4 text-left text-lg font-semibold text-text-dark;
+  }
+
+  &__question {
+    @apply text-left text-base py-6 px-8 text-text-grey border-t-grey-light border-t;
+  }
+
+  &__buttons {
+    @apply flex flex-wrap px-4 gap-1 justify-end py-3 bg-grey-light;
+  }
+
+  &__button {
+    @apply py-2 px-8 text-sm rounded-lg transition-all font-semibold tracking-wide border-2 border-bg-blue-lilac hover:border-bg-blue-lilac-hover;
+
+    &_cancel {
+      @apply text-text-dark hover:text-text-dark-hover;
+    }
+
+    &_confirm {
+      @apply text-white bg-bg-blue-lilac hover:bg-bg-blue-lilac-hover;
+    }
+  }
+}

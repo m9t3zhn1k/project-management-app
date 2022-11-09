@@ -11,6 +11,7 @@ module.exports = {
       'bg-blue-lilac': '#5030e5',
       'bg-blue-lilac-hover': '#6d53dd',
       'bg-disabled': '#b4b4b4',
+      'grey-light': '#e0e0e0',
       'white': '#ffffff',
       'green': '#7ac555',
       'orange': '#ffa500',
@@ -20,6 +21,7 @@ module.exports = {
       'red': '#c71616',
       'transparent': 'transparent',
       'semi-grey': '#78748680',
+      'backdrop': '#00000033',
     },
     fontFamily: {
       main: ['Inter', 'sans-serif'],
