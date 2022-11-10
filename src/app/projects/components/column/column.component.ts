@@ -15,13 +15,19 @@ export class ColumnComponent implements OnChanges {
 
   private currentTitle: string = '';
 
+  disableAutoFocus: boolean = true;
+
   ngOnChanges(): void {
     this.columnTitle = this.column.title ?? '';
+    if (!this.columnTitle) {
+      this.columnTitle = `New column (${this.column.order + 1})`;
+      this.disableAutoFocus = false;
+    }
     this.currentTitle = this.columnTitle;
     this.chooseColor();
   }
 
-  chooseColor(): void {
+  private chooseColor(): void {
     enum Colors {
       indigo,
       red,
@@ -39,14 +45,23 @@ export class ColumnComponent implements OnChanges {
     this.color = `color-${random}`;
   }
 
-  columnNameChange(): void {
+  columnNameChange(event?: Event): void {
+    if (event) {
+      (event.target as HTMLInputElement).blur();
+    }
     this.columnTitle = this.columnTitle.trim();
     if (this.columnTitle.length) {
       this.currentTitle = this.columnTitle;
     } else {
       this.columnTitle = this.currentTitle;
     }
+
     // TODO: save new name
+    if (!this.column.id) {
+      // post column
+    } else {
+      // put changes
+    }
   }
 
   deleteColumn(): void {

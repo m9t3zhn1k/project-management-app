@@ -1,6 +1,13 @@
 <section class="board__column column">
   <header class="{{ color }} column__header">
-    <input type="search" [(ngModel)]="columnTitle" (blur)="columnNameChange()" class="column__title" />
+    <input
+      type="search"
+      [(ngModel)]="columnTitle"
+      (blur)="columnNameChange()"
+      (keydown.enter)="columnNameChange($event)"
+      class="column__title"
+      [appAutoFocus]="disableAutoFocus"
+    />
     <button class="column__button-delete" title="Delete column" (click)="deleteColumn()">
       <img src="/assets/icons/trash.svg" alt="Delete column" height="18" width="22" />
     </button>

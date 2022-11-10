@@ -32,8 +32,8 @@ export class TaskModalComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.modalTitle = this.task.title ? 'Task edit' : 'Create new task';
-    this.taskForm.controls['taskTitle'].setValue(this.task.title ?? '');
-    this.taskForm.controls['taskDescription'].setValue(this.task.description ?? '');
+    this.taskForm.controls.taskTitle.setValue(this.task.title ?? '');
+    this.taskForm.controls.taskDescription.setValue(this.task.description ?? '');
     this.selected = this.task.title ? this.task.userId : '';
   }
 
