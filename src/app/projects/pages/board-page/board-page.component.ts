@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { IBoard, IColumnWithTasks, ITask } from '@app/shared/models';
 import { mockBoards, mockColumns, mockTasks } from '@app/mocks';
 
@@ -32,5 +33,9 @@ export class BoardPageComponent {
       order: this.columns.length,
       tasks: [],
     });
+  }
+
+  drop(event: CdkDragDrop<IColumnWithTasks[]>): void {
+    moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
   }
 }

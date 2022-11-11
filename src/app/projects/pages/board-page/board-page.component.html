@@ -1,9 +1,17 @@
 <article class="board">
   <h2 class="board__title">{{ board.title }}</h2>
   <p class="board__description">{{ board.description }}</p>
-  <div class="board__all-columns">
-    <app-column *ngFor="let column of columns" [column]="column"></app-column>
-    <section class="board__column column">
+  <div
+    class="board__all-columns example-list"
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <section class="board__column" *ngFor="let column of columns" cdkDrag>
+      <div class="board__column-drag-handle" cdkDragHandle></div>
+      <app-column class="board__column-component" [column]="column"></app-column>
+    </section>
+    <section class="board__column-last column">
       <button class="column__button-add-column" title="Add new column" (click)="addColumn()">
         Add new column<br /><span>+</span>
       </button>

@@ -1,19 +1,44 @@
 .board {
-  @apply flex flex-col w-full p-5 lg:h-[80vh] md:h-[75vh] sm:h-[70vh];
+  @apply flex flex-col w-full h-[calc(100vh-77px)];
 
   &__title {
-    @apply text-text-dark text-xl;
+    @apply text-text-dark text-xl p-5 pb-0;
   }
 
   &__description {
-    @apply pb-4 text-text-dark;
+    @apply p-5 text-text-dark;
   }
 
   &__all-columns {
-    @apply grow-0 flex flex-row gap-2 h-full;
+    @apply flex items-start w-full max-w-full mx-0 px-5 h-full min-h-[280px] grow-0 flex-row gap-2
+    overflow-x-auto overflow-y-hidden;
+    scrollbar-gutter: stable;
+
+    &::-webkit-scrollbar {
+      @apply w-[8px];
+    }
+    &::-webkit-scrollbar-track {
+      @apply mx-4 bg-transparent rounded-xl;
+    }
+    &::-webkit-scrollbar-thumb {
+      @apply border-[6px] border-solid border-transparent rounded-xl bg-light-blue
+      bg-clip-content;
+    }
   }
 
   &__column {
+    @apply flex flex-row items-start justify-between box-border h-full;
+  }
+
+  &__column-drag-handle {
+    @apply relative mr-[-18rem] w-72 h-14 cursor-move z-10;
+  }
+
+  &__column-component {
+    @apply h-full;
+  }
+
+  &__column-last {
     @apply relative flex flex-col items-center flex-shrink-0 h-20 border-2 border-bg-disabled
     border-dashed opacity-50 w-72 rounded-xl hover:bg-white hover:border-solid hover:opacity-100
     hover:drop-shadow-[0_3px_3px_rgba(0,0,0,0.1)] transition duration-75;
@@ -28,4 +53,17 @@
       @apply text-3xl;
     }
   }
+}
+
+.cdk-drag-preview {
+  @apply box-border drop-shadow-[0_5px_5px_#0003];
+}
+
+.cdk-drag-placeholder {
+  @apply opacity-0;
+}
+
+.board__all-columns.cdk-drop-list-dragging .board__column:not(.cdk-drag-placeholder),
+.cdk-drag-animating {
+  @apply transition-transform duration-300 ease-in-out;
 }

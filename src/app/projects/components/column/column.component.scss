@@ -12,18 +12,20 @@ $colors: red, blue, green, indigo, gold, pink, orange;
 }
 
 .column {
-  @apply flex flex-col p-2 max-h-full bg-bg-grey w-72 rounded-xl relative overflow-auto;
+  &__wrapper {
+    @apply flex flex-col p-2 max-h-full bg-bg-grey w-72 rounded-xl relative overflow-auto;
+  }
 
   &__header {
     @apply pb-1 mb-4 border-b-4 flex justify-between text-lg font-medium;
   }
 
   &__title {
-    @apply px-1 text-text-dark bg-transparent rounded-md w-52 hover:bg-white focus:bg-white transition duration-100;
+    @apply relative z-20 px-1 text-text-dark bg-transparent rounded-md w-52 hover:bg-white focus:bg-white transition duration-100;
   }
 
   &__button-delete {
-    @apply px-1 rounded-md opacity-30 hover:opacity-100 hover:bg-caramel transition;
+    @apply relative z-20 px-1 rounded-md opacity-30 hover:opacity-100 hover:bg-caramel transition;
   }
 
   &__tasks {

@@ -1,4 +1,4 @@
-<section class="board__column column">
+<div class="column__wrapper">
   <header class="{{ color }} column__header">
     <input
       type="search"
@@ -16,4 +16,4 @@
     <app-task-card *ngFor="let task of column.tasks" [task]="task"></app-task-card>
   </div>
   <button class="column__button-add-task" title="Add new task">+</button>
-</section>
+</div>
