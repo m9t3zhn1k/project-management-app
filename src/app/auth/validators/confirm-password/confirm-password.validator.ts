@@ -1,9 +1,9 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 export function confirmPasswordValidator(group: AbstractControl<string>): ValidationErrors | null {
-  const password: string = group.get('userNewPassword')?.value;
-  const confirmPassword: string = group.get('userNewPasswordConfirm')?.value;
-  return password === confirmPassword
+  const password: string = group.get('password')?.value;
+  const passwordConfirm: string = group.get('passwordConfirm')?.value;
+  return password === passwordConfirm
     ? null
-    : { error: 'This password does not match that entered in the password field, please try again' };
+    : { error: 'This password does not match that entered in the password field' };
 }
