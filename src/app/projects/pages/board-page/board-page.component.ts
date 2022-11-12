@@ -21,7 +21,7 @@ export class BoardPageComponent {
     this.board = mockBoards[1];
     this.columns = mockColumns.map((item) => {
       const { id, title, order } = item;
-      return { id, title, order, tasks: mockTasks };
+      return { id, title, order, tasks: [...mockTasks] };
     });
     // this.taskToEdit = mockTasks[0];
   }

@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { IColumnWithTasks } from '@app/shared/models';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { IColumnWithTasks, ITask } from '@app/shared/models';
 
 @Component({
   selector: 'app-column',
@@ -13,6 +14,10 @@ export class ColumnComponent implements OnChanges {
 
   columnTitle: string = '';
 
+  tasks: ITask[] = [];
+
+  columnId: string = '';
+
   private currentTitle: string = '';
 
   disableAutoFocus: boolean = true;
@@ -23,6 +28,8 @@ export class ColumnComponent implements OnChanges {
       this.columnTitle = `New column (${this.column.order + 1})`;
       this.disableAutoFocus = false;
     }
+    this.tasks = this.column.tasks ?? [];
+    this.columnId = this.column.id ?? '';
     this.currentTitle = this.columnTitle;
     this.chooseColor();
   }
@@ -66,5 +73,14 @@ export class ColumnComponent implements OnChanges {
 
   deleteColumn(): void {
     // TODO: delete column
+  }
+
+  drop(event: CdkDragDrop<ITask[]>): void {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    }
+    // TODO: save tasks order changes
   }
 }

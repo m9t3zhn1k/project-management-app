@@ -2,8 +2,9 @@
   <h2 class="board__title">{{ board.title }}</h2>
   <p class="board__description">{{ board.description }}</p>
   <div
-    class="board__all-columns example-list"
+    class="board__all-columns"
     cdkDropList
+    cdkDropListGroup
     cdkDropListOrientation="horizontal"
     (cdkDropListDropped)="drop($event)"
   >
