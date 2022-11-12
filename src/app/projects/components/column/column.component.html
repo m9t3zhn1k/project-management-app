@@ -1,4 +1,4 @@
-<section class="board__column column">
+<div class="column__wrapper">
   <header class="{{ color }} column__header">
     <input
       type="search"
@@ -12,8 +12,10 @@
       <img src="/assets/icons/trash.svg" alt="Delete column" height="18" width="22" />
     </button>
   </header>
-  <div class="column__tasks">
-    <app-task-card *ngFor="let task of column.tasks" [task]="task"></app-task-card>
+  <div class="column__tasks" cdkDropList id="list-one" [cdkDropListData]="tasks" (cdkDropListDropped)="drop($event)">
+    <div class="column__task" *ngFor="let task of tasks" cdkDrag>
+      <app-task-card [task]="task"></app-task-card>
+    </div>
   </div>
   <button class="column__button-add-task" title="Add new task">+</button>
-</section>
+</div>
