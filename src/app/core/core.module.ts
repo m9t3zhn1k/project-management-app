@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { CoreRoutingModule } from './core-routing.module';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -26,6 +27,7 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
+    AngularSvgIconModule,
   ],
   declarations: [HeaderComponent, FooterComponent, WelcomePageComponent, NotFoundPageComponent],
   exports: [HeaderComponent, FooterComponent],
