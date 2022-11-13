@@ -33,7 +33,7 @@ import { AuthService } from '@app/auth/services/auth.service';
     StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([[AuthEffects]]),
+    EffectsModule.forRoot([AuthEffects]),
     AngularSvgIconModule,
     AngularSvgIconModule.forRoot(),
   ],
