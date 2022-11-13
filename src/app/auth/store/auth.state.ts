@@ -1,11 +1,14 @@
-import { UserModel } from '../../core/models/user.model';
+import { UserResponseModel } from '../models/user.model';
+import { LoginResponseModel } from '../models/login.model';
 
 export interface AuthState {
-  user: UserModel | null;
+  user: UserResponseModel | null;
   isLoading: boolean;
+  token: LoginResponseModel | null;
 }
 
 export const initialAuthState: AuthState = {
   user: null,
   isLoading: false,
+  token: null,
 };

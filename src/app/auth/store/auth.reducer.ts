@@ -23,6 +23,30 @@ export const reducer = createReducer(
     AuthActions.SignUpFailed,
     (state: AuthState): AuthState => ({
       ...state,
+      user: null,
+      isLoading: false,
+    }),
+  ),
+  on(
+    AuthActions.LogIn,
+    (state: AuthState): AuthState => ({
+      ...state,
+      isLoading: true,
+    }),
+  ),
+  on(
+    AuthActions.LogInSuccess,
+    (state: AuthState, token): AuthState => ({
+      ...state,
+      token,
+      isLoading: false,
+    }),
+  ),
+  on(
+    AuthActions.LogInFailed,
+    (state: AuthState): AuthState => ({
+      ...state,
+      token: null,
       isLoading: false,
     }),
   ),

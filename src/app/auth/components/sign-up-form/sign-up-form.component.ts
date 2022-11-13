@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsModule } from '../../validators/validators.module';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../../store/auth.actions';
+import { SignUpFormDataModel } from '@app/auth/models/formData.model';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -25,8 +26,12 @@ export class SignUpFormComponent {
   constructor(private customValidators: ValidatorsModule, private store: Store) {}
 
   submitForm(): void {
-    const data = { ...this.signUpForm.value };
-    delete data.passwordConfirm;
+    const data: SignUpFormDataModel = {
+      name: this.signUpForm.value.name,
+      login: this.signUpForm.value.login,
+      password: this.signUpForm.value.password,
+    };
     this.store.dispatch(AuthActions.SignUp(data));
+    /* this.router.navigateByUrl(''); */
   }
 }
