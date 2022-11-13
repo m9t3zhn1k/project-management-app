@@ -1,19 +1,20 @@
+import { UserModel } from './../../core/models/user.model';
 import { createAction, props } from '@ngrx/store';
-
-import { SignUpFormDataModel, LoginFormDataModel } from '../models/formData.model';
-import { UserResponseModel } from '../models/user.model';
-import { LoginResponseModel } from '../models/login.model';
+import { LoginRequestModel, SignUpRequestModel, LoginResponseModel } from './../../core/models/backend-api.model';
 
 const actionSource: string = '[Auth]';
 
-export const SignUp = createAction(`${actionSource} SignUp`, props<SignUpFormDataModel>());
-
-export const SignUpSuccess = createAction(`${actionSource} SignUp Success`, props<{ user: UserResponseModel }>());
+export const SignUp = createAction(`${actionSource} SignUp`, props<SignUpRequestModel>());
 
 export const SignUpFailed = createAction(`${actionSource} SignUp Failed`);
 
-export const LogIn = createAction(`${actionSource} LogIn`, props<LoginFormDataModel>());
+export const LogIn = createAction(`${actionSource} LogIn`, props<LoginRequestModel>());
 
-export const LogInSuccess = createAction(`${actionSource} LogIn Success`, props<LoginResponseModel>());
+export const LogInSuccess = createAction(
+  `${actionSource} LogIn Success`,
+  props<{ user: UserModel; token: LoginResponseModel }>(),
+);
 
 export const LogInFailed = createAction(`${actionSource} LogIn Failed`);
+
+export const getUser = createAction(`${actionSource} GetUser`, props<LoginResponseModel>());

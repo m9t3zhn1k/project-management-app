@@ -1,23 +1,21 @@
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, map, of, catchError, tap } from 'rxjs';
+import { of } from 'rxjs';
+import { switchMap, map, catchError, tap } from 'rxjs/operators';
+
 import { AuthService } from './../services/auth.service';
+
 import * as AuthActions from './auth.actions';
-import { UserResponseModel } from '../models/user.model';
-import { LoginResponseModel } from '../models/login.model';
+
+import { LoginRequestModel, LoginResponseModel } from '@app/core/models/backend-api.model';
+import { UserModel } from './../../core/models/user.model';
 
 @Injectable()
 export class AuthEffects {
-  constructor(
-    private actions$: Actions,
-    private authService: AuthService,
-    private store: Store,
-    private router: Router,
-  ) {}
+  constructor(private actions$: Actions, private authService: AuthService, private router: Router) {}
 
-  signUp$ = createEffect(() =>
+  private signUp$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.SignUp),
       switchMap((action) => {
@@ -28,28 +26,15 @@ export class AuthEffects {
             password: action.password,
           })
           .pipe(
-            map((value: UserResponseModel) => AuthActions.SignUpSuccess({ user: value })),
             catchError(() => of(AuthActions.SignUpFailed())),
-            tap(() =>
-              this.store.dispatch(
-                AuthActions.LogIn({
-                  login: action.login,
-                  password: action.password,
-                }),
-              ),
-            ),
-            /* switchMap(() => {
-              return this.authService.logIn({login: action.login, password: action.password}).pipe(
-                map((value: LoginResponseModel) => AuthActions.LogInSuccess(value)),
-                catchError(() => of(AuthActions.LogInFailed())),
-              )
-            }) */
+            map((): LoginRequestModel => ({ login: action.login, password: action.password })),
+            map((data: LoginRequestModel) => AuthActions.LogIn(data)),
           );
       }),
     ),
   );
 
-  logIn$ = createEffect(() =>
+  private logIn$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.LogIn),
       switchMap((action) => {
@@ -59,10 +44,23 @@ export class AuthEffects {
             password: action.password,
           })
           .pipe(
-            map((value: LoginResponseModel) => AuthActions.LogInSuccess(value)),
+            map((data: LoginResponseModel) => AuthActions.getUser(data)),
             catchError(() => of(AuthActions.LogInFailed())),
-            tap(() => this.router.navigateByUrl('')),
           );
+      }),
+    ),
+  );
+
+  private getUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.getUser),
+      switchMap((action) => {
+        const id: string = this.authService.parseJwt(action).id;
+        return this.authService.getUser(id, action.token).pipe(
+          map((data: UserModel) => AuthActions.LogInSuccess({ user: data, token: action })),
+          tap((): Promise<boolean> => this.router.navigateByUrl('')),
+          catchError(() => of(AuthActions.LogInFailed())),
+        );
       }),
     ),
   );

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsModule } from '../../validators/validators.module';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../../store/auth.actions';
-import { SignUpFormDataModel } from '@app/auth/models/formData.model';
+import { SignUpRequestModel } from '@app/core/models/backend-api.model';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -26,7 +26,7 @@ export class SignUpFormComponent {
   constructor(private customValidators: ValidatorsModule, private store: Store) {}
 
   submitForm(): void {
-    const data: SignUpFormDataModel = {
+    const data: SignUpRequestModel = {
       name: this.signUpForm.value.name,
       login: this.signUpForm.value.login,
       password: this.signUpForm.value.password,

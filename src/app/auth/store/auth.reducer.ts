@@ -1,3 +1,5 @@
+import { UserModel } from './../../core/models/user.model';
+import { LoginResponseModel } from './../../core/models/backend-api.model';
 import { createReducer, on } from '@ngrx/store';
 import { initialAuthState, AuthState } from './auth.state';
 import * as AuthActions from './auth.actions';
@@ -8,46 +10,37 @@ export const reducer = createReducer(
     AuthActions.SignUp,
     (state: AuthState): AuthState => ({
       ...state,
-      isLoading: true,
-    }),
-  ),
-  on(
-    AuthActions.SignUpSuccess,
-    (state: AuthState, { user }): AuthState => ({
-      ...state,
-      user,
-      isLoading: false,
+      isPending: true,
     }),
   ),
   on(
     AuthActions.SignUpFailed,
     (state: AuthState): AuthState => ({
       ...state,
-      user: null,
-      isLoading: false,
+      isPending: false,
     }),
   ),
   on(
     AuthActions.LogIn,
     (state: AuthState): AuthState => ({
       ...state,
-      isLoading: true,
+      isPending: true,
     }),
   ),
   on(
     AuthActions.LogInSuccess,
-    (state: AuthState, token): AuthState => ({
+    (state: AuthState, { user, token }: { user: UserModel; token: LoginResponseModel }): AuthState => ({
       ...state,
-      token,
-      isLoading: false,
+      user,
+      token: token.token,
+      isPending: false,
     }),
   ),
   on(
     AuthActions.LogInFailed,
     (state: AuthState): AuthState => ({
       ...state,
-      token: null,
-      isLoading: false,
+      isPending: false,
     }),
   ),
 );
