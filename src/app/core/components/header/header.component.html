@@ -1,30 +1,16 @@
-<header class="header fixed top-0 left-0 w-full">
-  <div class="container mx-auto px-4">
-    <div class="header__wrapper flex justify-between items-center h-20">
-        <div class="logo flex items-center gap-x-4">
-          <a class="logo-link" routerLink="">
+<header class="header">
+  <div class="header__container">
+    <div class="header__wrapper">
+        <div class="logo">
+          <a class="logo__link" routerLink="">
             <svg-icon name="logo"></svg-icon>
           </a>
-          <div class="lang flex items-center gap-x-2">
-            <a class="tab-inline lang-link" routerLink="/ru" [routerLinkActive]="'tab-inline_active'">ru</a>
-            <a class="tab-inline lang-link" routerLink="/eng" [routerLinkActive]="'tab-inline_active'">en</a>
-            <button class="new-board" *ngIf="false">New board</button>
-          </div>
         </div>
-        <form class="search-form flex items-center gap-x-2 rounded-md" *ngIf="false">
-          <img src="../../../../assets/images/search.png" alt="Search">
-          <input 
-              class="search-input rounded-md" 
-              type="search" name="search" 
-              placeholder="Search tasks..."
-              autocomplete="off"
-            >
-        </form>
-        <nav class="nav header__nav flex items-center gap-x-4">
-          <a class="nav-link" *ngIf="false" routerLink="/auth/edit" [routerLinkActive]="'nav-link_active'">Edit user</a>
-          <a class="nav-link" *ngIf="true" routerLink="/auth/login" [routerLinkActive]="'nav-link_active'">Login</a>
-          <a class="btn-inline" routerLink="/auth/sign-up" [routerLinkActive]="'btn-inline_active'">Sign up</a>
-        </nav>
+        <div class="header__nav-wrapper">
+          <app-dark-mode></app-dark-mode>
+          <button class="header__new-board-btn nav-btn" *ngIf="false">New board</button>
+          <app-menu></app-menu>
+        </div>
     </div>
   </div>
 </header>

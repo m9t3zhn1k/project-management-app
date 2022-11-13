@@ -1,9 +1,37 @@
 @import '../../../../styles/colors';
 @import '../../../../styles/constants';
+@import '../../../../styles/functions';
 
 .footer {
   background-color: $purple;
   color: $white;
+
+  &__wrapper {
+    @apply flex items-center justify-between gap-y-2 gap-x-8 py-4;
+    
+    @include smallScreen() {
+      flex-direction: column;
+    }
+  }
+
+  &__team {
+    @apply flex gap-2;
+    
+    @include smallScreen() {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+
+  &__team-list {
+    @apply flex items-center gap-x-4;
+
+    @include mobile() {
+      @apply gap-2;
+      flex-direction: column;
+    }
+  }
 
   .team-title {
     color: $orange;
@@ -16,12 +44,12 @@
 
   .rs-link {
     svg {
-      width: 25px;
+      width: 45px;
       display: inline-block;
       transition: $transitionAll300;
 
       &:hover {
-        transform: rotate(360deg);
+        transform: scale(1.1);
       }
     }
   }
@@ -39,10 +67,6 @@
       background-color: $white;
       width: 0%;
       height: 2px;
-    }
-
-    &-item:hover {
-      color: $orange;
     }
 
     &-item:hover::before {
