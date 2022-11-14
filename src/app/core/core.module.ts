@@ -23,6 +23,8 @@ import { reducers } from './store/app.reducer';
 import { AuthEffects } from '@auth/store/auth.effects';
 import { AuthService } from '@auth/services/auth.service';
 
+import { interceptors } from './interceptors/interceptors';
+
 @NgModule({
   imports: [
     CoreRoutingModule,
@@ -47,7 +49,7 @@ import { AuthService } from '@auth/services/auth.service';
     ClickOutSIdeDirective,
   ],
   exports: [HeaderComponent, FooterComponent],
-  providers: [AuthService],
+  providers: [AuthService, interceptors],
 })
 export class CoreModule {
   constructor(private iconReg: SvgIconRegistryService) {

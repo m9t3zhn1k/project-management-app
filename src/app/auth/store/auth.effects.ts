@@ -9,7 +9,7 @@ import { AuthService } from './../services/auth.service';
 import * as AuthActions from './auth.actions';
 
 import { LoginRequestModel, LoginResponseModel } from '@app/core/models/backend-api.model';
-import { UserModel } from './../../core/models/user.model';
+import { UserModel } from '@core/models/user.model';
 
 @Injectable()
 export class AuthEffects {
@@ -44,6 +44,7 @@ export class AuthEffects {
             password: action.password,
           })
           .pipe(
+            tap((data: LoginResponseModel): void => localStorage.setItem('token', data.token)),
             map((data: LoginResponseModel) => AuthActions.getUser(data)),
             catchError(() => of(AuthActions.LogInFailed())),
           );
@@ -56,9 +57,8 @@ export class AuthEffects {
       ofType(AuthActions.getUser),
       switchMap((action) => {
         const id: string = this.authService.parseJwt(action).id;
-        return this.authService.getUser(id, action.token).pipe(
+        return this.authService.getUser(id).pipe(
           map((data: UserModel) => AuthActions.LogInSuccess({ user: data, token: action })),
-          tap((data): void => localStorage.setItem('token', JSON.stringify(data.token.token))),
           tap((): Promise<boolean> => this.router.navigateByUrl('')),
           catchError(() => of(AuthActions.LogInFailed())),
         );

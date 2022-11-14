@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { userSelector } from '@auth/store/auth.selectors';
-import * as AuthActions from '@auth/store/auth.actions';
 
 @Component({
   selector: 'app-menu',
@@ -18,14 +17,6 @@ export class MenuComponent {
   user$ = this.store.select(userSelector);
 
   constructor(private store: Store) {}
-
-  ngOnInit(): void {
-    const userData: string | null = localStorage.getItem('token');
-    if (userData) {
-      const data: string = JSON.parse(userData);
-      this.store.dispatch(AuthActions.getUser({token: data}));
-    }
-  }
 
   onToggleMenu(): void {
     this.isActiveMenu = !this.isActiveMenu;

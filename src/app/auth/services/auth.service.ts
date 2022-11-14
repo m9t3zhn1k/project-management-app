@@ -16,20 +16,14 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   signUp(data: SignUpRequestModel): Observable<SignUpResponseModel> {
-    return this.http.post<SignUpResponseModel>(
-      'https://project-management-back-production.up.railway.app/auth/signup',
-      data,
-    );
+    return this.http.post<SignUpResponseModel>('auth/signup', data);
   }
 
   logIn(data: LoginRequestModel): Observable<LoginResponseModel> {
-    return this.http.post<LoginResponseModel>(
-      'https://project-management-back-production.up.railway.app/auth/signin',
-      data,
-    );
+    return this.http.post<LoginResponseModel>('auth/signin', data);
   }
 
-  parseJwt({token}: LoginResponseModel): TokenModel {
+  parseJwt({ token }: LoginResponseModel): TokenModel {
     const base64Url: string = token.split('.')[1];
     const base64: string = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload: string = decodeURIComponent(
@@ -44,22 +38,15 @@ export class AuthService {
     return JSON.parse(jsonPayload);
   }
 
-  getUser(id: string, token: string): Observable<UserModel> {
-    return this.http
-      .get<SignUpResponseModel>(`https://project-management-back-production.up.railway.app/users/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .pipe(
-        map(
-          (resp: SignUpResponseModel): UserModel => ({
-            id: resp._id,
-            login: resp.login,
-            name: resp.name,
-          }),
-        ),
-      );
+  getUser(id: string): Observable<UserModel> {
+    return this.http.get<SignUpResponseModel>(`users/${id}`).pipe(
+      map(
+        (resp: SignUpResponseModel): UserModel => ({
+          id: resp._id,
+          login: resp.login,
+          name: resp.name,
+        }),
+      ),
+    );
   }
 }

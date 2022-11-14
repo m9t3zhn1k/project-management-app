@@ -27,7 +27,8 @@
       "@core/*": ["src/app/core/*"],
       "@edit-user/*": ["src/app/edit-user/*"],
       "@projects/*": ["src/app/projects/*"],
-      "@shared/*": ["src/app/shared/*"]
+      "@shared/*": ["src/app/shared/*"],
+      "@constants/*": ["src/constants/*"]
     }
   },
   "files": [
