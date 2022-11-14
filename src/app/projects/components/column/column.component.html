@@ -14,7 +14,7 @@
   </header>
   <div class="column__tasks" cdkDropList id="list-one" [cdkDropListData]="tasks" (cdkDropListDropped)="drop($event)">
     <div class="column__task" *ngFor="let task of tasks" cdkDrag>
-      <app-task-card [task]="task"></app-task-card>
+      <app-task-card [task]="task" (delete)="deleteTask($event)"></app-task-card>
     </div>
   </div>
   <button class="column__button-add-task" title="Add new task">+</button>

@@ -78,12 +78,12 @@ export class ColumnComponent implements OnChanges {
     // TODO: delete column
   }
 
+  deleteTask(deleteId: string): void {
+    this.tasks = this.tasks.filter((item) => item.id !== deleteId);
+    // TODO: save tasks after delete
+  }
+
   drop(event: CdkDragDrop<ITask[]>): void {
-    // if (event.previousContainer === event.container) {
-    //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    // } else {
-    //   transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-    // }
     // TODO: save tasks order changes
     this.boardService.drop(event);
   }

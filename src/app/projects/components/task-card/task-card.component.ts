@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { mockUsers } from '@app/mocks';
 import { ITask } from '@app/shared/models';
 
@@ -11,6 +11,8 @@ const charForBadUsername = '?';
 })
 export class TaskCardComponent implements OnChanges {
   @Input() task: ITask = new ITask();
+
+  @Output() delete: EventEmitter<string> = new EventEmitter();
 
   userChar: string = charForBadUsername;
 
@@ -35,5 +37,6 @@ export class TaskCardComponent implements OnChanges {
 
   deleteTask(): void {
     // TODO: delete task
+    this.delete.emit(this.task.id);
   }
 }
