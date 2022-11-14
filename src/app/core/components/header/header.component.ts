@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { userSelector } from './../../../auth/store/auth.selectors';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +7,4 @@ import { userSelector } from './../../../auth/store/auth.selectors';
 })
 export class HeaderComponent {
   isDarkMode: boolean = false;
-  
-  user$ = this.store.select(userSelector);
-
-  constructor(private store: Store) {}
 }

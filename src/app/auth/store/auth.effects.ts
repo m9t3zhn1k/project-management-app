@@ -26,9 +26,9 @@ export class AuthEffects {
             password: action.password,
           })
           .pipe(
-            catchError(() => of(AuthActions.SignUpFailed())),
             map((): LoginRequestModel => ({ login: action.login, password: action.password })),
             map((data: LoginRequestModel) => AuthActions.LogIn(data)),
+            catchError(() => of(AuthActions.SignUpFailed())),
           );
       }),
     ),
@@ -58,6 +58,7 @@ export class AuthEffects {
         const id: string = this.authService.parseJwt(action).id;
         return this.authService.getUser(id, action.token).pipe(
           map((data: UserModel) => AuthActions.LogInSuccess({ user: data, token: action })),
+          tap((data): void => localStorage.setItem('token', JSON.stringify(data.token.token))),
           tap((): Promise<boolean> => this.router.navigateByUrl('')),
           catchError(() => of(AuthActions.LogInFailed())),
         );

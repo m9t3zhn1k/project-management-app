@@ -1,9 +1,9 @@
-import { TokenModel } from './../../core/models/backend-api.model';
-import { UserModel } from './../../core/models/user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
+import { TokenModel } from '@core/models/backend-api.model';
+import { UserModel } from '@core/models/user.model';
 import {
   SignUpRequestModel,
   LoginRequestModel,
@@ -29,14 +29,14 @@ export class AuthService {
     );
   }
 
-  parseJwt(data: LoginResponseModel): TokenModel {
-    const base64Url: string = data.token.split('.')[1];
+  parseJwt({token}: LoginResponseModel): TokenModel {
+    const base64Url: string = token.split('.')[1];
     const base64: string = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload: string = decodeURIComponent(
       window
         .atob(base64)
         .split('')
-        .map(function (c) {
+        .map(function (c: string): string {
           return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         })
         .join(''),

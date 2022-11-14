@@ -20,8 +20,8 @@ import { MenuComponent } from './components/header/menu/menu.component';
 import { ClickOutSIdeDirective } from '@app/shared/directives/clickOutSide/click-out-side.directive';
 
 import { reducers } from './store/app.reducer';
-import { AuthEffects } from './../auth/store/auth.effects';
-import { AuthService } from '@app/auth/services/auth.service';
+import { AuthEffects } from '@auth/store/auth.effects';
+import { AuthService } from '@auth/services/auth.service';
 
 @NgModule({
   imports: [

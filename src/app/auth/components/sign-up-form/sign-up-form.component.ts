@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ValidatorsModule } from '../../validators/validators.module';
+import { ValidatorsModule } from '@auth/validators/validators.module';
 import { Store } from '@ngrx/store';
-import * as AuthActions from '../../store/auth.actions';
+import * as AuthActions from '@auth/store/auth.actions';
 import { SignUpRequestModel } from '@app/core/models/backend-api.model';
 
 @Component({
@@ -32,6 +32,5 @@ export class SignUpFormComponent {
       password: this.signUpForm.value.password,
     };
     this.store.dispatch(AuthActions.SignUp(data));
-    /* this.router.navigateByUrl(''); */
   }
 }

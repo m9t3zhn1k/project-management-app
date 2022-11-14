@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { LoginRequestModel } from '@app/core/models/backend-api.model';
-import * as AuthActions from '../../store/auth.actions';
+import * as AuthActions from '@auth/store/auth.actions';
 
 @Component({
   selector: 'app-login-form',

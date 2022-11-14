@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ValidatorsModule } from './validators/validators.module';
-import { DirectivesModule } from './../shared/directives/directives.module';
-import { ConfirmationModalModule } from './../shared/confirmation-modal/confirmation-modal.module';
+import { DirectivesModule } from '@shared/directives/directives.module';
+import { ConfirmationModalModule } from '@shared/confirmation-modal/confirmation-modal.module';
 
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';

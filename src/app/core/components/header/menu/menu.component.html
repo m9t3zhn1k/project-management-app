@@ -22,7 +22,7 @@
       </a>
     </div>
     <a class="nav-link menu-item" 
-      *ngIf="false" routerLink="/auth/edit" 
+      *ngIf="user$ | async" routerLink="/auth/edit" 
       [routerLinkActive]="'nav-link_active'"
       [routerLinkActiveOptions]="{ exact:true }"
       (click)="onCloseMenu()"
@@ -30,7 +30,7 @@
       Edit user
     </a>
     <a class="nav-link menu-item"
-      *ngIf="false" routerLink="/" 
+      *ngIf="user$ | async" routerLink="/" 
       [routerLinkActive]="'nav-link_active'"
       [routerLinkActiveOptions]="{ exact:true }"
       (click)="onCloseMenu()"
@@ -38,7 +38,7 @@
       Log out
     </a>
     <a class="nav-link menu-item" 
-      *ngIf="true" routerLink="/auth/login" 
+      *ngIf="(user$ | async) === null" routerLink="/auth/login" 
       [routerLinkActive]="'nav-link_active'"
       [routerLinkActiveOptions]="{ exact:true }"
       (click)="onCloseMenu()"
@@ -46,7 +46,7 @@
       Login
     </a>
     <a class="btn-inline menu-item" 
-      *ngIf="true" 
+      *ngIf="(user$ | async) === null" 
       routerLink="/auth/sign-up" 
       [routerLinkActive]="'btn-inline_active'"
       [routerLinkActiveOptions]="{ exact:true }"
