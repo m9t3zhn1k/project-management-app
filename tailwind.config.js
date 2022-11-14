@@ -21,6 +21,7 @@ module.exports = {
       'red': '#c71616',
       'transparent': 'transparent',
       'semi-grey': '#78748680',
+      'whitish': '#fff9',
       'backdrop': '#00000033',
     },
     fontFamily: {
