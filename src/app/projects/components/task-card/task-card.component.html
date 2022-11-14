@@ -1,9 +1,15 @@
 <div class="column__task task">
   <div class="task__header">
     <p class="task__title">{{ task.title }}</p>
-    <button class="task__button-edit" title="Edit task" (click)="editTask()">
-      <img src="/assets/icons/pencil.svg" alt="Edit task" height="18" width="18" />
-    </button>
+    <div class="task__menu menu">
+      <span class="menu__points">...</span>
+      <button class="menu__button-edit" title="Edit task" (click)="editTask()">
+        <img src="/assets/icons/pencil.svg" alt="Edit task" height="18" width="18" />
+      </button>
+      <button class="menu__button-delete" title="Delete task" (click)="deleteTask()">
+        <img src="/assets/icons/trash.svg" alt="Delete task" height="18" width="18" />
+      </button>
+    </div>
   </div>
   <p class="task__description">{{ task.description }}</p>
   <div class="task__footer">

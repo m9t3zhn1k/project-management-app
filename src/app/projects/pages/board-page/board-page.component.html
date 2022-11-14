@@ -8,7 +8,7 @@
     cdkDropListOrientation="horizontal"
     (cdkDropListDropped)="drop($event)"
   >
-    <section class="board__column" *ngFor="let column of columns" cdkDrag>
+    <section class="board__column" *ngFor="let column of board.columns" cdkDrag>
       <div class="board__column-drag-handle" cdkDragHandle></div>
       <app-column class="board__column-component" [column]="column"></app-column>
     </section>

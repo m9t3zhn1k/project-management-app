@@ -32,4 +32,8 @@ export class TaskCardComponent implements OnChanges {
   editTask(): void {
     // TODO: open task edit modal
   }
+
+  deleteTask(): void {
+    // TODO: delete task
+  }
 }

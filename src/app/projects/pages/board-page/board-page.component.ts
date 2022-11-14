@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { IBoard, IColumnWithTasks, ITask } from '@app/shared/models';
-import { mockBoards, mockColumns, mockTasks } from '@app/mocks';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { IBoardData, IColumnWithTasks, ITask } from '@app/shared/models';
+import { BoardService } from '@app/projects/services/board.service';
 
 @Component({
   selector: 'app-board-page',
@@ -9,33 +9,23 @@ import { mockBoards, mockColumns, mockTasks } from '@app/mocks';
   styleUrls: ['./board-page.component.scss'],
 })
 export class BoardPageComponent {
-  board: IBoard = new IBoard();
-
-  columns: IColumnWithTasks[] = [];
+  board: IBoardData = new IBoardData();
 
   isModalVisible: boolean = false;
 
   taskToEdit: ITask = new ITask();
 
-  constructor() {
-    this.board = mockBoards[1];
-    this.columns = mockColumns.map((item) => {
-      const { id, title, order } = item;
-      return { id, title, order, tasks: [...mockTasks] };
+  constructor(private boardService: BoardService) {
+    this.boardService.board.subscribe((board) => {
+      this.board = board;
     });
-    // this.taskToEdit = mockTasks[0];
   }
 
   addColumn(): void {
-    this.columns.push({
-      id: '0',
-      title: '',
-      order: this.columns.length,
-      tasks: [],
-    });
+    this.boardService.addColumn();
   }
 
   drop(event: CdkDragDrop<IColumnWithTasks[]>): void {
-    moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
+    this.boardService.dropColumn(event);
   }
 }

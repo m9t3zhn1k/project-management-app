@@ -1,12 +1,12 @@
 .board {
-  @apply flex flex-col w-full h-[calc(100vh-77px)];
+  @apply flex flex-col w-full h-[calc(100vh-140px)] bg-[url('/assets/images/board-bg-1.jpg')] bg-cover pb-2;
 
   &__title {
-    @apply text-text-dark text-xl p-5 pb-0;
+    @apply text-text-dark text-xl pt-3 px-5 pb-0 bg-[#fff9];
   }
 
   &__description {
-    @apply p-5 text-text-dark;
+    @apply pt-0 pb-3 px-5 mb-2 text-text-dark bg-[#fff9];
   }
 
   &__all-columns {
@@ -39,8 +39,8 @@
   }
 
   &__column-last {
-    @apply relative flex flex-col items-center flex-shrink-0 h-20 border-2 border-bg-disabled
-    border-dashed opacity-50 w-72 rounded-xl hover:bg-white hover:border-solid hover:opacity-100
+    @apply relative flex flex-col items-center flex-shrink-0 h-20 border-2 border-text-grey
+    border-dashed bg-[#fff9] opacity-75 w-72 rounded-xl hover:bg-white hover:border-solid hover:opacity-100
     hover:drop-shadow-[0_3px_3px_rgba(0,0,0,0.1)] transition duration-75;
   }
 }

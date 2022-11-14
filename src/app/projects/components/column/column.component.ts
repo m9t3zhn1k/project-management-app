@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { IColumnWithTasks, ITask } from '@app/shared/models';
+import { BoardService } from '@app/projects/services/board.service';
 
 @Component({
   selector: 'app-column',
@@ -22,10 +23,11 @@ export class ColumnComponent implements OnChanges {
 
   disableAutoFocus: boolean = true;
 
+  constructor(private boardService: BoardService) {}
+
   ngOnChanges(): void {
     this.columnTitle = this.column.title ?? '';
-    if (!this.columnTitle) {
-      this.columnTitle = `New column (${this.column.order + 1})`;
+    if (this.column.isNew) {
       this.disableAutoFocus = false;
     }
     this.tasks = this.column.tasks ?? [];
@@ -64,7 +66,7 @@ export class ColumnComponent implements OnChanges {
     }
 
     // TODO: save new name
-    if (!this.column.id) {
+    if (this.column.isNew) {
       // post column
     } else {
       // put changes
@@ -72,15 +74,17 @@ export class ColumnComponent implements OnChanges {
   }
 
   deleteColumn(): void {
+    this.boardService.deleteColumn(this.column.id);
     // TODO: delete column
   }
 
   drop(event: CdkDragDrop<ITask[]>): void {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-    }
+    // if (event.previousContainer === event.container) {
+    //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    // } else {
+    //   transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    // }
     // TODO: save tasks order changes
+    this.boardService.drop(event);
   }
 }
