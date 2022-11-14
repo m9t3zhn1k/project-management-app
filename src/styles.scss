@@ -4,6 +4,7 @@
 @import './styles/fonts';
 @import './styles/reset';
 @import './styles/constants';
+@import './styles/colors';
 
 @layer base {
   html {
@@ -12,6 +13,18 @@
 
   body {
     @apply min-h-screen text-text-dark;
+  }
+
+  .light {
+    background-color: #f5f5f5;
+    color: #000000;
+    transition: all 0.3s;
+  }
+
+  .dark {
+    background-color: #323232;
+    color: #f5f5f5;
+    transition: all 0.3s;
   }
 
   button {

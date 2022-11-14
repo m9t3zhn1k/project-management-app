@@ -1,0 +1,58 @@
+<menu class="menu" [class.active]="isActiveMenu" appClickOutSIde (clickOutside)="onCloseMenu()">
+  <button class="menu__btn" (click)="onToggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span> 
+  </button>
+  <nav class="menu__nav nav items-wrapper">
+    <div class="lang flex items-center gap-x-2">
+      <a class="nav-link tab-inline"
+        [class.tab-inline_active]="isRuLangActive"
+        (click)="setRuLang()"
+        (click)="onCloseMenu()"
+      >
+        ru
+      </a>
+      <a class="nav-link tab-inline"
+        [class.tab-inline_active]="isEnLangActive"
+        (click)="setEnLang()"
+        (click)="onCloseMenu()"
+      >
+        en
+      </a>
+    </div>
+    <a class="nav-link menu-item" 
+      *ngIf="false" routerLink="/auth/edit" 
+      [routerLinkActive]="'nav-link_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onCloseMenu()"
+    >
+      Edit user
+    </a>
+    <a class="nav-link menu-item"
+      *ngIf="false" routerLink="/" 
+      [routerLinkActive]="'nav-link_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onCloseMenu()"
+    >
+      Log out
+    </a>
+    <a class="nav-link menu-item" 
+      *ngIf="true" routerLink="/auth/login" 
+      [routerLinkActive]="'nav-link_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onCloseMenu()"
+    >
+      Login
+    </a>
+    <a class="btn-inline menu-item" 
+      *ngIf="true" 
+      routerLink="/auth/sign-up" 
+      [routerLinkActive]="'btn-inline_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onCloseMenu()"
+    >
+      Sign up
+    </a>
+  </nav>
+</menu>
