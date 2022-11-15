@@ -25,6 +25,8 @@ import { AuthService } from '@auth/services/auth.service';
 
 import { interceptors } from './interceptors/interceptors';
 
+import { AuthGuard } from './guards/auth.guard';
+
 @NgModule({
   imports: [
     CoreRoutingModule,
@@ -49,7 +51,7 @@ import { interceptors } from './interceptors/interceptors';
     ClickOutSIdeDirective,
   ],
   exports: [HeaderComponent, FooterComponent],
-  providers: [AuthService, interceptors],
+  providers: [AuthService, interceptors, AuthGuard],
 })
 export class CoreModule {
   constructor(private iconReg: SvgIconRegistryService) {

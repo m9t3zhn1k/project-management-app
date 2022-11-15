@@ -1,4 +1,4 @@
-import { UserModel } from './../../core/models/user.model';
+import { UserModel } from '@core/models/user.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AuthState } from './auth.state';
 

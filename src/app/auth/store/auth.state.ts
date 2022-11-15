@@ -1,4 +1,4 @@
-import { UserModel } from '../../core/models/user.model';
+import { UserModel } from '@core/models/user.model';
 
 export interface AuthState {
   user: UserModel | null;
@@ -7,7 +7,7 @@ export interface AuthState {
 }
 
 export const initialAuthState: AuthState = {
-  user: null,
-  token: null,
+  user: JSON.parse(localStorage.getItem('user') ?? 'null'),
+  token: localStorage.getItem('token'),
   isPending: false,
 };
