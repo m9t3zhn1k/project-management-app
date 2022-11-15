@@ -60,7 +60,7 @@ export class AuthEffects {
         return this.authService.getUser(id).pipe(
           map((data: UserModel) => AuthActions.LogInSuccess({ user: data, token: action })),
           tap(({user}) => localStorage.setItem('user', JSON.stringify(user))),
-          tap((): Promise<boolean> => this.router.navigateByUrl('')),
+          /* tap((): Promise<boolean> => this.router.navigateByUrl('')), */
           catchError(() => of(AuthActions.LogInFailed())),
         );
       }),
