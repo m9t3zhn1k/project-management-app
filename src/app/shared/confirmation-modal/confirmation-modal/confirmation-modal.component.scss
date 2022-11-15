@@ -14,10 +14,10 @@
   }
 
   &__button {
-    @apply py-2 px-8 text-sm rounded-lg transition-all font-semibold tracking-wide border-2 border-bg-blue-lilac hover:border-bg-blue-lilac-hover;
+    @apply py-2 px-8 text-sm rounded-lg transition-all font-semibold tracking-wide border-[1px] border-solid border-bg-blue-lilac hover:border-bg-blue-lilac-hover;
 
     &_cancel {
-      @apply text-text-dark hover:text-text-dark-hover;
+      @apply text-bg-blue-lilac hover:bg-bg-grey;
     }
 
     &_confirm {

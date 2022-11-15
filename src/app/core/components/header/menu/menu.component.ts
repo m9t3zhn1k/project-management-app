@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { userSelector } from '@auth/store/auth.selectors';
 
 @Component({
   selector: 'app-menu',
@@ -11,6 +13,10 @@ export class MenuComponent {
   isRuLangActive: boolean = false;
 
   isEnLangActive: boolean = true;
+
+  user$ = this.store.select(userSelector);
+
+  constructor(private store: Store) {}
 
   onToggleMenu(): void {
     this.isActiveMenu = !this.isActiveMenu;

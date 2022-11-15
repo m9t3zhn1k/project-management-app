@@ -7,8 +7,8 @@ export function loginValidator(control: AbstractControl<string>): ValidationErro
     return { error: 'The login is too short' };
   } else if (control.value.length > 30) {
     return { error: 'The login is too long' };
-  } else if (!control.value.match(/^[A-Za-zА-Яа-я\s]*$/)) {
-    return { error: 'Please enter login using only letters and spaces' };
+  } else if (!control.value.match(/^[A-Za-zА-Яа-я0-9\s]*$/)) {
+    return { error: 'Please enter login using only letters and numbers' };
   }
   return null;
 }

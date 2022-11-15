@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { LoginRequestModel } from '@app/core/models/backend-api.model';
+import * as AuthActions from '@auth/store/auth.actions';
 
 @Component({
   selector: 'app-login-form',
@@ -9,13 +11,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginFormComponent {
   loginForm: FormGroup = new FormGroup({
-    userLogin: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
-    userPassword: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
+    login: new FormControl<string>('', [Validators.required, Validators.minLength(3)]),
+    password: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
   });
 
-  constructor(private router: Router) {}
+  constructor(private store: Store) {}
 
   submitForm(): void {
-    this.router.navigateByUrl('');
+    const data: LoginRequestModel = this.loginForm.value;
+    this.store.dispatch(AuthActions.LogIn(data));
   }
 }

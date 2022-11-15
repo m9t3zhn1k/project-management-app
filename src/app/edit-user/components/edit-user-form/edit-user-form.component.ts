@@ -11,11 +11,11 @@ import { ValidatorsModule } from '../../../auth/validators/validators.module';
 export class EditUserFormComponent {
   editUserForm: FormGroup = new FormGroup(
     {
-      userName: new FormControl<string>('', this.customValidators.name),
-      userLogin: new FormControl<string>('', this.customValidators.login),
-      userPassword: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
-      userNewPassword: new FormControl<string>('', this.customValidators.password),
-      userNewPasswordConfirm: new FormControl<string>('', Validators.required),
+      name: new FormControl<string>('', this.customValidators.name),
+      login: new FormControl<string>('', this.customValidators.login),
+      currentPassword: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
+      password: new FormControl<string>('', this.customValidators.password),
+      passwordConfirm: new FormControl<string>('', Validators.required),
     },
     { validators: this.customValidators.confirmPassword },
   );

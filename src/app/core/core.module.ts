@@ -19,6 +19,14 @@ import { DarkModeComponent } from './components/header/dark-mode/dark-mode.compo
 import { MenuComponent } from './components/header/menu/menu.component';
 import { ClickOutSIdeDirective } from '@app/shared/directives/clickOutSide/click-out-side.directive';
 
+import { reducers } from './store/app.reducer';
+import { AuthEffects } from '@auth/store/auth.effects';
+import { AuthService } from '@auth/services/auth.service';
+
+import { interceptors } from './interceptors/interceptors';
+
+import { AuthGuard } from './guards/auth.guard';
+
 @NgModule({
   imports: [
     CoreRoutingModule,
@@ -26,10 +34,10 @@ import { ClickOutSIdeDirective } from '@app/shared/directives/clickOutSide/click
     HttpClientModule,
     CommonModule,
     RouterModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects]),
     AngularSvgIconModule,
     AngularSvgIconModule.forRoot(),
   ],
@@ -43,7 +51,7 @@ import { ClickOutSIdeDirective } from '@app/shared/directives/clickOutSide/click
     ClickOutSIdeDirective,
   ],
   exports: [HeaderComponent, FooterComponent],
-  providers: [],
+  providers: [AuthService, interceptors, AuthGuard],
 })
 export class CoreModule {
   constructor(private iconReg: SvgIconRegistryService) {

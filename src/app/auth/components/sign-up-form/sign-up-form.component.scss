@@ -12,11 +12,15 @@
   }
 
   &__form {
-    @apply mt-10 space-y-6;
+    @apply mt-10 space-y-7;
   }
 
   &__input {
-    @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mt-4 mb-1 placeholder-text-grey focus:border-bg-blue-lilac sm:text-sm;
+    @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mt-6 mb-1 placeholder-text-grey focus:border-bg-blue-lilac sm:text-sm;
+
+    &-container {
+      @apply relative;
+    }
 
     &.error {
       @apply border-red;
@@ -24,7 +28,7 @@
   }
 
   &__error-message {
-    @apply mt-0 ml-2 text-xs text-red;
+    @apply absolute -bottom-[18px] left-0 mt-0 ml-2 text-xs text-red;
   }
 
   &__submit-button {
