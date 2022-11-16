@@ -14,6 +14,7 @@ import { ProjectsPageComponent } from './pages/projects-page/projects-page.compo
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
 import { UserLabelComponent } from './components/user-label/user-label.component';
+import { SearchItemComponent } from './components/search-item/search-item.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UserLabelComponent } from './components/user-label/user-label.component
     TaskModalComponent,
     UserLabelComponent,
     ProjectItemComponent,
+    SearchItemComponent,
   ],
   imports: [
     CommonModule,

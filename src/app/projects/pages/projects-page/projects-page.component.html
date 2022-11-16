@@ -1,8 +1,11 @@
-<article class="projects">
-  <section class="projects__wrapper">
+<section class="projects">
+  <div class="projects__wrapper">
+    <div class="projects__search">
+      <app-search-item></app-search-item>
+    </div>
     <p class="projects__create-board" *ngIf="false">You don't have any boards, <button>add new board</button></p>
     <ul class="projects__list" *ngIf="$projects.length">
       <app-project-item *ngFor="let project of $projects" [project]="project"></app-project-item>
     </ul>
-  </section>
-</article>
+  </div>
+</section>
