@@ -3,11 +3,14 @@ export class IBoard {
 
   title: string;
 
-  description: string;
+  owner?: string;
 
-  constructor(id: string = '', title: string = '', description: string = '') {
+  users?: Array<string>;
+
+  constructor(id: string = '', title: string = '', owner?: string, users?: Array<string>) {
     this.id = id;
     this.title = title;
-    this.description = description;
+    this.owner = owner;
+    this.users = users;
   }
 }

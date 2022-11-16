@@ -1,0 +1,16 @@
+<li class="projects__item">
+  <a class="projects__header" [routerLink]="'board/' + project.id">
+    <h4 class="projects__title">{{ project.title }}</h4>
+    <div class="projects__users-wrapper">
+      <app-user-label [project]="project"></app-user-label>
+    </div>
+  </a>
+  <div class="projects__btns">
+    <button class="projects__edit projects__btn">
+      <svg-icon src="../../../../assets/icons/pencil.svg"></svg-icon>
+    </button>
+    <button class="projects__delete projects__btn">
+      <svg-icon src="../../../../assets/icons/trash.svg"></svg-icon>
+    </button>
+  </div>
+</li>

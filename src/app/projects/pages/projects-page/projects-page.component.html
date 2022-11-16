@@ -1,1 +1,8 @@
-<p>PROJECTS</p>
+<article class="projects">
+  <section class="projects__wrapper">
+    <p class="projects__create-board" *ngIf="false">You don't have any boards, <button>add new board</button></p>
+    <ul class="projects__list" *ngIf="$projects.length">
+      <app-project-item *ngFor="let project of $projects" [project]="project"></app-project-item>
+    </ul>
+  </section>
+</article>

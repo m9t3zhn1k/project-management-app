@@ -1,0 +1,29 @@
+.projects {
+  &__item {
+    @apply w-full w-72 p-4 mb-2 bg-white rounded-xl flex justify-between gap-2 shadow-lg;
+  }
+
+  &__header {
+    @apply shrink-0 grow;
+  }
+
+  &__title {
+    @apply text-text-dark pb-4 text-lg font-semibold transition duration-300 ease-in-out hover:text-orange;
+  }
+
+  &__btns {
+    @apply flex justify-between flex-col;
+  }
+
+  &__edit {
+    @apply hover:bg-light-blue mr-1;
+  }
+
+  &__delete {
+    @apply hover:bg-caramel;
+  }
+
+  &__btn {
+    @apply w-full rounded w-5 h-5;
+  }
+}
