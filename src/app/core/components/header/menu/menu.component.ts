@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { userSelector } from '@auth/store/auth.selectors';
+import { userSelector } from '@core/store/selectors/auth.selectors';
+import * as AuthActions from '@core/store/actions/auth.actions';
 import { AppLanguage } from '@shared/enums/AppLanguage';
 import { LocalStorageKeys } from '@shared/enums/LocalStorageKeys';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -32,5 +34,13 @@ export class MenuComponent {
     this.appLanguage = lang;
     localStorage.setItem(LocalStorageKeys.LANG, lang);
     this.translateService.use(this.appLanguage);
+  }
+
+  onLogOut(): void {
+    this.store.dispatch(AuthActions.LogOut());
+  }
+
+  onDeleteUser(): void {
+    this.store.dispatch(AuthActions.DeleteUser());
   }
 }

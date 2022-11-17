@@ -21,8 +21,8 @@ import { DarkModeComponent } from './components/header/dark-mode/dark-mode.compo
 import { MenuComponent } from './components/header/menu/menu.component';
 import { ClickOutSIdeDirective } from '@app/shared/directives/clickOutSide/click-out-side.directive';
 
-import { reducers } from './store/app.reducer';
-import { AuthEffects } from '@auth/store/auth.effects';
+import { reducers } from './store/reducers/app.reducer';
+import { AuthEffects } from './store/effects/auth.effects';
 import { AuthService } from '@auth/services/auth.service';
 
 import { interceptors } from './interceptors/interceptors';

@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
-import { TokenModel } from '@core/models/backend-api.model';
 import { UserModel } from '@core/models/user.model';
 import {
+  TokenModel,
   SignUpRequestModel,
-  LoginRequestModel,
   SignUpResponseModel,
+  LoginRequestModel,
   LoginResponseModel,
+  UpdateUserRequestModel,
+  UpdateUserResponseModel,
+  DeleteUserResponseModel,
 } from '@app/core/models/backend-api.model';
 
 @Injectable()
@@ -42,6 +45,30 @@ export class AuthService {
     return this.http.get<SignUpResponseModel>(`users/${id}`).pipe(
       map(
         (resp: SignUpResponseModel): UserModel => ({
+          id: resp._id,
+          login: resp.login,
+          name: resp.name,
+        }),
+      ),
+    );
+  }
+
+  updateUser(id: string, data: UpdateUserRequestModel): Observable<UserModel> {
+    return this.http.put<UpdateUserResponseModel>(`users/${id}`, data).pipe(
+      map(
+        (resp: UpdateUserResponseModel): UserModel => ({
+          id: resp._id,
+          login: resp.login,
+          name: resp.name,
+        }),
+      ),
+    );
+  }
+
+  deleteUser(id: string): Observable<UserModel> {
+    return this.http.delete<DeleteUserResponseModel>(`users/${id}`).pipe(
+      map(
+        (resp: DeleteUserResponseModel): UserModel => ({
           id: resp._id,
           login: resp.login,
           name: resp.name,

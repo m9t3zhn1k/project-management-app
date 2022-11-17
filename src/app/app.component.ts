@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as AuthActions from '@auth/store/auth.actions';
+import * as AuthActions from './core/store/actions/auth.actions';
 
 @Component({
   selector: 'app-root',

@@ -23,18 +23,29 @@
       </button>
     </div>
     <a class="nav-link menu-item" 
-      *ngIf="user$ | async" routerLink="/auth/edit" 
+      *ngIf="user$ | async"
+      routerLink="/auth/edit" 
       [routerLinkActive]="'nav-link_active'"
       [routerLinkActiveOptions]="{ exact:true }"
       (click)="onCloseMenu()"
     >
       {{ 'MENU.EDITUSER' | translate }}
     </a>
+    <a class="nav-link menu-item" 
+      *ngIf="user$ | async" 
+      [routerLinkActive]="'nav-link_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onDeleteUser()"
+    >
+      Delete user
+    </a>
     <a class="nav-link menu-item"
-      *ngIf="user$ | async" routerLink="/" 
+      *ngIf="user$ | async"
+      routerLink="/"
       [routerLinkActive]="'nav-link_active'"
       [routerLinkActiveOptions]="{ exact:true }"
       (click)="onCloseMenu()"
+      (click)="onLogOut()"
     >
       {{ 'MENU.LOGOUT' | translate }}
     </a>
