@@ -12,11 +12,14 @@ import { CoreRoutingModule } from './core-routing.module';
 import { AngularSvgIconModule, SvgIconRegistryService } from 'angular-svg-icon';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ConfirmationModalModule } from '@shared/confirmation-modal/confirmation-modal.module';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+/* import { ToastComponent } from './components/toast/toast.component'; */
+import { SpinnerComponent } from './components/spinner/spinner.component';
 import { DarkModeComponent } from './components/header/dark-mode/dark-mode.component';
 import { MenuComponent } from './components/header/menu/menu.component';
 import { ClickOutSIdeDirective } from '@app/shared/directives/clickOutSide/click-out-side.directive';
@@ -53,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
+    ConfirmationModalModule,
   ],
   declarations: [
     HeaderComponent,
@@ -62,8 +66,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DarkModeComponent,
     MenuComponent,
     ClickOutSIdeDirective,
+    /* ToastComponent, */
+    SpinnerComponent,
   ],
-  exports: [HeaderComponent, FooterComponent],
+  exports: [HeaderComponent, FooterComponent/* , ToastComponent */, SpinnerComponent],
   providers: [AuthService, interceptors, AuthGuard],
 })
 export class CoreModule {
