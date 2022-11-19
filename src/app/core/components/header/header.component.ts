@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ConfirmationService } from '@app/shared/confirmation-modal/services/confirmation.service';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +7,4 @@ import { ConfirmationService } from '@app/shared/confirmation-modal/services/con
 })
 export class HeaderComponent {
   isDarkMode: boolean = false;
-
-  constructor(public confirmationService: ConfirmationService) {}
 }

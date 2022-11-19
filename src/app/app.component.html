@@ -3,6 +3,7 @@
 </header>
 <main class="main">
   <app-spinner *ngIf="isPending | async"></app-spinner>
+  <app-confirmational-modal *ngIf="isModalOpened$ | async"></app-confirmational-modal>
   <router-outlet></router-outlet>
 </main>
 <footer class="footer">

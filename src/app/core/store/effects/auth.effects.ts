@@ -71,8 +71,8 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.LogOut),
-        tap(() => localStorage.clear()),
-        tap(() => this.router.navigateByUrl('')),
+        tap((): void => localStorage.clear()),
+        tap((): Promise<boolean> => this.router.navigateByUrl('')),
       ),
     { dispatch: false },
   );
@@ -114,6 +114,7 @@ export class AuthEffects {
           .pipe(
             tap((response: UserModel) => localStorage.setItem('user', JSON.stringify(response))),
             map((response: UserModel) => AuthActions.UpdateUserSuccess(response)),
+            tap((): Promise<boolean> => this.router.navigateByUrl('')),
           );
       }),
     ),

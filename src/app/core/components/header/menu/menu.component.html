@@ -35,7 +35,7 @@
       *ngIf="user$ | async" 
       [routerLinkActive]="'nav-link_active'"
       [routerLinkActiveOptions]="{ exact:true }"
-      (click)="onDeleteUser()"
+      (click)="onOpenConfirmModal()"
     >
       Delete user
     </a>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
-import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
-import { ConfirmationService } from './services/confirmation.service';
+import { ConfirmationModalComponent } from './confirmation-modal.component';
+import { ConfirmationService } from './confirmation.service';
 
 @NgModule({
   declarations: [ConfirmationModalComponent],

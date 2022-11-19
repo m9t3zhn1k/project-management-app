@@ -69,7 +69,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     /* ToastComponent, */
     SpinnerComponent,
   ],
-  exports: [HeaderComponent, FooterComponent/* , ToastComponent */, SpinnerComponent],
+  exports: [HeaderComponent, FooterComponent/* , ToastComponent */, SpinnerComponent, ConfirmationModalModule],
   providers: [AuthService, interceptors, AuthGuard],
 })
 export class CoreModule {
