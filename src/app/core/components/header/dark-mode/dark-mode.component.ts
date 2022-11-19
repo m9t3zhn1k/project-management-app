@@ -1,7 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
-
-type Theme = 'light' | 'dark';
+import { LocalStorageKeys } from '@app/shared/enums/LocalStorageKeys';
 
 @Component({
   selector: 'app-dark-mode',
@@ -9,7 +8,7 @@ type Theme = 'light' | 'dark';
   styleUrls: ['./dark-mode.component.scss'],
 })
 export class DarkModeComponent implements OnInit {
-  mode: Theme = 'light';
+  themeMode: string = localStorage.getItem(LocalStorageKeys.DARKMODE) || LocalStorageKeys.LIGHTMODE;
 
   constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {}
 
@@ -18,11 +17,20 @@ export class DarkModeComponent implements OnInit {
   }
 
   switchTheme(): void {
-    this.document.body.classList.replace(
-      this.mode,
-      this.mode === 'light' ? (this.mode = 'dark') : (this.mode = 'light'),
-    );
+    if (this.themeMode === LocalStorageKeys.LIGHTMODE) {
+      this.themeMode = LocalStorageKeys.DARKMODE;
+      localStorage.setItem(LocalStorageKeys.DARKMODE, LocalStorageKeys.DARKMODE);
+      this.document.body.classList.add(LocalStorageKeys.DARKMODE);
+    } else {
+      this.themeMode = LocalStorageKeys.LIGHTMODE;
+      localStorage.removeItem(LocalStorageKeys.DARKMODE);
+      this.document.body.classList.remove(LocalStorageKeys.DARKMODE);
+    }
   }
 
-  initializeTheme = (): void => this.renderer.addClass(this.document.body, this.mode);
+  initializeTheme = (): void => {
+    if (this.themeMode) {
+      this.renderer.addClass(this.document.body, this.themeMode);
+    }
+  };
 }

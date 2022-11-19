@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
 import { userSelector } from '@auth/store/auth.selectors';
-
+import { AppLanguage } from '@shared/enums/AppLanguage';
+import { LocalStorageKeys } from '@shared/enums/LocalStorageKeys';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -10,13 +12,13 @@ import { userSelector } from '@auth/store/auth.selectors';
 export class MenuComponent {
   isActiveMenu: boolean = false;
 
-  isRuLangActive: boolean = false;
-
-  isEnLangActive: boolean = true;
+  appLanguage: string = localStorage.getItem(LocalStorageKeys.LANG) || AppLanguage.En;
 
   user$ = this.store.select(userSelector);
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private translateService: TranslateService) {
+    this.translateService.use(this.appLanguage);
+  }
 
   onToggleMenu(): void {
     this.isActiveMenu = !this.isActiveMenu;
@@ -26,13 +28,9 @@ export class MenuComponent {
     this.isActiveMenu = false;
   }
 
-  setRuLang(): void {
-    this.isRuLangActive = true;
-    this.isEnLangActive = false;
-  }
-
-  setEnLang(): void {
-    this.isEnLangActive = true;
-    this.isRuLangActive = false;
+  onToggleLang(lang: string): void {
+    this.appLanguage = lang;
+    localStorage.setItem(LocalStorageKeys.LANG, lang);
+    this.translateService.use(this.appLanguage);
   }
 }
