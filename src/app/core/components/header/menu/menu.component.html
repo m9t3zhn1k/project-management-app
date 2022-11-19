@@ -5,21 +5,22 @@
     <span></span> 
   </button>
   <nav class="menu__nav nav items-wrapper">
+    <app-dark-mode></app-dark-mode>
     <div class="lang flex items-center gap-x-2">
-      <a class="nav-link tab-inline"
-        [class.tab-inline_active]="isRuLangActive"
-        (click)="setRuLang()"
+      <button class="tab-inline"
+        [class.tab-inline_active]="appLanguage === 'ru'"
+        (click)="onToggleLang('ru')"
         (click)="onCloseMenu()"
       >
-        ru
-      </a>
-      <a class="nav-link tab-inline"
-        [class.tab-inline_active]="isEnLangActive"
-        (click)="setEnLang()"
+      {{ 'MENU.LANG.RU' | translate }}
+      </button>
+      <button  class="tab-inline"
+        [class.tab-inline_active]="appLanguage === 'en'"
+        (click)="onToggleLang('en')"
         (click)="onCloseMenu()"
       >
-        en
-      </a>
+        {{ 'MENU.LANG.EN' | translate }}
+      </button>
     </div>
     <a class="nav-link menu-item" 
       *ngIf="user$ | async" routerLink="/auth/edit" 
@@ -27,7 +28,7 @@
       [routerLinkActiveOptions]="{ exact:true }"
       (click)="onCloseMenu()"
     >
-      Edit user
+      {{ 'MENU.EDITUSER' | translate }}
     </a>
     <a class="nav-link menu-item"
       *ngIf="user$ | async" routerLink="/" 
@@ -35,7 +36,7 @@
       [routerLinkActiveOptions]="{ exact:true }"
       (click)="onCloseMenu()"
     >
-      Log out
+      {{ 'MENU.LOGOUT' | translate }}
     </a>
     <a class="nav-link menu-item" 
       *ngIf="(user$ | async) === null" routerLink="/auth/login" 
@@ -43,7 +44,7 @@
       [routerLinkActiveOptions]="{ exact:true }"
       (click)="onCloseMenu()"
     >
-      Login
+      {{ 'MENU.LOGIN' | translate }}
     </a>
     <a class="btn-inline menu-item" 
       *ngIf="(user$ | async) === null" 
@@ -52,7 +53,7 @@
       [routerLinkActiveOptions]="{ exact:true }"
       (click)="onCloseMenu()"
     >
-      Sign up
+      {{ 'MENU.SIGNUP' | translate }}
     </a>
   </nav>
 </menu>

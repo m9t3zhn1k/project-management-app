@@ -1,0 +1,13 @@
+{
+  "MENU": {
+    "NEWBOARD": "New board",
+    "LANG": {
+      "RU": "ru",
+      "EN": "en"
+    },
+    "EDITUSER": "Edit user",
+    "LOGIN": "Log in",
+    "LOGOUT": "Log out",
+    "SIGNUP": "Sign up"
+  }
+}

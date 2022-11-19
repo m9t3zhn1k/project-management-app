@@ -4,8 +4,7 @@
 
 .header {
   box-shadow: 1px 1px #d1d5db;
-  @apply fixed top-0 left-0 w-full;
-  z-index: 9999999;
+  @apply fixed top-0 left-0 w-full z-40;
 
   &__container {
     @apply container mx-auto px-4;
@@ -20,7 +19,7 @@
   }
 
   &__new-board-btn {
-    color: $purple;
+    // color: $purple;
     font-size: 14px;
   }
 }
@@ -32,14 +31,14 @@
     svg {
       width: 2.5rem;
       height: 2.5rem;
-      fill: $purple;
+      fill: #6b6662;
       transition: $transitionAll300;
     }
   }
 
   &__link:hover {
     svg {
-      fill: $orange;
+      fill: #e9cda6;
     }
   }
 }
