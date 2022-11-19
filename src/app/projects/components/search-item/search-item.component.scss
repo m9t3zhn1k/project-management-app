@@ -1,0 +1,12 @@
+.search-form {
+  @apply bg-white mx-auto;
+}
+
+.search-form,
+.search-input {
+  @apply w-full p-2 max-w-xs;
+}
+
+.search-input {
+  @apply py-2;
+}

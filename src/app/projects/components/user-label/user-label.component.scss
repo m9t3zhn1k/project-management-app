@@ -1,0 +1,14 @@
+.projects {
+  &__users {
+    @apply flex;
+  }
+
+  &__users-list {
+    @apply flex;
+  }
+
+  &__owner,
+  &__users-item {
+    @apply flex items-center justify-center w-6 h-6 bg-malva rounded-3xl text-text-dark -mr-1 border border-white;
+  }
+}

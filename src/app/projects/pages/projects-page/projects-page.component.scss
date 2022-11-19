@@ -1,0 +1,19 @@
+.projects {
+  @apply pr-4 pl-4 pt-6 pb-10 mx-auto max-w-7xl;
+
+  &__search {
+    @apply my-6;
+  }
+  
+  &__list {
+    @apply flex gap-6 flex-wrap mx-auto;
+  }
+
+  &__create-board {
+    @apply text-center text-text-grey mt-14 mb-4;
+
+    button {
+      @apply text-light-blue transition duration-300 ease-in-out hover:text-orange;
+    }
+  }
+}

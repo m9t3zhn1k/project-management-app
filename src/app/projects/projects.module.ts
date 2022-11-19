@@ -10,9 +10,23 @@ import { BoardPageComponent } from './pages/board-page/board-page.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { TaskModalComponent } from './components/task-modal/task-modal.component';
 import { BoardService } from './services/board.service';
+import { ProjectsPageComponent } from './pages/projects-page/projects-page.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { ProjectItemComponent } from './components/project-item/project-item.component';
+import { UserLabelComponent } from './components/user-label/user-label.component';
+import { SearchItemComponent } from './components/search-item/search-item.component';
 
 @NgModule({
-  declarations: [BoardPageComponent, ColumnComponent, TaskCardComponent, TaskModalComponent],
+  declarations: [
+    BoardPageComponent,
+    ProjectsPageComponent,
+    ColumnComponent,
+    TaskCardComponent,
+    TaskModalComponent,
+    UserLabelComponent,
+    ProjectItemComponent,
+    SearchItemComponent,
+  ],
   imports: [
     CommonModule,
     ProjectsRoutingModule,
@@ -21,6 +35,7 @@ import { BoardService } from './services/board.service';
     DirectivesModule,
     DragDropModule,
     OverlayModule,
+    AngularSvgIconModule,
   ],
   providers: [BoardService],
 })
