@@ -6,10 +6,11 @@ import { switchMap, map, catchError, tap, mergeMap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { AuthService } from '@auth/services/auth.service';
+import { ToastService } from '@shared/toast/service/toast.service';
 
 import * as AuthActions from '../actions/auth.actions';
 
-import { LoginRequestModel, LoginResponseModel } from '@core/models/backend-api.model';
+import { LoginRequestModel, LoginResponseModel, ErrorResponseModel } from '@core/models/backend-api.model';
 import { UserModel } from '@core/models/user.model';
 
 import { userSelector } from '@app/core/store/selectors/auth.selectors';
@@ -19,6 +20,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
+    private toastService: ToastService,
     private router: Router,
     private store: Store,
   ) {}
@@ -36,11 +38,25 @@ export class AuthEffects {
           .pipe(
             map((): LoginRequestModel => ({ login: action.login, password: action.password })),
             map((data: LoginRequestModel) => AuthActions.LogIn(data)),
-            catchError(() => of(AuthActions.SignUpFailed())),
+            catchError((error: ErrorResponseModel) => of(AuthActions.SignUpFailed(error))),
           );
       }),
     ),
   );
+
+  private signUpFailed$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(AuthActions.SignUpFailed),
+    tap((error: ErrorResponseModel): void => {
+      this.toastService.showToast({
+        title: 'Sign up error',
+        description: error.statusCode === '409' ? 'Login already exist' : 'Bad Request',
+        status: 'error',
+      });
+    }),
+  ),
+  { dispatch: false },
+);
 
   private logIn$ = createEffect(() =>
     this.actions$.pipe(
@@ -54,7 +70,7 @@ export class AuthEffects {
           .pipe(
             tap((data: LoginResponseModel): void => localStorage.setItem('token', data.token)),
             map((data: LoginResponseModel) => AuthActions.LogInSuccess(data)),
-            catchError(() => of(AuthActions.LogInFailed())),
+            catchError((error: ErrorResponseModel) => of(AuthActions.LogInFailed(error))),
           );
       }),
     ),
@@ -67,12 +83,33 @@ export class AuthEffects {
     ),
   );
 
+  private logInFailed$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.LogInFailed),
+      tap((error: ErrorResponseModel): void => {
+        this.toastService.showToast({
+          title: 'Login error',
+          description: error.statusCode === '400' ? 'Bad Request' : 'Authorization error',
+          status: 'error',
+        });
+      }),
+    ),
+    { dispatch: false },
+  );
+
   private logOut$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(AuthActions.LogOut),
         tap((): void => localStorage.clear()),
         tap((): Promise<boolean> => this.router.navigateByUrl('')),
+        tap((): void => {
+          this.toastService.showToast({
+            title: 'Log out',
+            description: 'You have successfully logged out!',
+            status: 'success',
+          });
+        })
       ),
     { dispatch: false },
   );
@@ -85,7 +122,7 @@ export class AuthEffects {
         return this.authService.getUser(id).pipe(
           tap((user: UserModel) => localStorage.setItem('user', JSON.stringify(user))),
           map((user: UserModel) => AuthActions.getUserSuccess(user)),
-          catchError(() => of(AuthActions.LogInFailed())),
+          catchError(() => of(AuthActions.getUserFailed())),
         );
       }),
     ),
@@ -100,8 +137,29 @@ export class AuthEffects {
             this.router.navigateByUrl('');
           }
         }),
+        tap((user: UserModel): void => {
+          this.toastService.showToast({
+            title: 'Login successful',
+            description: `${user.name} is logged in!`,
+            status: 'success',
+          });
+        }),
       ),
     { dispatch: false },
+  );
+
+  private getUserFailed$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.getUserFailed),
+      tap((): void => {
+        this.toastService.showToast({
+          title: 'Login error',
+          description: 'User was not founded!',
+          status: 'error',
+        });
+      }),
+      switchMap(async () => AuthActions.LogOut()),
+    ),
   );
 
   private updateUser$ = createEffect(() =>
@@ -115,9 +173,40 @@ export class AuthEffects {
             tap((response: UserModel) => localStorage.setItem('user', JSON.stringify(response))),
             map((response: UserModel) => AuthActions.UpdateUserSuccess(response)),
             tap((): Promise<boolean> => this.router.navigateByUrl('')),
+            catchError((error: ErrorResponseModel) => of(AuthActions.UpdateUserFailed(error))),
           );
       }),
     ),
+  );
+
+  private updateUserSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.UpdateUserSuccess),
+        tap((user: UserModel): void => {
+          this.toastService.showToast({
+            title: 'User update successful',
+            description: `${user.name} is updated!`,
+            status: 'success',
+          });
+        }),
+      ),
+    { dispatch: false },
+  );
+
+  private updateUserFailed$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.UpdateUserFailed),
+        tap((error: ErrorResponseModel): void => {
+          this.toastService.showToast({
+            title: 'User update error',
+            description: error.message ?? 'Something went wrong',
+            status: 'error',
+          });
+        }),
+      ),
+    { dispatch: false },
   );
 
   private deleteUser$ = createEffect(() =>
@@ -125,7 +214,16 @@ export class AuthEffects {
       ofType(AuthActions.DeleteUser),
       concatLatestFrom((): Observable<UserModel | null> => this.store.select(userSelector)),
       mergeMap(([, user]) => {
-        return this.authService.deleteUser(user?.id!).pipe(map(() => AuthActions.LogOut()));
+        return this.authService.deleteUser(user?.id!).pipe(
+          tap((): void => {
+            this.toastService.showToast({
+              title: 'User delete successful',
+              description: 'Deleted user',
+              status: 'success',
+            });
+          }),
+          map(() => AuthActions.LogOut()),
+        );
       }),
     ),
   );

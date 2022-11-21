@@ -8,7 +8,7 @@
 
 @layer base {
   html {
-    @apply min-h-screen font-main ;
+    @apply min-h-screen font-main w-[100vw] overflow-hidden;
   }
 
   body {

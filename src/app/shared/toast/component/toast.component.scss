@@ -1,0 +1,57 @@
+.toast {
+  @apply invisible fixed w-[calc(100%-3rem)] max-w-sm right-[5%] bottom-0 p-4 rounded-md text-white overflow-hidden transition-all;
+
+  &.show {
+    @apply visible bottom-20;
+    -webkit-animation: fadein .5s, fadeout .5s 2.5s;
+    animation: fadein .5s, fadeout .5s 2.5s;
+  }
+
+  &.success {
+    @apply bg-green;
+  }
+
+  &.error {
+    @apply bg-red;
+  }
+
+  &__title {
+    @apply text-xl font-semibold tracking-wide mb-2;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    @apply bottom-0 opacity-0 invisible;
+  }
+  to {
+    @apply bottom-20 opacity-100 visible;
+  }
+}
+
+@keyframes fadein {
+  from {
+    @apply bottom-0 opacity-0 invisible;
+  }
+  to {
+    @apply bottom-20 opacity-100 visible;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    @apply bottom-20 opacity-100 visible;
+  }
+  to {
+    @apply bottom-0 opacity-0 invisible;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    @apply bottom-20 opacity-100 visible;
+  }
+  to {
+    @apply bottom-0 opacity-0 invisible;
+  }
+}

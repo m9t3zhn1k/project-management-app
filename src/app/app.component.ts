@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import * as AuthActions from './core/store/actions/auth.actions';
 import { isPendingSelector } from '@core/store/selectors/auth.selectors';
 import { ConfirmationService } from '@app/shared/confirmation-modal/confirmation.service';
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   isPending: Observable<boolean> = this.store.select(isPendingSelector);
 
-  isModalOpened$ = this.confirmationService.isModalOpened$;
+  isModalOpened$: BehaviorSubject<boolean> = this.confirmationService.isModalOpened$;
 
   constructor(private store: Store, public confirmationService: ConfirmationService) {}
 
