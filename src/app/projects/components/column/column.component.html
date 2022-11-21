@@ -17,5 +17,5 @@
       <app-task-card [task]="task" (delete)="deleteTask($event)"></app-task-card>
     </div>
   </div>
-  <button class="column__button-add-task" title="Add new task">+</button>
+  <button class="column__button-add-task" title="Add new task" (click)="newTask()">+</button>
 </div>

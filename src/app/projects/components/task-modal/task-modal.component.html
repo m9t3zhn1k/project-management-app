@@ -1,4 +1,4 @@
-<div *ngIf="isModalVisible" class="modal__wrapper" id="exampleModal" tabindex="-1">
+<div *ngIf="isModalVisible" class="modal__wrapper backdrop" id="exampleModal" tabindex="-1">
   <div class="modal__container">
     <div class="modal__window">
       <div class="modal__header">
@@ -31,6 +31,12 @@
               placeholder="Enter task description"
             ></textarea>
             <label class="task-form__label">Assign user</label>
+            <div class="task-form__selected-users" *ngIf="selectedUsers.length">
+              <div class="task-form__user" *ngFor="let selUser of selectedUsers">
+                <span class="task-form__username">{{selUser.name}}</span>
+                <button class="task-form__button-remove" (click)="removeUser($event, selUser._id)">X</button>
+              </div>
+            </div>
             <select
               id="taskUser"
               formControlName="taskUser"
@@ -38,9 +44,10 @@
               class="task-form__input"
               placeholder="Choose user"
               [ngModel]="selected"
+              (change)="selectUser()"
             >
-              <option value="">-</option>
-              <option *ngFor="let user of userList" [ngValue]="user.id">{{ user.name }}</option>
+              <option value="-">-</option>
+              <option *ngFor="let user of userList" [ngValue]="user._id">{{ user.name }}</option>
             </select>
           </div>
           <div class="task-form__footer">

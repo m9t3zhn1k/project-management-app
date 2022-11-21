@@ -9,32 +9,32 @@ import { IBoard } from '@app/shared/models';
 export class ProjectsPageComponent {
   $projects: IBoard[] = [
     {
-      id: '1',
-      title: 'First board',
+      _id: '637811ec9aff3701accf7811',
+      title: 'Board one',
       owner: 'Sam',
       users: ['mike', 'tom'],
     },
 
     {
-      id: '2',
+      _id: '2',
       title: 'Second board',
       owner: 'Tom',
       users: ['Luke', 'Atom'],
     },
     {
-      id: '3',
+      _id: '3',
       title: 'Third board',
       owner: 'Tom',
       users: ['Luke', 'Atom'],
     },
     {
-      id: '4',
+      _id: '4',
       title: 'Fourth board',
       owner: 'Tom',
       users: ['Luke', 'Atom'],
     },
     {
-      id: '5',
+      _id: '5',
       title: 'Fifth board',
       owner: 'Tom',
       users: ['Luke', 'Atom'],

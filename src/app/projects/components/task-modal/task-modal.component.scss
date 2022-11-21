@@ -1,6 +1,6 @@
 .modal {
   &__wrapper {
-    @apply fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none bg-semi-grey;
+    @apply z-[100] fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none bg-semi-grey;
   }
   &__container {
     @apply relative flex items-center justify-center w-auto h-full pointer-events-none;
@@ -57,5 +57,14 @@
     &:disabled {
       @apply bg-bg-disabled;
     }
+  }
+  &__selected-users {
+    @apply flex flex-wrap pb-2 gap-2;
+  }
+  &__user {
+    @apply flex items-center gap-2 bg-bg-grey py-1 px-2 border-2 border-bg-blue-lilac rounded-md;
+  }
+  &__button-remove {
+    @apply font-bold text-red;
   }
 }

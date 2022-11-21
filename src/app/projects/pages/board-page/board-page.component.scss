@@ -2,11 +2,7 @@
   @apply flex flex-col w-full h-[calc(100vh-138px)] bg-[url('/assets/images/board-bg-1.webp')] bg-cover pb-2;
 
   &__title {
-    @apply text-text-dark text-xl pt-3 px-5 pb-0 bg-whitish;
-  }
-
-  &__description {
-    @apply pt-0 pb-3 px-5 mb-2 text-text-dark bg-whitish;
+    @apply text-text-dark text-xl py-3 px-5 mb-2 bg-whitish;
   }
 
   &__all-columns {
@@ -66,4 +62,8 @@
 .board__all-columns.cdk-drop-list-dragging .board__column:not(.cdk-drag-placeholder),
 .cdk-drag-animating {
   @apply transition-transform duration-300 ease-in-out;
+}
+
+.loader {
+  @apply z-[100];
 }

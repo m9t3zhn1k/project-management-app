@@ -1,6 +1,6 @@
 import { IBoard } from '../shared/models';
 
 export const mockBoards: IBoard[] = [
-  { id: 'id1', title: 'Dummy board 1' },
-  { id: 'id2', title: 'Supaboarda' },
+  { _id: 'id1', title: 'Dummy board 1', owner: 'uid1', users: [] },
+  { _id: 'id2', title: 'Supaboarda', owner: 'uid2', users: [] },
 ];

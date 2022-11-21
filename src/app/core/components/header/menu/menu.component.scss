@@ -4,7 +4,7 @@
 @import '../../../../../styles/functions';
 
 .menu {
-  @apply relative z-40;
+  @apply relative z-[55];
 }
 
 .menu:after {
@@ -17,14 +17,15 @@
 }
 
 .nav {
-  @apply flex flex-col w-72 fixed p-4 right-20 gap-4 pt-24 opacity-0 invisible rounded-md transition-all duration-300;
+  @apply flex-col w-72 fixed p-4 right-20 gap-4 pt-24 opacity-0 invisible rounded-md transition-all duration-300;
+  display: none;
   background-color: #e9cda6;
   top: -2rem;
-  z-index: -1;
+  z-index: 50;
 }
 
 .menu.active .nav {
-  @apply visible opacity-100;
+  @apply flex visible opacity-100;
   transition-timing-function: cubic-bezier(.68, 1.55, .265, 1);
 }
 
