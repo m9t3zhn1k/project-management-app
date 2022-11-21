@@ -1,4 +1,4 @@
-export enum confirmationTitles {
+export enum ConfirmationTitles {
   Null = 'Null',
   DeleteUser = 'Delete User',
-};
+}

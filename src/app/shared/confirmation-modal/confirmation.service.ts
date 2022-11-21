@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { confirmationTitles } from './confirmation-titles';
+import { ConfirmationTitles } from './confirmation-titles';
 
 @Injectable()
 export class ConfirmationService {
@@ -8,16 +8,16 @@ export class ConfirmationService {
 
   isModalConfirmed$: Subject<boolean> = new Subject<boolean>();
 
-  private confirmationTitle: confirmationTitles = confirmationTitles.Null;
+  private confirmationTitle: ConfirmationTitles = ConfirmationTitles.Null;
 
-  openModal(title: confirmationTitles): void {
+  openModal(title: ConfirmationTitles): void {
     this.confirmationTitle = title;
     this.isModalOpened$.next(true);
   }
 
   closeModal(): void {
     this.isModalOpened$.next(false);
-    this.confirmationTitle = confirmationTitles.Null;
+    this.confirmationTitle = ConfirmationTitles.Null;
   }
 
   confirm(): void {
@@ -30,7 +30,7 @@ export class ConfirmationService {
     this.closeModal();
   }
 
-  get currentConfirmationTitle(): confirmationTitles {
+  get currentConfirmationTitle(): ConfirmationTitles {
     return this.confirmationTitle;
   }
 }

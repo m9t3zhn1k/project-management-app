@@ -8,7 +8,7 @@ import * as AuthActions from '@core/store/actions/auth.actions';
 import { AppLanguage } from '@shared/enums/AppLanguage';
 import { LocalStorageKeys } from '@shared/enums/LocalStorageKeys';
 import { ConfirmationService } from '@app/shared/confirmation-modal/confirmation.service';
-import { confirmationTitles } from '@app/shared/confirmation-modal/confirmation-titles';
+import { ConfirmationTitles } from '@app/shared/confirmation-modal/confirmation-titles';
 
 @Component({
   selector: 'app-menu',
@@ -24,12 +24,15 @@ export class MenuComponent implements OnDestroy {
 
   user$ = this.store.select(userSelector);
 
-  deleteUser$ = this.confirmationService.isModalConfirmed$.pipe(takeUntil(this.destroy)).subscribe((value: boolean): void => {
-    const isDeleteUserCurrentTitle: boolean = this.confirmationService.currentConfirmationTitle === confirmationTitles.DeleteUser;
-    if (value && isDeleteUserCurrentTitle) {
-      this.onDeleteUser();
-    }
-  });
+  deleteUser$ = this.confirmationService.isModalConfirmed$
+    .pipe(takeUntil(this.destroy))
+    .subscribe((value: boolean): void => {
+      const isDeleteUserCurrentTitle: boolean =
+        this.confirmationService.currentConfirmationTitle === ConfirmationTitles.DeleteUser;
+      if (value && isDeleteUserCurrentTitle) {
+        this.onDeleteUser();
+      }
+    });
 
   constructor(private store: Store, private translateService: TranslateService, public confirmationService: ConfirmationService) {
     this.translateService.use(this.appLanguage);
@@ -63,7 +66,7 @@ export class MenuComponent implements OnDestroy {
   }
 
   onOpenConfirmModal(): void {
-    this.confirmationService.openModal(confirmationTitles.DeleteUser);
+    this.confirmationService.openModal(ConfirmationTitles.DeleteUser);
     this.onCloseMenu();
   }
 }

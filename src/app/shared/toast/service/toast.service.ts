@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ToastDataModel } from './../models/toast.model';
 import { toastShowTime } from '@constants/constants';

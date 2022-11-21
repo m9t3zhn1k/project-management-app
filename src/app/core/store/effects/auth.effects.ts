@@ -44,19 +44,20 @@ export class AuthEffects {
     ),
   );
 
-  private signUpFailed$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(AuthActions.SignUpFailed),
-    tap((error: ErrorResponseModel): void => {
-      this.toastService.showToast({
-        title: 'Sign up error',
-        description: error.statusCode === '409' ? 'Login already exist' : 'Bad Request',
-        status: 'error',
-      });
-    }),
-  ),
-  { dispatch: false },
-);
+  private signUpFailed$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.SignUpFailed),
+        tap((error: ErrorResponseModel): void => {
+          this.toastService.showToast({
+            title: 'Sign up error',
+            description: error.statusCode === '409' ? 'Login already exist' : 'Bad Request',
+            status: 'error',
+          });
+        }),
+      ),
+    { dispatch: false },
+  );
 
   private logIn$ = createEffect(() =>
     this.actions$.pipe(
@@ -83,17 +84,18 @@ export class AuthEffects {
     ),
   );
 
-  private logInFailed$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(AuthActions.LogInFailed),
-      tap((error: ErrorResponseModel): void => {
-        this.toastService.showToast({
-          title: 'Login error',
-          description: error.statusCode === '400' ? 'Bad Request' : 'Authorization error',
-          status: 'error',
-        });
-      }),
-    ),
+  private logInFailed$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.LogInFailed),
+        tap((error: ErrorResponseModel): void => {
+          this.toastService.showToast({
+            title: 'Login error',
+            description: error.statusCode === '400' ? 'Bad Request' : 'Authorization error',
+            status: 'error',
+          });
+        }),
+      ),
     { dispatch: false },
   );
 
@@ -109,7 +111,7 @@ export class AuthEffects {
             description: 'You have successfully logged out!',
             status: 'success',
           });
-        })
+        }),
       ),
     { dispatch: false },
   );
