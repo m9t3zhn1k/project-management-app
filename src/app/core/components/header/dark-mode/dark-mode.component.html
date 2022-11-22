@@ -1,5 +1,10 @@
 <div class="dark-mode">
-  <input type="checkbox" id="dark-mode__input" (click)="switchTheme()"/>
+  <input 
+    type="checkbox" 
+    id="dark-mode__input" 
+    [checked]="themeMode === 'dark'" 
+    (click)="switchTheme()"
+  />
   <label for="dark-mode__input" class="toggle">
     <span class="toggle__handler">
       <span class="crater crater--1"></span>
