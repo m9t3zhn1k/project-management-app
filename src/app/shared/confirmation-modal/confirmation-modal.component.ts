@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { ConfirmationService } from './confirmation.service';
 
 @Component({
   selector: 'app-confirmational-modal',
@@ -6,14 +7,22 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./confirmation-modal.component.scss'],
 })
 export class ConfirmationModalComponent {
-  @Output() closeModal: EventEmitter<void> = new EventEmitter<void>();
-
   question: string = 'Are you sure you want to perform this action?';
 
-  closeWindow(event: Event): void {
+  constructor(public confirmationService: ConfirmationService) {}
+
+  closeModal(event: Event): void {
     if ((event.target as HTMLElement).dataset.closeTarget) {
       event.stopPropagation();
-      this.closeModal.emit();
+      this.confirmationService.closeModal();
     }
+  }
+
+  confirm(): void {
+    this.confirmationService.confirm();
+  }
+
+  reset(): void {
+    this.confirmationService.reset();
   }
 }

@@ -42,6 +42,7 @@
 .menu .menu-item {
   @apply opacity-0 invisible no-underline h-auto text-center;
   transition: transform .3s ease, background .2s ease;
+  cursor: pointer;
 }
 
 .menu.active .menu-item {

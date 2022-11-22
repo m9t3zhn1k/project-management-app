@@ -17,6 +17,12 @@ export interface SignUpResponseModel {
   login: string;
 }
 
+export interface UpdateUserRequestModel extends SignUpRequestModel {}
+
+export interface UpdateUserResponseModel extends SignUpResponseModel {}
+
+export interface DeleteUserResponseModel extends SignUpResponseModel {}
+
 export interface ErrorResponseModel {
   statusCode: string;
   message: string;

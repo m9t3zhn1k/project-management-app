@@ -1,6 +1,9 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as AuthActions from '@auth/store/auth.actions';
+import { Observable, BehaviorSubject } from 'rxjs';
+import * as AuthActions from './core/store/actions/auth.actions';
+import { isPendingSelector } from '@core/store/selectors/auth.selectors';
+import { ConfirmationService } from '@app/shared/confirmation-modal/confirmation.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +13,11 @@ import * as AuthActions from '@auth/store/auth.actions';
 export class AppComponent implements OnInit {
   @HostBinding('class') value = 'root';
 
-  constructor(private store: Store) {}
+  isPending: Observable<boolean> = this.store.select(isPendingSelector);
+
+  isModalOpened$: BehaviorSubject<boolean> = this.confirmationService.isModalOpened$;
+
+  constructor(private store: Store, public confirmationService: ConfirmationService) {}
 
   ngOnInit(): void {
     const token: string | null = localStorage.getItem('token');
