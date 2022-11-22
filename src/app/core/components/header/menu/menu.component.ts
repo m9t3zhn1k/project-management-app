@@ -34,7 +34,11 @@ export class MenuComponent implements OnDestroy {
       }
     });
 
-  constructor(private store: Store, private translateService: TranslateService, public confirmationService: ConfirmationService) {
+  constructor(
+    private store: Store,
+    private translateService: TranslateService,
+    public confirmationService: ConfirmationService,
+  ) {
     this.translateService.use(this.appLanguage);
   }
 

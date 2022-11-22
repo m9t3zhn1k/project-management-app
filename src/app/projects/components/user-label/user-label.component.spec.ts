@@ -8,9 +8,8 @@ describe('UserLabelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserLabelComponent ]
-    })
-    .compileComponents();
+      declarations: [UserLabelComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(UserLabelComponent);
     component = fixture.componentInstance;

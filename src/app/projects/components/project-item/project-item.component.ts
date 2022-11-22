@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IBoard } from '@app/shared/models';
 
 @Component({
@@ -6,10 +6,6 @@ import { IBoard } from '@app/shared/models';
   templateUrl: './project-item.component.html',
   styleUrls: ['./project-item.component.scss'],
 })
-export class ProjectItemComponent implements OnInit {
+export class ProjectItemComponent {
   @Input() project!: IBoard;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }
