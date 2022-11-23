@@ -28,6 +28,7 @@ module.exports = {
       'semi-grey': '#787486',
       'whitish': '#fff9',
       'backdrop': '#00000033',
+      'pink': '#fdabaf',
     },
     fontFamily: {
       main: ['Inter', 'sans-serif'],
