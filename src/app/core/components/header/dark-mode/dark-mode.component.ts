@@ -17,20 +17,20 @@ export class DarkModeComponent implements OnInit {
   }
 
   switchTheme(): void {
-    if (this.themeMode === LocalStorageKeys.LIGHTMODE) {
+    if (this.themeMode === LocalStorageKeys.DARKMODE) {
+      this.themeMode = '';
+      localStorage.removeItem(LocalStorageKeys.DARKMODE);
+      this.document.documentElement.classList.remove(LocalStorageKeys.DARKMODE);
+    } else {
       this.themeMode = LocalStorageKeys.DARKMODE;
       localStorage.setItem(LocalStorageKeys.DARKMODE, LocalStorageKeys.DARKMODE);
-      this.document.body.classList.add(LocalStorageKeys.DARKMODE);
-    } else {
-      this.themeMode = LocalStorageKeys.LIGHTMODE;
-      localStorage.removeItem(LocalStorageKeys.DARKMODE);
-      this.document.body.classList.remove(LocalStorageKeys.DARKMODE);
+      this.document.documentElement.classList.add(LocalStorageKeys.DARKMODE);
     }
   }
 
   initializeTheme = (): void => {
     if (this.themeMode) {
-      this.renderer.addClass(this.document.body, this.themeMode);
+      this.renderer.addClass(this.document.documentElement, this.themeMode);
     }
   };
 }

@@ -19,7 +19,6 @@
   }
 
   &__new-board-btn {
-    // color: $purple;
     font-size: 14px;
   }
 }
@@ -29,10 +28,8 @@
 
   &__link {
     svg {
-      width: 2.5rem;
-      height: 2.5rem;
+      @apply w-10 h-10 transition-all;
       fill: #6b6662;
-      transition: $transitionAll300;
     }
   }
 

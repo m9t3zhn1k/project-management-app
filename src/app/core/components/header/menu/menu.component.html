@@ -7,14 +7,14 @@
   <nav class="menu__nav nav items-wrapper">
     <app-dark-mode></app-dark-mode>
     <div class="lang flex items-center gap-x-2">
-      <button class="tab-inline"
+      <button class="tab-inline menu__lang"
         [class.tab-inline_active]="appLanguage === 'ru'"
         (click)="onToggleLang('ru')"
         (click)="onCloseMenu()"
       >
       {{ 'MENU.LANG.RU' | translate }}
       </button>
-      <button  class="tab-inline"
+      <button  class="tab-inline menu__lang"
         [class.tab-inline_active]="appLanguage === 'en'"
         (click)="onToggleLang('en')"
         (click)="onCloseMenu()"

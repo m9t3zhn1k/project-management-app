@@ -7,6 +7,10 @@
   @apply relative z-40;
 }
 
+.menu__lang {
+  @apply w-12;
+}
+
 .menu:after {
   content: '';
   @apply block absolute w-8 h-8 rounded-md transition-all duration-300;
