@@ -4,8 +4,8 @@
       <app-search-item></app-search-item>
     </div>
     <p class="projects__create-board" *ngIf="false">You don't have any boards, <button>add new board</button></p>
-    <ul class="projects__list" *ngIf="$projects.length">
-      <app-project-item *ngFor="let project of $projects" [project]="project"></app-project-item>
+    <ul class="projects__list" *ngIf="(boards | async)?.length">
+      <app-project-item *ngFor="let project of (boards | async)" [project]="project"></app-project-item>
     </ul>
   </div>
 </section>

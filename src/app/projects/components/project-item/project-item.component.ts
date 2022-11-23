@@ -7,5 +7,5 @@ import { IBoard } from '@app/shared/models';
   styleUrls: ['./project-item.component.scss'],
 })
 export class ProjectItemComponent {
-  @Input() project!: IBoard;
+  @Input() project: IBoard = new IBoard();
 }

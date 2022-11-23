@@ -13,7 +13,9 @@
   </div>
   <p class="task__description">{{ task.description }}</p>
   <div class="task__footer">
-    <label class="task__user" [title]="userName">{{ userChar }}</label>
+    <div class="projects__users-wrapper">
+      <app-user-label [usersContainer]="task"></app-user-label>
+    </div>
     <div class="task__files">
       <img src="/assets/icons/files.svg" alt="Folder sign" height="16" width="16" />
       <span>0 files</span>

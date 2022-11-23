@@ -17,6 +17,9 @@ import { UserLabelComponent } from './components/user-label/user-label.component
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { ColumnService } from './services/column.service';
 import { TaskService } from './services/task.service';
+import { UserService } from './services/user.service';
+import { InitialPipe } from './pipes/initial.pipe';
+import { UserNamePipe } from './pipes/username.pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { TaskService } from './services/task.service';
     UserLabelComponent,
     ProjectItemComponent,
     SearchItemComponent,
+    InitialPipe,
+    UserNamePipe,
   ],
   imports: [
     CommonModule,
@@ -39,6 +44,6 @@ import { TaskService } from './services/task.service';
     OverlayModule,
     AngularSvgIconModule,
   ],
-  providers: [BoardService, ColumnService, TaskService],
+  providers: [BoardService, ColumnService, TaskService, UserService],
 })
 export class ProjectsModule {}

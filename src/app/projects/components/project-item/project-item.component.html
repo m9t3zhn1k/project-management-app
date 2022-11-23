@@ -2,7 +2,7 @@
   <a class="projects__header" [routerLink]="'board/' + project._id">
     <h4 class="projects__title">{{ project.title }}</h4>
     <div class="projects__users-wrapper">
-      <app-user-label [project]="project"></app-user-label>
+      <app-user-label [usersContainer]="project"></app-user-label>
     </div>
   </a>
   <div class="projects__btn-wrapper">
