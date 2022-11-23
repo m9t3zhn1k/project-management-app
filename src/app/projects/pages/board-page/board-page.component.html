@@ -18,4 +18,6 @@
     </section>
   </div>
 </article>
-<app-task-modal [isModalVisible]="isModalVisible" [task]="taskToEdit"></app-task-modal>
+<app-task-modal [(isModalVisible)]="isModalVisible" [taskToEdit]="taskToEdit"></app-task-modal>
+<div *ngIf="isLoading | async" class="loader backdrop" tabindex="-1"></div>
+

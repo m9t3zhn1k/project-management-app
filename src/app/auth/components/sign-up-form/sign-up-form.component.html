@@ -75,11 +75,4 @@
     <button [disabled]="signUpForm.invalid" type="submit" class="sign-up__submit-button">Sign up</button>
     <a class="sign-up__link" routerLink="/auth/login">Already have an account?</a>
   </form>
-  <button
-    class="px-4 py-2 bg-bg-blue-lilac mt-7 border-2 rounded-md hover:bg-bg-blue-lilac-hover transition-all"
-    (click)="isModalOpened = true"
-  >
-    temporary button for modal window
-  </button>
-  <app-confirmational-modal (closeModal)="isModalOpened = false" *ngIf="isModalOpened"></app-confirmational-modal>
 </div>

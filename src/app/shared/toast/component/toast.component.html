@@ -1,0 +1,8 @@
+<div
+  class="toast"
+  [class.show]="data$ | async"
+  [class.success]="(data$ | async)?.status === 'success'"
+  [class.error]="(data$ | async)?.status === 'error'">
+  <p class="toast__title">{{(data$ | async)?.title}}</p>
+  <p class="toast__description">{{(data$ | async)?.description}}</p>
+</div>

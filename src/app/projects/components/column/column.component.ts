@@ -1,7 +1,9 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { IColumnWithTasks, ITask } from '@app/shared/models';
 import { BoardService } from '@app/projects/services/board.service';
+import { ColumnService } from '@app/projects/services/column.service';
+import { TaskService } from '@app/projects/services/task.service';
 
 @Component({
   selector: 'app-column',
@@ -23,7 +25,11 @@ export class ColumnComponent implements OnChanges {
 
   disableAutoFocus: boolean = true;
 
-  constructor(private boardService: BoardService) {}
+  constructor(
+    private boardService: BoardService,
+    private columnService: ColumnService,
+    private taskService: TaskService,
+  ) {}
 
   ngOnChanges(): void {
     this.columnTitle = this.column.title ?? '';
@@ -31,7 +37,7 @@ export class ColumnComponent implements OnChanges {
       this.disableAutoFocus = false;
     }
     this.tasks = this.column.tasks ?? [];
-    this.columnId = this.column.id ?? '';
+    this.columnId = this.column._id ?? '';
     this.currentTitle = this.columnTitle;
     this.chooseColor();
   }
@@ -64,27 +70,69 @@ export class ColumnComponent implements OnChanges {
     } else {
       this.columnTitle = this.currentTitle;
     }
-
-    // TODO: save new name
-    if (this.column.isNew) {
-      // post column
-    } else {
-      // put changes
-    }
+    this.columnService.saveColumn(this.column._id, this.columnTitle, this.column.order).subscribe((columnResp) => {
+      if (!this.columnId) {
+        this.columnId = columnResp._id;
+      }
+    });
   }
 
   deleteColumn(): void {
-    this.boardService.deleteColumn(this.column.id);
-    // TODO: delete column
+    this.columnService.deleteColumn(this.column._id);
+    // TODO: confirm delete
   }
 
-  deleteTask(deleteId: string): void {
-    this.tasks = this.tasks.filter((item) => item.id !== deleteId);
-    // TODO: save tasks after delete
+  deleteTask(task: ITask): void {
+    // TODO: confirm
+    this.taskService.deleteTask(task).subscribe((tasks) => (this.tasks = tasks));
   }
 
   drop(event: CdkDragDrop<ITask[]>): void {
-    // TODO: save tasks order changes
-    this.boardService.drop(event);
+    this.boardService.loadingOn();
+    const tasksSet: Pick<ITask, '_id' | 'order' | 'columnId'>[] = [];
+    const srcTasksSet: Pick<ITask, '_id' | 'order' | 'columnId'>[] = [];
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      if (event.previousContainer.data.length) {
+        let srcTasks = [...event.previousContainer.data];
+        const srcColumnId = srcTasks[0].columnId;
+        srcTasks = srcTasks.map((item, idx) => {
+          item.order = idx;
+          srcTasksSet.push({ _id: item._id, order: idx, columnId: srcColumnId });
+          return item;
+        });
+        this.taskService.updateTasksSet(srcTasksSet).subscribe(() => {});
+      }
+    }
+    this.tasks.forEach((item, idx) => {
+      tasksSet.push({ _id: item._id, order: idx, columnId: this.columnId });
+    });
+    this.taskService.updateTasksSet(tasksSet).subscribe((tasks) => {
+      this.tasks = tasks;
+      this.boardService.loadingOff();
+    });
+  }
+
+  taskRemoved(): void {
+    if (this.tasks.length) {
+      const tasksSet: Pick<ITask, '_id' | 'order' | 'columnId'>[] = [];
+      this.boardService.loadingOn();
+      this.tasks.forEach((item, idx) => {
+        tasksSet.push({ _id: item._id, order: idx, columnId: this.columnId });
+      });
+      this.taskService.updateTasksSet(tasksSet).subscribe((tasks) => {
+        this.tasks = tasks;
+        this.boardService.loadingOff();
+      });
+    }
+  }
+
+  newTask(): void {
+    const task = new ITask();
+    task.columnId = this.columnId;
+    task.boardId = this.column.boardId;
+    this.taskService.editTask(task);
   }
 }

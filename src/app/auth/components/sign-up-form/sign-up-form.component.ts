@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsModule } from '@auth/validators/validators.module';
 import { Store } from '@ngrx/store';
-import * as AuthActions from '@auth/store/auth.actions';
+import * as AuthActions from '@core/store/actions/auth.actions';
 import { SignUpRequestModel } from '@app/core/models/backend-api.model';
 
 @Component({
@@ -11,8 +11,6 @@ import { SignUpRequestModel } from '@app/core/models/backend-api.model';
   styleUrls: ['./sign-up-form.component.scss'],
 })
 export class SignUpFormComponent {
-  isModalOpened: boolean = false;
-
   signUpForm: FormGroup = new FormGroup(
     {
       name: new FormControl<string>('', this.customValidators.name),

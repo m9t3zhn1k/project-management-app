@@ -15,6 +15,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
 import { UserLabelComponent } from './components/user-label/user-label.component';
 import { SearchItemComponent } from './components/search-item/search-item.component';
+import { ColumnService } from './services/column.service';
+import { TaskService } from './services/task.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,6 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
     OverlayModule,
     AngularSvgIconModule,
   ],
-  providers: [BoardService],
+  providers: [BoardService, ColumnService, TaskService],
 })
 export class ProjectsModule {}

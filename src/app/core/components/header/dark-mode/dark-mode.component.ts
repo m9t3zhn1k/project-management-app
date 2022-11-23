@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
-import { LocalStorageKeys } from '@app/shared/enums/LocalStorageKeys';
+import { LocalStorageKeys, LocalStorageKeys } from '@app/shared/enums/LocalStorageKeys';
 
 @Component({
   selector: 'app-dark-mode',
@@ -8,6 +8,8 @@ import { LocalStorageKeys } from '@app/shared/enums/LocalStorageKeys';
   styleUrls: ['./dark-mode.component.scss'],
 })
 export class DarkModeComponent implements OnInit {
+  themeMode: string = localStorage.getItem(LocalStorageKeys.DARKMODE) || LocalStorageKeys.LIGHTMODE;
+
   themeMode: string = localStorage.getItem(LocalStorageKeys.DARKMODE) || LocalStorageKeys.LIGHTMODE;
 
   constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {}

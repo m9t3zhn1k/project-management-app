@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { CanActivate, Router, UrlTree } from "@angular/router";
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
-import { userSelector } from '../../auth/store/auth.selectors';
-import { UserModel } from "../models/user.model";
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { userSelector } from '../store/selectors/auth.selectors';
+import { UserModel } from '../models/user.model';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
           this.router.navigateByUrl('welcome');
         }
         return isAuthorized;
-      })
+      }),
     );
   }
 }

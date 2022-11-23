@@ -1,12 +1,12 @@
 export class IUser {
-  id: string = '';
+  _id: string = '';
 
   name: string = '';
 
   login: string = '';
 
-  constructor(id: string, name: string, login: string) {
-    this.id = id;
+  constructor(_id: string, name: string, login: string) {
+    this._id = _id;
     this.name = name;
     this.login = login;
   }

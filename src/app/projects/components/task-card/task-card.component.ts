@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { mockUsers } from '@app/mocks';
+import { BoardService } from '@app/projects/services/board.service';
+import { TaskService } from '@app/projects/services/task.service';
 import { ITask } from '@app/shared/models';
 
 const charForBadUsername = '?';
@@ -12,13 +14,16 @@ const charForBadUsername = '?';
 export class TaskCardComponent implements OnChanges {
   @Input() task: ITask = new ITask();
 
-  @Output() delete: EventEmitter<string> = new EventEmitter();
+  @Output() delete: EventEmitter<ITask> = new EventEmitter();
 
   userChar: string = charForBadUsername;
 
   userName: string = '';
 
+  constructor(private boardService: BoardService, private taskService: TaskService) {}
+
   ngOnChanges(): void {
+    // TODO: change owner sign to task users
     this.userChar = this.getFirstChar(this.task.userId ?? '');
   }
 
@@ -32,11 +37,11 @@ export class TaskCardComponent implements OnChanges {
   }
 
   editTask(): void {
-    // TODO: open task edit modal
+    this.taskService.editTask(this.task);
   }
 
   deleteTask(): void {
     // TODO: delete task
-    this.delete.emit(this.task.id);
+    this.delete.emit(this.task);
   }
 }
