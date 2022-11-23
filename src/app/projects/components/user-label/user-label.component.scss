@@ -9,6 +9,6 @@
 
   &__owner,
   &__users-item {
-    @apply flex items-center justify-center w-6 h-6 bg-malva rounded-3xl text-text-dark -mr-1 border border-white;
+    @apply flex items-center justify-center w-6 h-6 rounded-3xl -mr-1 border border-white;
   }
 }

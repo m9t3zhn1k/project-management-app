@@ -1,12 +1,12 @@
 .task {
-  @apply w-full p-2 mb-2 bg-white rounded-xl;
+  @apply w-full p-2 mb-2 rounded-xl;
 
   &__header {
     @apply flex justify-between;
   }
 
   &__title {
-    @apply text-text-dark text-lg font-semibold;
+    @apply text-lg font-semibold;
   }
 
   &__menu {

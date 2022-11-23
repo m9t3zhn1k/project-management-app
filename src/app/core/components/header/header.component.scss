@@ -25,17 +25,4 @@
 
 .logo {
   @apply flex items-center gap-x-4;
-
-  &__link {
-    svg {
-      @apply w-10 h-10 transition-all;
-      fill: #6b6662;
-    }
-  }
-
-  &__link:hover {
-    svg {
-      fill: #e9cda6;
-    }
-  }
 }
