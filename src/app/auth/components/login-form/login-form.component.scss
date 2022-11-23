@@ -12,7 +12,7 @@
   }
 
   &__input {
-    @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mt-6 mb-1 placeholder-text-grey focus:border-bg-blue-lilac sm:text-sm;
+    @apply block w-full appearance-none border rounded-md border-transparent px-3 py-2 mt-6 mb-1 placeholder-text-grey focus:border-bg-blue-lilac sm:text-sm;
 
     &-container {
       @apply relative;
@@ -36,6 +36,6 @@
   }
 
   &__link {
-    @apply block w-fit mx-auto transition-all hover:text-text-grey;
+    @apply block w-fit mx-auto transition-all;
   }
 }

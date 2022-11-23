@@ -5,6 +5,9 @@
       "RU": "ru",
       "EN": "en"
     },
+    "HOME": "Home",
+    "PROJECTS": "Projects",
+    "DELETEACCOUNT": "Delete account",
     "EDITUSER": "Edit user",
     "LOGIN": "Log in",
     "LOGOUT": "Log out",

@@ -63,3 +63,20 @@
     @apply text-text-dark dark:text-semi-grey transition-all;
   }
 }
+
+.sign-up,
+.login,
+.edit-user {
+  &__title,
+  &__subtitle {
+    @apply text-text-dark dark:text-grey-light;
+  }
+
+  &__input {
+    @apply bg-grey-light dark:bg-bg-light-gold text-text-dark dark:text-semi-grey;
+  }
+
+  &__link {
+    @apply text-text-dark hover:text-text-grey dark:text-grey-light dark:hover:text-dark-gold;
+  }
+}

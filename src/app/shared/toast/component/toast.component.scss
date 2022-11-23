@@ -1,5 +1,5 @@
 .toast {
-  @apply invisible fixed w-[calc(100%-3rem)] max-w-sm right-[5%] bottom-0 p-4 rounded-md text-white overflow-hidden transition-all;
+  @apply invisible fixed z-[2] w-[calc(100%-3rem)] max-w-sm right-[5%] bottom-0 p-4 rounded-md text-white overflow-hidden transition-all;
 
   &.show {
     @apply visible bottom-20;
