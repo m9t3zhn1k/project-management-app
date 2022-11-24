@@ -2,7 +2,36 @@
   @apply z-30;
 }
 .modal {
-  @apply mt-[15vh] mx-auto rounded-lg w-full max-w-xs sm:max-w-sm md:max-w-md overflow-hidden;
+  -webkit-perspective: 1300px;
+  -moz-perspective: 1300px;
+  perspective: 1300px;
+
+  &.show {
+    visibility: visible;
+
+    & .modal__content {
+      -webkit-transform: rotateX(0deg);
+      -moz-transform: rotateX(0deg);
+      -ms-transform: rotateX(0deg);
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    @apply mt-[15vh] mx-auto bg-white rounded-lg w-full max-w-xs sm:max-w-sm md:max-w-md overflow-hidden;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateX(-70deg);
+    -moz-transform: rotateX(-70deg);
+    -ms-transform: rotateX(-70deg);
+    transform: rotateX(-70deg);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    opacity: 0;
+  }
 
   &__notice {
     @apply px-8 py-4 text-left text-lg font-semibold;
