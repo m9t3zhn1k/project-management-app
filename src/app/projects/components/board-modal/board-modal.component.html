@@ -1,0 +1,54 @@
+<div *ngIf="isModalVisible" class="modal__wrapper backdrop" id="exampleModal" tabindex="-1">
+  <div class="modal__container">
+    <div class="modal__window">
+      <div class="modal__header">
+        <h5 class="modal__title" id="exampleModalLabel">{{ modalTitle }}</h5>
+        <button type="button" class="modal__button-top-close" (click)="closeModal()">X</button>
+      </div>
+      <div class="modal__content">
+        <form class="task-form" [formGroup]="boardForm" (ngSubmit)="submitForm()" novalidate>
+          <div class="task-form__input-container">
+            <label class="task-form__label">Title</label>
+            <input
+              id="boardTitle"
+              formControlName="boardTitle"
+              type="text"
+              class="task-form__input"
+              [class.error]="boardForm.controls['boardTitle'].invalid && boardForm.controls['boardTitle'].touched"
+              placeholder="Enter task title"
+            />
+            <p
+              *ngIf="boardForm.controls['boardTitle'].invalid && boardForm.controls['boardTitle'].touched"
+              class="task-form__error-message"
+            >
+              Task must have the name
+            </p>
+            <label class="task-form__label">Assign user</label>
+            <div class="task-form__selected-users" *ngIf="selectedUsers.length">
+              <div class="task-form__user" *ngFor="let selUser of selectedUsers">
+                <span class="task-form__username">{{selUser.name}}</span>
+                <button class="task-form__button-remove" (click)="removeUser($event, selUser._id)">X</button>
+              </div>
+            </div>
+            <select
+              id="boardUser"
+              formControlName="boardUser"
+              type="text"
+              class="task-form__input"
+              placeholder="Choose user"
+              [ngModel]="selected"
+              (change)="selectUser()"
+            >
+              <option value="-">-</option>
+              <option *ngFor="let user of userList" [ngValue]="user._id">{{ user.name }}</option>
+            </select>
+          </div>
+          <div class="task-form__footer">
+            <button type="button" class="task-form__button-close" (click)="closeModal()">Close</button>
+            <button [disabled]="boardForm.invalid" type="submit" class="task-form__button-save">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

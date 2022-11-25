@@ -1,15 +1,18 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ITask, IUser } from '@app/shared/models';
-import { mockUsers } from '@app/mocks';
 import { TaskService } from '@app/projects/services/task.service';
+import { BoardService } from '@app/projects/services/board.service';
+import { UserService } from '@app/projects/services/user.service';
+import { map, Subscription, switchMap, tap } from 'rxjs';
+import { ToastService } from '@app/shared/toast/service/toast.service';
 
 @Component({
   selector: 'app-task-modal',
   templateUrl: './task-modal.component.html',
   styleUrls: ['./task-modal.component.scss'],
 })
-export class TaskModalComponent implements OnChanges {
+export class TaskModalComponent implements OnChanges, OnDestroy, OnInit {
   @Input() isModalVisible: boolean = false;
 
   @Output() isModalVisibleChange = new EventEmitter<boolean>();
@@ -24,19 +27,46 @@ export class TaskModalComponent implements OnChanges {
     taskUser: new FormControl<string>(''),
   });
 
+  private boardUsers: IUser[] = [];
+
   userList: IUser[] = [];
 
   selectedUsers: IUser[] = [];
 
   selected: string = '';
 
-  constructor(private taskService: TaskService) {
-    // TODO: get users from userservice
+  subscriptions = new Subscription();
+
+  constructor(
+    private taskService: TaskService,
+    private boardService: BoardService,
+    private userService: UserService,
+    private toastService: ToastService,
+  ) {}
+
+  ngOnInit(): void {
+    let usersOnBoard: string[] = [];
+    this.subscriptions.add(
+      this.boardService.board
+        .pipe(
+          tap((board) => {
+            usersOnBoard = board.users;
+          }),
+          switchMap(() => this.userService.userList),
+          map((users: IUser[]) => users.filter((user) => usersOnBoard.includes(user._id))),
+        )
+        .subscribe((users: IUser[]) => {
+          this.boardUsers = users;
+        }),
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   ngOnChanges(): void {
-    // TODO: mock off
-    this.userList = [...mockUsers];
+    this.userList = [...this.boardUsers];
     this.selectedUsers = [];
     this.taskToEdit.users.forEach((userId) => {
       const user: IUser | undefined = this.userList.find((item) => item._id === userId);
@@ -60,6 +90,7 @@ export class TaskModalComponent implements OnChanges {
     resultTask.title = this.taskForm.controls.taskTitle.value;
     resultTask.description = this.taskForm.controls.taskDescription.value;
     resultTask.users = this.selectedUsers.map((user) => user._id);
+    this.taskToEdit.users = resultTask.users;
     this.closeModal();
     this.taskService.saveTask(resultTask);
   }
@@ -67,6 +98,14 @@ export class TaskModalComponent implements OnChanges {
   selectUser(): void {
     const userId: string = this.taskForm.controls.taskUser.value;
     if (userId === '-') return;
+    if (this.selectedUsers.length === 9) {
+      this.toastService.showToast({
+        title: 'User limit reached',
+        description: 'Maximum 10 users allowed (include owner)',
+        status: 'error',
+      });
+      return;
+    }
     const user: IUser | undefined = this.userList.find((item) => item._id === userId);
     if (user) {
       this.userList = this.userList.filter((item) => item._id !== userId);

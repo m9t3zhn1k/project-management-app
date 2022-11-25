@@ -10,6 +10,7 @@ import { BoardPageComponent } from './pages/board-page/board-page.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { TaskModalComponent } from './components/task-modal/task-modal.component';
 import { BoardService } from './services/board.service';
+import { BoardModalComponent } from './components/board-modal/board-modal.component';
 import { ProjectsPageComponent } from './pages/projects-page/projects-page.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
@@ -33,6 +34,7 @@ import { UserNamePipe } from './pipes/username.pipe';
     SearchItemComponent,
     InitialPipe,
     UserNamePipe,
+    BoardModalComponent,
   ],
   imports: [
     CommonModule,

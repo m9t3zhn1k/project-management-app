@@ -2,25 +2,89 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BoardService } from '@app/projects/services/board.service';
 import { UserService } from '@app/projects/services/user.service';
 import { IBoard } from '@app/shared/models';
-import { Observable, Subscription } from 'rxjs';
-
+import { Subscription, BehaviorSubject } from 'rxjs';
+import { ConfirmationService } from '@app/shared/confirmation-modal/confirmation.service';
+import { ConfirmationTitles } from '@app/shared/confirmation-modal/confirmation-titles';
 @Component({
   selector: 'app-projects-page',
   templateUrl: './projects-page.component.html',
   styleUrls: ['./projects-page.component.scss'],
 })
 export class ProjectsPageComponent implements OnInit, OnDestroy {
-  boards: Observable<IBoard[]> = this.boardService.getAllBoards();
+  boards: BehaviorSubject<IBoard[]> = new BehaviorSubject<IBoard[]>([]);
 
-  constructor(private boardService: BoardService, private userService: UserService) {}
+  private _isModalVisible: boolean = false;
+
+  private isNeedToRefresh: boolean = false;
+
+  boardToEdit: IBoard = new IBoard();
+
+  boardToDelete: IBoard = new IBoard();
+
+  constructor(
+    private boardService: BoardService,
+    private userService: UserService,
+    public confirmationService: ConfirmationService,
+  ) {}
 
   subscriptions: Subscription = new Subscription();
 
+  get isModalVisible(): boolean {
+    return this._isModalVisible;
+  }
+
+  set isModalVisible(value: boolean) {
+    this._isModalVisible = value;
+    if (this.isNeedToRefresh) {
+      this.getBoards();
+    }
+    if (value) {
+      this.isNeedToRefresh = true;
+    }
+  }
+
   ngOnInit(): void {
-    this.subscriptions.add(this.userService.allUsers.subscribe(() => {}));
+    this.getBoards();
+    this.subscriptions.add(this.userService.getUsers().subscribe(() => {}));
+  }
+
+  getBoards(): void {
+    this.boardService.allBoards.subscribe((boards) => {
+      this.boards.next(boards);
+    });
+  }
+
+  addBoard(): void {
+    this.boardToEdit = new IBoard();
+    this.boardToEdit.title = 'New board';
+    this.boardToEdit.owner = this.boardService.owner;
+    this.isModalVisible = true;
   }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  editProject(board: IBoard): void {
+    this.boardToEdit = board;
+    this.isModalVisible = true;
+  }
+
+  onOpenConfirmModal(board: IBoard): void {
+    this.boardToDelete = board;
+    this.confirmationService.openModal(ConfirmationTitles.DeleteBoard);
+    this.subscriptions.add(
+      this.confirmationService.isModalConfirmed$.subscribe((value: boolean): void => {
+        if (value) {
+          this.deleteProject();
+        }
+      }),
+    );
+  }
+
+  deleteProject(): void {
+    this.boardService.deleteBoard(this.boardToDelete._id).subscribe(() => {
+      this.getBoards();
+    });
   }
 }

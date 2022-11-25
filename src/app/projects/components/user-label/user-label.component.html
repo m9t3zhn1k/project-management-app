@@ -1,6 +1,5 @@
 <ng-container>
   <div class="projects__users">
-    <!-- span class="projects__owner" [title]="project.owner | userName">{{ project.owner | initials }}</span -->
     <ul class="projects__users-list" *ngIf="userList.length">
       <li class="projects__users-item" *ngFor="let user of userList" [title]="user | userName">
         {{ user | initial }}

@@ -8,14 +8,14 @@
       class="column__title"
       [appAutoFocus]="disableAutoFocus"
     />
-    <button class="column__button-delete" title="Delete column" (click)="deleteColumn()">
+    <button class="column__button-delete" title="Delete column" (click)="onOpenConfirmModal(column)">
       <img src="/assets/icons/trash.svg" alt="Delete column" height="18" width="22" />
     </button>
   </header>
-  <div class="column__tasks" cdkDropList id="list-one" [cdkDropListData]="tasks" (cdkDropListDropped)="drop($event)">
+  <div class="column__tasks" cdkDropList [id]="columnId" [cdkDropListData]="tasks" (cdkDropListDropped)="drop($event)">
     <div class="column__task" *ngFor="let task of tasks" cdkDrag>
-      <app-task-card [task]="task" (delete)="deleteTask($event)"></app-task-card>
+      <app-task-card [task]="task" (delete)="onOpenConfirmModal($event)"></app-task-card>
     </div>
   </div>
-  <button class="column__button-add-task" title="Add new task" (click)="newTask()">+</button>
+  <button class="column__button-add-task" title="Add new task" (click)="newTask()" [disabled]="!columnId">+</button>
 </div>

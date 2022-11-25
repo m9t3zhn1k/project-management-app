@@ -1,39 +1,31 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
-import { mockUsers } from '@app/mocks';
-import { BoardService } from '@app/projects/services/board.service';
+import { Component, EventEmitter, Input, Output, OnInit, OnDestroy } from '@angular/core';
 import { TaskService } from '@app/projects/services/task.service';
 import { ITask } from '@app/shared/models';
-
-const charForBadUsername = '?';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-task-card',
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.scss'],
 })
-export class TaskCardComponent implements OnChanges {
+export class TaskCardComponent implements OnInit, OnDestroy {
   @Input() task: ITask = new ITask();
 
   @Output() delete: EventEmitter<ITask> = new EventEmitter();
 
-  userChar: string = charForBadUsername;
+  userList: string[] = [];
 
-  userName: string = '';
+  private subscriptions: Subscription = new Subscription();
 
-  constructor(private boardService: BoardService, private taskService: TaskService) {}
+  constructor(private taskService: TaskService) {}
 
-  ngOnChanges(): void {
-    // TODO: change owner sign to task users
-    this.userChar = this.getFirstChar(this.task.userId ?? '');
-  }
-
-  getFirstChar(userId: string): string {
-    if (!userId) {
-      return charForBadUsername;
-    }
-    // TODO: get user name from userService
-    this.userName = mockUsers[1].name;
-    return this.userName.length > 1 ? this.userName[0] : charForBadUsername;
+  ngOnInit(): void {
+    this.taskService.allTasks.subscribe((tasks) => {
+      const currTask: ITask = tasks.filter((item) => item._id === this.task._id)[0];
+      if (currTask) {
+        this.userList = [currTask.userId, ...currTask.users];
+      }
+    });
   }
 
   editTask(): void {
@@ -41,7 +33,10 @@ export class TaskCardComponent implements OnChanges {
   }
 
   deleteTask(): void {
-    // TODO: delete task
     this.delete.emit(this.task);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }
