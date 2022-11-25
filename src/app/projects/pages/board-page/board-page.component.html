@@ -1,6 +1,11 @@
 <article class="board">
   <div class="board__header">
+    <div class="board__title-wrapper">
     <h2 class="board__title">{{ (board | async)?.title }}</h2>
+    <button class="board__button-edit" (click)="editBoard()" title="Edit board">
+      <svg-icon src="../../../../assets/icons/pencil.svg"></svg-icon>
+    </button>
+  </div>
     <div class="board__users-wrapper">
       <app-user-label [userList]="userList"></app-user-label>
     </div>
@@ -24,4 +29,5 @@
   </div>
 </article>
 <app-task-modal [(isModalVisible)]="isModalVisible" [taskToEdit]="taskToEdit"></app-task-modal>
+<app-board-modal [(isBoardModalVisible)]="isBoardModalVisible" [boardToEdit]="boardToEdit"></app-board-modal>
 <div *ngIf="isLoading | async" class="loader backdrop" tabindex="-1"></div>

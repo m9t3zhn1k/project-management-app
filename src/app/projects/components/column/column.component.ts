@@ -116,15 +116,16 @@ export class ColumnComponent implements OnChanges {
   }
 
   drop(event: CdkDragDrop<ITask[]>): void {
-    this.boardService.loadingOn();
     const tasksSet: Pick<ITask, '_id' | 'order' | 'columnId'>[] = [];
     if (event.previousContainer === event.container) {
       if (event.previousIndex === event.currentIndex) {
         return;
       }
+      this.boardService.loadingOn();
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     }
     if (event.previousContainer !== event.container) {
+      this.boardService.loadingOn();
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
       if (event.previousContainer.data.length) {
         event.previousContainer.data.forEach((item, idx) => {

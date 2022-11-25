@@ -80,7 +80,12 @@ export class BoardService {
 
   updateBoard(board: IBoard): Observable<IBoard> {
     const { title, owner, users } = board;
-    return this.http.put<IBoard>(`boards/${board._id}`, { title, owner, users });
+    return this.http.put<IBoard>(`boards/${board._id}`, { title, owner, users }).pipe(
+      tap((value) => {
+        this.boardObj = value;
+        this.board.next(value);
+      }),
+    );
   }
 
   deleteBoard(boardId: string): Observable<Response> {

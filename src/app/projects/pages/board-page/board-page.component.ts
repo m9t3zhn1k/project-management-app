@@ -24,7 +24,11 @@ export class BoardPageComponent implements OnDestroy, OnInit {
 
   isModalVisible: boolean = false;
 
+  isBoardModalVisible: boolean = false;
+
   taskToEdit: ITask = new ITask();
+
+  boardToEdit: IBoard = new IBoard();
 
   private subscriptions: Subscription = new Subscription();
 
@@ -39,20 +43,21 @@ export class BoardPageComponent implements OnDestroy, OnInit {
   ) {}
 
   ngOnInit(): void {
-    let tmpBoard: IBoard;
+    this.subscriptions.add(
+      this.board.subscribe((value) => {
+        this.userList = [value.owner, ...value.users];
+      }),
+    );
     this.subscriptions.add(
       this.boardService
         .getBoard(this.boardId)
         .pipe(
           tap((board) => {
             this.board.next(board);
-            tmpBoard = board;
+            this.boardToEdit = board;
           }),
           switchMap(() => this.userService.getUsers()),
-          switchMap(() => {
-            this.userList = [tmpBoard.owner, ...tmpBoard.users];
-            return this.taskService.getTasks();
-          }),
+          switchMap(() => this.taskService.getTasks()),
           switchMap(() => this.columnService.getColumns()),
           switchMap((columns) => {
             this.columns.next(columns);
@@ -70,6 +75,11 @@ export class BoardPageComponent implements OnDestroy, OnInit {
         this.isModalVisible = true;
       }),
     );
+    this.subscriptions.add(
+      this.boardService.board.subscribe((value) => {
+        this.board.next(value);
+      }),
+    );
     this.subscriptions.add(this.columnService.allColumns.subscribe((columns) => this.columns.next(columns)));
   }
 
@@ -83,5 +93,9 @@ export class BoardPageComponent implements OnDestroy, OnInit {
 
   drop(event: CdkDragDrop<IColumn[]>): void {
     this.columnService.dropColumn(event);
+  }
+
+  editBoard(): void {
+    this.isBoardModalVisible = true;
   }
 }

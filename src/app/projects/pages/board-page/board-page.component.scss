@@ -5,8 +5,16 @@
     @apply flex justify-between items-center py-3 px-5 mb-2 bg-whitish;
   }
 
+  &__title-wrapper {
+    @apply flex items-center;
+  }
+
+  &__button-edit {
+    @apply w-full rounded w-7 h-7 p-[4px] mx-1 rounded-md hover:bg-light-blue;
+  }
+
   &__title {
-    @apply text-text-dark text-xl w-64;
+    @apply text-text-dark text-xl;
   }
 
   &__users-wrapper {

@@ -12,9 +12,9 @@ import { ToastService } from '@app/shared/toast/service/toast.service';
   styleUrls: ['./board-modal.component.scss'],
 })
 export class BoardModalComponent implements OnChanges {
-  @Input() isModalVisible: boolean = false;
+  @Input() isBoardModalVisible: boolean = false;
 
-  @Output() isModalVisibleChange = new EventEmitter<boolean>();
+  @Output() isBoardModalVisibleChange = new EventEmitter<boolean>();
 
   @Input() boardToEdit: IBoard = new IBoard();
 
@@ -62,7 +62,7 @@ export class BoardModalComponent implements OnChanges {
   }
 
   closeModal(): void {
-    this.isModalVisibleChange.emit(false);
+    this.isBoardModalVisibleChange.emit(false);
   }
 
   submitForm(): void {
@@ -72,6 +72,7 @@ export class BoardModalComponent implements OnChanges {
     defer(() =>
       Boolean(this.boardToEdit._id) ? this.boardService.updateBoard(result) : this.boardService.createBoard(result),
     ).subscribe(() => {
+      this.boardToEdit.users = result.users;
       this.closeModal();
     });
   }

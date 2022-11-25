@@ -29,11 +29,11 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription = new Subscription();
 
-  get isModalVisible(): boolean {
+  get isBoardModalVisible(): boolean {
     return this._isModalVisible;
   }
 
-  set isModalVisible(value: boolean) {
+  set isBoardModalVisible(value: boolean) {
     this._isModalVisible = value;
     if (this.isNeedToRefresh) {
       this.getBoards();
@@ -58,7 +58,7 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
     this.boardToEdit = new IBoard();
     this.boardToEdit.title = 'New board';
     this.boardToEdit.owner = this.boardService.owner;
-    this.isModalVisible = true;
+    this.isBoardModalVisible = true;
   }
 
   ngOnDestroy(): void {
@@ -67,7 +67,7 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
 
   editProject(board: IBoard): void {
     this.boardToEdit = board;
-    this.isModalVisible = true;
+    this.isBoardModalVisible = true;
   }
 
   onOpenConfirmModal(board: IBoard): void {
