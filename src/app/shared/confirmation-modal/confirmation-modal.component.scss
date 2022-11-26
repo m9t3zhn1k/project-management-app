@@ -19,7 +19,7 @@
   }
 
   &__content {
-    @apply mt-[15vh] mx-auto bg-white rounded-lg w-full max-w-xs sm:max-w-sm md:max-w-md overflow-hidden;
+    @apply mt-[15vh] mx-auto rounded-lg w-full max-w-xs sm:max-w-sm md:max-w-md overflow-hidden;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;

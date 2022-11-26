@@ -82,7 +82,9 @@
 }
 
 .modal {
-  @apply bg-white dark:bg-bg-dark;
+  &__content {
+    @apply bg-white dark:bg-bg-dark;
+  }
 
   &__notice {
     @apply text-text-dark dark:text-white;
@@ -140,5 +142,35 @@
     svg {
       @apply fill-semi-grey dark:fill-grey-light;
     }
+  }
+}
+
+.not-found {
+  @apply text-text-dark dark:text-white;
+
+  &__text {
+    @apply text-text-dark dark:text-white;
+  }
+}
+
+.illustration {
+  &__circle {
+    @apply bg-text-dark dark:bg-white;
+  }
+
+  &__paper {
+    @apply border-text-dark bg-white dark:border-white dark:bg-text-dark;
+
+    &::before {
+      @apply bg-bg-grey border-text-dark dark:bg-bg-dark dark:border-white;
+    }
+  }
+
+  &__eye {
+    @apply bg-text-dark dark:bg-white;
+  }
+
+  &__mouth {
+    @apply bg-text-dark dark:bg-white;
   }
 }

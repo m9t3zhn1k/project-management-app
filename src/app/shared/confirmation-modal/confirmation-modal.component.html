@@ -1,5 +1,5 @@
 <div class="backdrop" (click)="closeModal($event)" data-close-target="true">
-  <div class="modal">
+  <div #modal class="modal">
     <div class="modal__content" (click)="$event.stopPropagation()">
       <p class="modal__notice">{{ "MODAL.TITLE" | translate }}</p>
       <p class="modal__question">{{ "MODAL.QUESTION" | translate }}</p>
