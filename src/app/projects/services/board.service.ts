@@ -1,38 +1,43 @@
 import { Injectable } from '@angular/core';
-import { IBoard, IBoardData } from '@app/shared/models';
-import { BehaviorSubject, catchError, Observable } from 'rxjs';
+import { IBoard } from '@app/shared/models';
+import { BehaviorSubject, catchError, Observable, tap } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { userSelector } from '@app/core/store/selectors/auth.selectors';
 
 @Injectable()
 export class BoardService {
-  private boardObj: IBoardData = new IBoardData();
+  private boardObj: IBoard = new IBoard();
 
-  board: BehaviorSubject<IBoardData> = new BehaviorSubject<IBoardData>(this.boardObj);
+  boards: IBoard[] = [];
+
+  board: BehaviorSubject<IBoard> = new BehaviorSubject<IBoard>(this.boardObj);
 
   isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
-  constructor(private http: HttpClient, private router: Router) {}
+  private readonly userData = this.store.select(userSelector);
 
-  get userId(): string {
+  constructor(private http: HttpClient, private router: Router, private readonly store: Store) {
+    this.userData.subscribe((user) => {
+      this.owner = user?.id ?? '';
+    });
+  }
+
+  get owner(): string {
     return this.boardObj.owner;
+  }
+
+  get users(): string[] {
+    return this.boardObj.users;
+  }
+
+  private set owner(id: string) {
+    this.boardObj.owner = id;
   }
 
   get boardId(): string {
     return this.boardObj._id;
-  }
-
-  set boardId(id: string) {
-    this.boardObj._id = id;
-  }
-
-  get store(): IBoardData {
-    return this.boardObj;
-  }
-
-  set store(boardData: IBoardData) {
-    this.boardObj = boardData;
-    this.board.next(this.boardObj);
   }
 
   loadingOn(): void {
@@ -51,10 +56,44 @@ export class BoardService {
         }
         return [];
       }),
+      tap((value) => {
+        this.boardObj._id = value._id;
+        this.boardObj.title = value.title;
+        this.boardObj.owner = value.owner;
+        this.boardObj.users = value.users;
+        this.board.next(this.boardObj);
+      }),
     );
   }
 
-  createBoard(title: string, owner: string, users: string[]): Observable<IBoard> {
+  get allBoards(): Observable<IBoard[]> {
+    return this.http.get<IBoard[]>(`boardsSet/${this.owner}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (!error.ok) {
+          this.router.navigateByUrl('/error404');
+        }
+        return [];
+      }),
+      tap((boards) => (this.boards = boards)),
+    );
+  }
+
+  updateBoard(board: IBoard): Observable<IBoard> {
+    const { title, owner, users } = board;
+    return this.http.put<IBoard>(`boards/${board._id}`, { title, owner, users }).pipe(
+      tap((value) => {
+        this.boardObj = value;
+        this.board.next(value);
+      }),
+    );
+  }
+
+  deleteBoard(boardId: string): Observable<Response> {
+    return this.http.delete<Response>(`boards/${boardId}`);
+  }
+
+  createBoard(board: IBoard): Observable<IBoard> {
+    const { title, owner, users } = board;
     return this.http.post<IBoard>('boards', { title, owner, users });
   }
 }

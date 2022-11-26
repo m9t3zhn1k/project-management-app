@@ -9,5 +9,27 @@
     "LOGIN": "Log in",
     "LOGOUT": "Log out",
     "SIGNUP": "Sign up"
+  },
+  "BOARD": {
+    "EDIT": "Edit board",
+    "DELETE": "Delete board",
+    "NEWCOLUMN": "Add new column",
+    "ABSENT": "You don't have any boards.",
+    "ADD": "Add new board",
+    "TITLE": "Title",
+    "BOARDTITLETOOLTIP": "Enter board title",
+    "BOARDTITLERULE":  "Board must have the name",
+    "DESCRIPTION": "Description",
+    "PARTICIPANTS": "Participants",
+    "TITLETOOLTIP": "Enter task title",
+    "TITLERULE":  "Task must have the name",
+    "CLOSE": "Close",
+    "SAVE": "Save changes",
+    "EDITTASK": "Task edit",
+    "NEWTASK": "Add new task",
+    "DELETETASK":"Delete task",
+    "SEARCH": "Search",
+    "SEARCHPLACEHOLDER": "Search for board or user...",
+    "DELETECOLUMN": "Delete column"
   }
 }
