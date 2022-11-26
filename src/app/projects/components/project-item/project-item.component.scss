@@ -1,6 +1,6 @@
 .projects {
   &__item {
-    @apply w-full w-72 mb-2 rounded-xl flex justify-between gap-2 relative hover:scale-95;
+    @apply w-72 h-24 mb-2 bg-white rounded-xl flex justify-between gap-2 shadow-lg relative hover:scale-95 transition duration-300 ease-in-out;
   }
 
   &__header {
@@ -24,6 +24,6 @@
   }
 
   &__btn {
-    @apply w-full rounded w-5 h-5;
+    @apply w-full rounded w-6 h-6 p-[2px];
   }
 }

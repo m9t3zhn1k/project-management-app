@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { IBoard } from '@app/shared/models';
 
 @Component({
   selector: 'app-user-label',
@@ -7,5 +6,5 @@ import { IBoard } from '@app/shared/models';
   styleUrls: ['./user-label.component.scss'],
 })
 export class UserLabelComponent {
-  @Input() project!: IBoard;
+  @Input() userList: string[] = [];
 }

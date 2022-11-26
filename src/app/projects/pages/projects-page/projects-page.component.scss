@@ -4,7 +4,7 @@
   &__search {
     @apply my-6;
   }
-  
+
   &__list {
     @apply flex gap-6 flex-wrap mx-auto overflow-y-scroll h-[calc(100vh_-_305px)];
   }
@@ -15,5 +15,21 @@
     button {
       @apply text-light-blue transition duration-300 ease-in-out hover:text-orange;
     }
+  }
+
+  &__button-add {
+    @apply w-72 h-24 mb-2 bg-white rounded-xl justify-center items-center shadow-lg hover:scale-95
+    transition duration-300 ease-in-out text-text-dark border-2 border-bg-disabled border-dashed
+    opacity-50 hover:opacity-100;
+
+    span {
+      @apply text-3xl;
+    }
+  }
+
+  &__button-add-task {
+    @apply p-2 mb-2 text-xl bg-white border-2 border-bg-disabled border-dashed
+     opacity-50 rounded-xl hover:bg-white hover:border-solid hover:opacity-100
+     hover:drop-shadow-[0_3px_3px_rgba(0,0,0,0.1)] transition duration-75;
   }
 }

@@ -2,14 +2,14 @@
   <a class="projects__header" [routerLink]="'board/1'">
     <h4 class="projects__title">{{ project.title }}</h4>
     <div class="projects__users-wrapper">
-      <app-user-label [project]="project"></app-user-label>
+      <app-user-label [userList]="userList"></app-user-label>
     </div>
   </a>
   <div class="projects__btn-wrapper">
-    <button class="projects__edit projects__btn">
+    <button class="projects__edit projects__btn" (click)="edit.emit()" title="{{ 'BOARD.EDIT' | translate }}">
       <svg-icon src="../../../../assets/icons/pencil.svg"></svg-icon>
     </button>
-    <button class="projects__delete projects__btn">
+    <button class="projects__delete projects__btn" (click)="delete.emit()" title="{{ 'BOARD.DELETE' | translate }}">
       <svg-icon src="../../../../assets/icons/trash.svg"></svg-icon>
     </button>
   </div>

@@ -1,8 +1,9 @@
 <ng-container>
-  <div class="projects__users users-logo">
-    <span class="projects__owner users-logo__owner" [title]="project.owner">{{ project.owner.slice(0,1) }}</span>
-    <ul class="projects__users-list users-logo__users-list">
-      <li class="projects__users-item users-logo__users-item" *ngFor="let user of project?.users">{{ user?.slice(0,1) }}</li>
+  <div class="projects__users">
+    <ul class="projects__users-list" *ngIf="userList.length">
+      <li class="projects__users-item" *ngFor="let user of userList" [title]="user | userName">
+        {{ user | initial }}
+      </li>
     </ul>
   </div>
 </ng-container>
