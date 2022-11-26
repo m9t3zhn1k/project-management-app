@@ -1,8 +1,8 @@
-<div *ngIf="isModalVisible" class="modal__wrapper backdrop" id="exampleModal" tabindex="-1">
+<div *ngIf="isModalVisible" class="modal__wrapper backdrop" tabindex="-1">
   <div class="modal__container">
     <div class="modal__window">
       <div class="modal__header">
-        <h5 class="modal__title" id="exampleModalLabel">{{ (modalTitle ? 'BOARD.EDITTASK' : 'BOARD.NEWTASK') | translate }}</h5>
+        <h5 class="modal__title">{{ (modalTitle ? 'BOARD.EDITTASK' : 'BOARD.NEWTASK') | translate }}</h5>
         <button type="button" class="modal__button-top-close" (click)="closeModal()">X</button>
       </div>
       <div class="modal__content">
@@ -10,7 +10,6 @@
           <div class="task-form__input-container">
             <label class="task-form__label">{{ 'BOARD.TITLE' | translate }}</label>
             <input
-              id="taskTitle"
               formControlName="taskTitle"
               type="text"
               class="task-form__input"
@@ -38,7 +37,6 @@
               </div>
             </div>
             <select
-              id="taskUser"
               formControlName="taskUser"
               type="text"
               class="task-form__input"
