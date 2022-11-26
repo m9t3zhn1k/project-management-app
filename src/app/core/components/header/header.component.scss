@@ -1,8 +1,5 @@
-@import '../../../../styles/components.scss';
-
 .header {
-  box-shadow: 1px 1px #d1d5db;
-  @apply fixed top-0 left-0 w-full z-40;
+  @apply fixed top-0 left-0 w-full z-40 shadow-[1px_1px_#d1d5db];
 
   &__container {
     @apply container mx-auto px-4;
@@ -17,7 +14,7 @@
   }
 
   &__new-board-btn {
-    font-size: 14px;
+    @apply text-sm;
   }
 }
 
