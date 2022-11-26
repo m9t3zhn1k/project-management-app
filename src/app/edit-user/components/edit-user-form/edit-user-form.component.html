@@ -86,6 +86,7 @@
       </div>
     </div>
     <button [disabled]="editUserForm.invalid" type="submit" class="edit-user__submit-button">Save changes</button>
+    <button class="edit-user__submit-button" (click)="onOpenConfirmModal($event)">Delete user</button>
     <button routerLink="" class="edit-user__back-button">Back</button>
   </form>
 </div>
