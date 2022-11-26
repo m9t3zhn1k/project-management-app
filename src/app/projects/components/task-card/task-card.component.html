@@ -3,11 +3,11 @@
     <p class="task__title">{{ task.title }}</p>
     <div class="task__menu menu">
       <span class="menu__points">...</span>
-      <button class="menu__button-edit" title="Edit task" (click)="editTask()">
-        <img src="/assets/icons/pencil.svg" alt="Edit task" height="18" width="18" />
+      <button class="menu__button-edit" title="{{ 'BOARD.EDITTASK' | translate }}" (click)="editTask()">
+        <img src="/assets/icons/pencil.svg" alt="{{ 'BOARD.EDITTASK' | translate }}" height="18" width="18" />
       </button>
-      <button class="menu__button-delete" title="Delete task" (click)="deleteTask()">
-        <img src="/assets/icons/trash.svg" alt="Delete task" height="18" width="18" />
+      <button class="menu__button-delete" title="{{ 'BOARD.DELETETASK' | translate }}" (click)="deleteTask()">
+        <img src="/assets/icons/trash.svg" alt="{{ 'BOARD.DELETETASK' | translate }}" height="18" width="18" />
       </button>
     </div>
   </div>

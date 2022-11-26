@@ -2,28 +2,28 @@
   <div class="modal__container">
     <div class="modal__window">
       <div class="modal__header">
-        <h5 class="modal__title" id="exampleModalLabel">{{ modalTitle }}</h5>
+        <h5 class="modal__title" id="exampleModalLabel">{{ (boardToEdit._id ? 'BOARD.EDIT' : 'BOARD.ADD') | translate }}</h5>
         <button type="button" class="modal__button-top-close" (click)="closeModal()">X</button>
       </div>
       <div class="modal__content">
         <form class="task-form" [formGroup]="boardForm" (ngSubmit)="submitForm()" novalidate>
           <div class="task-form__input-container">
-            <label class="task-form__label">Title</label>
+            <label class="task-form__label">{{ 'BOARD.TITLE' | translate }}</label>
             <input
               id="boardTitle"
               formControlName="boardTitle"
               type="text"
               class="task-form__input"
               [class.error]="boardForm.controls['boardTitle'].invalid && boardForm.controls['boardTitle'].touched"
-              placeholder="Enter task title"
+              [placeholder]="'BOARD.BOARDTITLETOOLTIP' | translate"
             />
             <p
               *ngIf="boardForm.controls['boardTitle'].invalid && boardForm.controls['boardTitle'].touched"
               class="task-form__error-message"
             >
-              Task must have the name
+            {{ 'BOARD.BOARDTITLERULE' | translate }}
             </p>
-            <label class="task-form__label">Assign user</label>
+            <label class="task-form__label">{{ 'BOARD.PARTICIPANTS' | translate }}</label>
             <div class="task-form__selected-users" *ngIf="selectedUsers.length">
               <div class="task-form__user" *ngFor="let selUser of selectedUsers">
                 <span class="task-form__username">{{selUser.name}}</span>
@@ -44,8 +44,8 @@
             </select>
           </div>
           <div class="task-form__footer">
-            <button type="button" class="task-form__button-close" (click)="closeModal()">Close</button>
-            <button [disabled]="boardForm.invalid" type="submit" class="task-form__button-save">Save changes</button>
+            <button type="button" class="task-form__button-close" (click)="closeModal()">{{ 'BOARD.CLOSE' | translate }}</button>
+            <button [disabled]="boardForm.invalid" type="submit" class="task-form__button-save">{{ 'BOARD.SAVE' | translate }}</button>
           </div>
         </form>
       </div>

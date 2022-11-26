@@ -75,7 +75,7 @@ export class TaskModalComponent implements OnChanges, OnDestroy, OnInit {
         this.selectedUsers.push(user);
       }
     });
-    this.modalTitle = this.taskToEdit.title ? 'Task edit' : 'Create new task';
+    this.modalTitle = this.taskToEdit.title; // ? 'Task edit' : 'Create new task';
     this.taskForm.controls.taskTitle.setValue(this.taskToEdit.title ?? '');
     this.taskForm.controls.taskDescription.setValue(this.taskToEdit.description ?? '');
     this.selected = this.taskToEdit.title ? this.taskToEdit.userId : '';

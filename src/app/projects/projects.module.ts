@@ -21,6 +21,7 @@ import { TaskService } from './services/task.service';
 import { UserService } from './services/user.service';
 import { InitialPipe } from './pipes/initial.pipe';
 import { UserNamePipe } from './pipes/username.pipe';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UserNamePipe } from './pipes/username.pipe';
     BoardModalComponent,
   ],
   imports: [
+    TranslateModule,
     CommonModule,
     ProjectsRoutingModule,
     FormsModule,

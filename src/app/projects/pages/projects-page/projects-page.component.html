@@ -3,7 +3,7 @@
     <div class="projects__search">
       <app-search-item></app-search-item>
     </div>
-    <p class="projects__create-board" *ngIf="!(boards | async)?.length">You don't have any boards.</p>
+    <p class="projects__create-board" *ngIf="!(boards | async)?.length">{{ 'BOARD.ABSENT' | translate }}</p>
     <ul class="projects__list" *ngIf="(boards | async)?.length">
       <app-project-item
         *ngFor="let project of boards | async"
@@ -11,7 +11,11 @@
         (edit)="editProject(project)"
         (delete)="onOpenConfirmModal(project)"
       ></app-project-item>
-      <li><button class="projects__button-add" title="Add new board" (click)="addBoard()">Add new board<br /><span>+</span></button></li>
+      <li>
+        <button class="projects__button-add" title="{{ 'BOARD.ADD' | translate }}" (click)="addBoard()">
+          {{ 'BOARD.ADD' | translate }}<br /><span>+</span>
+        </button>
+      </li>
     </ul>
   </div>
 </section>

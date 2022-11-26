@@ -54,7 +54,7 @@ export class BoardModalComponent implements OnChanges {
               this.selectedUsers.push(foundedUser);
             }
           });
-          this.modalTitle = this.boardToEdit.title ? 'Board edit' : 'Create new board';
+          this.modalTitle = this.boardToEdit.title;
           this.boardForm.controls.boardTitle.setValue(this.boardToEdit.title ?? '');
           this.selected = this.boardToEdit.title ? this.boardToEdit.owner : '';
         }),
