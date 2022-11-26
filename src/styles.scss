@@ -3,28 +3,16 @@
 @tailwind utilities;
 @import './styles/fonts';
 @import './styles/reset';
-@import './styles/constants';
-@import './styles/colors';
+@import './styles/components';
+@import './styles/dark-mode';
 
 @layer base {
   html {
-    @apply min-h-screen font-main w-[100vw] overflow-hidden;
+    @apply min-h-screen font-main w-[100vw];
   }
 
   body {
-    @apply min-h-screen text-text-dark;
-  }
-
-  .light {
-    background-color: white;
-    color: #000000;
-    transition: all 0.3s;
-  }
-
-  .dark {
-    background-color: #323232;
-    color: #f5f5f5;
-    transition: all 0.3s;
+    @apply bg-bg-grey text-text-grey min-h-screen transition-all dark:bg-bg-dark dark:text-white;
   }
 
   button {
@@ -38,8 +26,7 @@
   }
 
   .main {
-    @apply flex-auto flex-shrink-0 relative;
-    margin-top: $headerHeight;
+    @apply flex-auto flex-shrink-0 relative mt-20;
   }
 
   .page {
@@ -47,7 +34,7 @@
   }
 
   .backdrop {
-    @apply fixed top-0 p-2 bottom-0 left-0 right-0 bg-backdrop backdrop-blur-sm;
+    @apply fixed top-0 p-2 z-10 bottom-0 left-0 right-0 bg-backdrop backdrop-blur-sm;
   }
 
   .spinner {

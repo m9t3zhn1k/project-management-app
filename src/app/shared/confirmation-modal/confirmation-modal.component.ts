@@ -7,8 +7,6 @@ import { ConfirmationService } from './confirmation.service';
   styleUrls: ['./confirmation-modal.component.scss'],
 })
 export class ConfirmationModalComponent {
-  question: string = 'Are you sure you want to perform this action?';
-
   constructor(public confirmationService: ConfirmationService) {}
 
   closeModal(event: Event): void {

@@ -6,7 +6,7 @@
   }
 
   &__list {
-    @apply flex gap-6 flex-wrap mx-auto;
+    @apply flex gap-6 flex-wrap mx-auto overflow-y-scroll h-[calc(100vh_-_305px)];
   }
 
   &__create-board {

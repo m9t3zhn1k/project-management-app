@@ -13,7 +13,7 @@ $colors: red, blue, green, indigo, gold, pink, orange;
 
 .column {
   &__wrapper {
-    @apply flex flex-col p-2 max-h-full bg-bg-grey w-72 rounded-xl relative overflow-auto;
+    @apply flex flex-col p-2 max-h-full w-72 rounded-xl relative overflow-auto;
   }
 
   &__header {
@@ -21,7 +21,7 @@ $colors: red, blue, green, indigo, gold, pink, orange;
   }
 
   &__title {
-    @apply relative z-20 px-1 text-text-dark bg-transparent rounded-md w-52 hover:bg-white focus:bg-white transition duration-100;
+    @apply relative z-20 px-1 bg-transparent rounded-md w-52 hover:bg-white focus:bg-white transition duration-100;
   }
 
   &__button-delete {
@@ -29,7 +29,7 @@ $colors: red, blue, green, indigo, gold, pink, orange;
   }
 
   &__tasks {
-    @apply relative z-10 min-h-[48px] mb-2 overflow-auto h-full mr-[-8px] drop-shadow-[0_3px_1px_rgba(0,0,0,0.1)];
+    @apply relative z-10 min-h-[48px] mb-2 overflow-auto h-full mr-[-8px];
     scrollbar-gutter: stable;
 
     &::-webkit-scrollbar {
@@ -45,8 +45,8 @@ $colors: red, blue, green, indigo, gold, pink, orange;
   }
 
   &__button-add-task {
-    @apply p-2 mb-2 text-xl bg-white border-2 border-bg-disabled border-dashed
-     opacity-50 rounded-xl hover:bg-white hover:border-solid hover:opacity-100
+    @apply p-2 mb-2 text-xl border-2 border-bg-disabled border-dashed
+     opacity-50 rounded-xl hover:border-solid hover:opacity-100
      hover:drop-shadow-[0_3px_3px_rgba(0,0,0,0.1)] transition duration-75;
   }
 }

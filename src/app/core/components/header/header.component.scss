@@ -1,10 +1,5 @@
-@import '../../../../styles/colors';
-@import '../../../../styles/constants';
-@import '../../../../styles/components.scss';
-
 .header {
-  box-shadow: 1px 1px #d1d5db;
-  @apply fixed top-0 left-0 w-full z-50;
+  @apply fixed top-0 left-0 w-full z-40 shadow-[1px_1px_#d1d5db];
 
   &__container {
     @apply container mx-auto px-4;
@@ -15,30 +10,14 @@
   }
 
   &__nav-wrapper {
-    @apply flex items-center gap-x-4;
+    @apply flex items-center gap-x-4 mr-[0.9rem];
   }
 
   &__new-board-btn {
-    // color: $purple;
-    font-size: 14px;
+    @apply text-sm;
   }
 }
 
 .logo {
   @apply flex items-center gap-x-4;
-
-  &__link {
-    svg {
-      width: 2.5rem;
-      height: 2.5rem;
-      fill: #6b6662;
-      transition: $transitionAll300;
-    }
-  }
-
-  &__link:hover {
-    svg {
-      fill: #e9cda6;
-    }
-  }
 }

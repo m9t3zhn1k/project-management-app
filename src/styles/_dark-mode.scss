@@ -1,0 +1,144 @@
+
+.header {
+  @apply bg-white dark:bg-bg-dark transition-all;
+}
+
+.logo {
+    &__link {
+    svg {
+        @apply w-10 h-10 transition-all fill-dark-gold;
+    }
+  }
+
+  &__link:hover {
+    svg {
+      @apply fill-semi-grey;
+    }
+  }
+}
+
+.projects {
+  &__item {
+    @apply bg-white dark:bg-bg-light-gold shadow-lg dark:shadow-footer-grey transition-all;
+  }
+
+  &__btn-wrapper {
+    @apply text-semi-grey;
+  }
+}
+
+.users-logo {
+  &__owner,
+  &__users-item {
+    @apply bg-bg-light-gold dark:bg-semi-grey text-text-grey dark:text-white transition-all;
+  }
+}
+
+.search-form {
+  @apply dark:text-semi-grey;
+}
+
+.column {
+  &__wrapper {
+    @apply bg-bg-grey dark:bg-footer-grey dark:text-white transition-all;
+  }
+
+  &__title {
+    @apply text-text-dark dark:text-white transition-all dark:focus:text-semi-grey;
+  }
+
+  &__tasks {
+    @apply drop-shadow-[0_3px_1px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_3px_1px_rgba(255,255,255,0.6)] transition-all;
+  }
+
+  &__button-add-task {
+    @apply bg-white hover:bg-white dark:bg-semi-grey dark:hover:bg-semi-grey;
+  }
+}
+
+.task {
+  @apply bg-white dark:bg-bg-light-gold transition-all;
+
+  &__title {
+    @apply text-text-dark dark:text-semi-grey transition-all;
+  }
+}
+
+.sign-up,
+.login,
+.edit-user {
+  &__title,
+  &__subtitle {
+    @apply text-text-dark dark:text-grey-light;
+  }
+
+  &__input {
+    @apply bg-grey-light dark:bg-bg-light-gold text-text-dark dark:text-semi-grey;
+  }
+
+  &__link {
+    @apply text-text-dark hover:text-text-grey dark:text-grey-light dark:hover:text-dark-gold;
+  }
+}
+
+.modal {
+  @apply bg-white dark:bg-bg-dark;
+
+  &__notice {
+    @apply text-text-dark dark:text-white;
+  }
+
+  &__question {
+    @apply text-text-grey dark:text-grey-light;
+  }
+}
+
+.hero {
+  &__text-content {
+    &:before {
+      @apply content-[''] bg-white dark:bg-footer-grey;
+    }
+  }
+
+  &__link {
+    @apply border-bg-blue-lilac text-bg-blue-lilac dark:border-grey-light dark:text-white;
+
+    &:hover {
+      @apply bg-bg-blue-lilac border-bg-blue-lilac text-white dark:bg-white dark:border-white dark:text-text-dark;
+    }
+  }
+}
+
+.advantage {
+  &__img-box {
+    svg {
+      @apply dark:stroke-grey-light;
+    }
+  }
+}
+
+.team {
+  &__link {
+    img {
+      @apply border-4 border-semi-grey dark:border-dark-gold;
+    }
+  }
+}
+
+.course {
+  &__content-title, 
+  &__content-benefits-item-title {
+    @apply text-text-dark dark:text-white;
+  }
+
+  &__content-description,
+  &__content-benefits-item-description {
+    @apply dark:text-bg-disabled;
+  }
+  
+  &__content-benefits-item-icon {
+    svg {
+      @apply fill-semi-grey dark:fill-grey-light;
+    }
+  }
+}
