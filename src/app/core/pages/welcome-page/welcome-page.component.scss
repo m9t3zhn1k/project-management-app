@@ -1,0 +1,158 @@
+@import '../../../../styles/functions';
+
+.hero,
+.team,
+.advantage {
+  @apply relative;
+
+  &:before {
+    @apply content-[''] w-[320px] h-2 bg-footer-grey absolute bottom-0 left-0;
+  }
+}
+
+.hero__wrapper,
+.team__wrapper,
+.advantage__wrapper,
+.course__wrapper {
+  @apply flex items-center justify-center lg:justify-between py-10;
+} 
+
+.team,
+.advantage,
+.course {
+  &__title {
+    @apply mb-8 lg:mb-20;
+  }
+}
+
+.hero__img-box,
+.team__img-box,
+.advantage__img-box {
+  @apply hidden lg:w-5/12 lg:h-[70vh] lg:flex lg:items-center;
+} 
+
+.hero {
+  &__wrapper {
+    @apply flex items-center justify-between;
+  }
+
+  &__text-content {
+    @apply flex flex-col items-center sm:items-start gap-6 lg:gap-12 max-w-2xl relative;
+
+    &:before {
+      @apply content-[''] absolute max-w-[700px] w-full h-[40vh] rotate-[10deg] rounded-[60%] left-[-20px] top-[-20%] z-[-1];
+    }
+  }
+
+  &__title {
+    @apply lg:text-6xl text-4xl relative;
+
+    &:before {
+      @apply content-[''] w-14 lg:w-20;
+    }
+
+    @include mobile() {
+      @apply mb-0;
+    }
+  }
+
+  &__link {
+    @apply p-2 border-2 w-fit rounded-md transition-all;
+  }
+}
+
+.advantage {
+  &__wrapper {
+    @apply lg:flex-row-reverse;
+  }
+
+  &__title {
+    @apply sm:mx-0 sm:w-full mx-auto w-[100%];
+  }
+
+  &__text-content {
+    @apply lg:w-5/12;
+  }
+
+  &__list-item {
+    @apply mb-4 list-square list-inside;
+  }
+}
+
+.team {
+  &__title {
+    @apply sm:mx-0 sm:w-full mx-auto w-7/12;
+  }
+
+  &__text-content {
+    @apply lg:w-6/12;
+  }
+
+  &__list {
+    @apply flex flex-col gap-10;
+  }
+
+  &__item {
+    @apply w-full flex flex-col items-center md:flex-row md:items-start gap-4;
+
+    span {
+      @apply md:max-w-[85%];
+    }
+  }
+
+  &__link {
+    @apply w-12 h-12 rounded-[50%];
+
+    img {
+      @apply w-12 h-12 rounded-[50%];
+    }
+  }
+
+  &__img-box {
+    img {
+      @apply rounded-md;
+    }
+  }
+}
+
+.course {
+  &__wrapper {
+    @apply lg:flex-row-reverse lg:gap-10;
+  }
+
+  &__title {
+    @apply sm:mx-0 sm:w-full mx-auto w-[84%];
+  }
+
+  &__content-wrapper {
+    @apply mb-6;
+  }
+
+  &__content-title {
+    @apply mb-2 text-lg;
+  }
+
+  &__content-description,
+  &__content-benefits-item-description {
+    @apply text-sm;
+  }
+
+  &__content-benefits-list {
+    @apply flex flex-col gap-2 pl-[36px];
+  }
+
+  &__content-benefits-item {
+    @apply relative;
+  }
+
+  &__content-benefits-item-icon {
+    @apply absolute left-[-36px] top-[6px];
+    svg {
+      @apply w-6 h-6;
+    }
+  }
+
+  &__img-box {
+    @apply hidden lg:flex lg:items-center lg:h-[70vh];
+  }
+}

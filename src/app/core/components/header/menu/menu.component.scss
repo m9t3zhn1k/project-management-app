@@ -1,80 +1,50 @@
-@import '../../../../../styles/colors';
-@import '../../../../../styles/constants';
 @import '../../../../../styles/components';
-@import '../../../../../styles/functions';
 
 .menu {
-  @apply relative z-[55];
-  @apply relative z-40;
+  @apply relative z-[55] right-0 transition-all;
 }
 
 .menu__lang {
-  @apply w-12;
+  @apply w-full;
 }
 
 .menu:after {
   content: '';
-  @apply block absolute w-8 h-8 rounded-md transition-all duration-300;
-  background-color: #e9cda6;
-  @apply block absolute w-8 h-8 rounded-md transition-all duration-300;
-  background-color: #e9cda6;
-  top: -0.4rem;
-  left: 0.6rem;
-  z-index: -2;
+  @apply block absolute w-8 h-8 rounded-md transition-all bg-dark-gold top-[-0.4rem] left-[0.6rem] z-[-2];
 }
 
 .nav {
-  @apply flex flex-col w-72 fixed p-4 right-20 gap-4 pt-24 opacity-0 invisible rounded-md transition-all duration-300;
-  background-color: #e9cda6;
-  top: -2rem;
-  z-index: -1;
+  @apply flex flex-col w-72 fixed p-4 z-[-1] top-[66px] right-4 gap-4 bg-dark-gold opacity-0 invisible rounded-md transition-all;
 }
 
 .menu.active .nav {
-  @apply visible opacity-100;
-  transition-timing-function: cubic-bezier(.68, 1.55, .265, 1);
+  @apply visible opacity-100 visible ease-[cubic-bezier(.68,1.55,.265,1)];
 }
 
 .lang {
-  @apply justify-center gap-4 invisible opacity-0 absolute;
-  top: 50px;
-  right: 73px;
-  @apply justify-center gap-4 invisible opacity-0 absolute;
-  top: 50px;
-  right: 73px;
+  @apply justify-center gap-4 invisible opacity-0;
 }
 
 .menu.active .lang {
-  @apply opacity-100 visible;
-  @apply opacity-100 visible;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @apply opacity-100 visible visible ease-[cubic-bezier(0.175,0.885,0.32,1.275)];
 }
 
 .menu .menu-item {
-  @apply opacity-0 invisible no-underline h-auto text-center;
-  @apply opacity-0 invisible no-underline h-auto text-center;
-  transition: transform .3s ease, background .2s ease;
-  cursor: pointer;
+  @apply opacity-0 invisible no-underline h-auto text-center cursor-pointer [transition:_transform_0.3s_ease,background_0.2s_ease];
 }
 
+
 .menu.active .menu-item {
-  @apply opacity-100 visible;
-  @apply opacity-100 visible;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @apply opacity-100 visible ease-[cubic-bezier(0.175,0.885,0.32,1.275)];
 }
 
 .menu__btn {
   @apply bg-transparent border-0;
-  @apply bg-transparent border-0;
 
   span {
-    @apply block w-7 h-1 mb-0.5 transition-all duration-300;
-    background-color: #6b6662;
-    @apply block w-7 h-1 mb-0.5 transition-all duration-300;
-    background-color: #6b6662;
+    @apply block w-7 h-1 mb-0.5 transition-all bg-footer-grey duration-300;
 
     &:last-child {
-      @apply mb-0;
       @apply mb-0;
     }
   }
@@ -82,29 +52,25 @@
 
 .nav-link {
   @apply text-white p-2 rounded-md relative;
-  @apply text-white p-2 rounded-md relative;
 
   &:hover {
-    background-color: #6b6662;
-    background-color: #6b6662;
+    @apply bg-footer-grey;
   }
 }
 
 .active span {
-  @apply transition-all duration-300;
-  @apply transition-all duration-300;
+  @apply transition-all;
 
   &:first-child {
-    transform: translateY(1px) rotate(45deg);
+    @apply translate-y-[5px] translate-x-[10px] rotate-45;
   }
 
   &:nth-child(2) {
     @apply transition-all duration-75 w-0;
-    @apply transition-all duration-75 w-0;
   }
 
   &:last-child {
-    transform: translateY(-12px) rotate(-45deg);
+    @apply translate-y-[-6px] translate-x-[10px] rotate-[-45deg];
   }
 }
 

@@ -1,4 +1,146 @@
-<div>
-  <p>WELCOME PAGE</p>
-  <button routerLink="/projects">To projects</button>
-</div>
+<section class="hero">
+  <div class="container">
+    <div class="hero__wrapper">
+      <div class="hero__text-content">
+        <h1 class='hero__title title'>{{ "WELCOME.HERO.TITLE" | translate }}</h1>
+        <p class="hero__description">{{ "WELCOME.HERO.DESCRIPTION" | translate }}</p>
+        <a routerLink="/auth/sign-up" class="hero__link">{{ "WELCOME.HERO.LINK" | translate }}</a>
+      </div>
+      <div class="hero__img-box">
+        <img src="../../../../assets/images/welcome/welcome-bg.png" alt="Welcome">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="advantage">
+  <div class="container">
+    <div class="advantage__wrapper">
+      <div class="advantage__text-content">
+        <h2 class='advantage__title title'>{{ "WELCOME.ADVANTAGE.TITLE" | translate }}</h2>
+        <ul class="advantage__list">
+          <li class="advantage__list-item">{{ "WELCOME.ADVANTAGE.LISTITEM.CONTROL" | translate }}</li>
+          <li class="advantage__list-item">{{ "WELCOME.ADVANTAGE.LISTITEM.UNLIMITED" | translate }}</li>
+          <li class="advantage__list-item">{{ "WELCOME.ADVANTAGE.LISTITEM.SCHEDULE" | translate }}</li>
+          <li class="advantage__list-item">{{ "WELCOME.ADVANTAGE.LISTITEM.PERFORMERS" | translate }}</li>
+          <li class="advantage__list-item">{{ "WELCOME.ADVANTAGE.LISTITEM.ADDTASK" | translate }}</li>
+          <li class="advantage__list-item">{{ "WELCOME.ADVANTAGE.LISTITEM.SAVEPROJECTS" | translate }}</li>
+          <li class="advantage__list-item">{{ "WELCOME.ADVANTAGE.LISTITEM.REMOTE" | translate }}</li>
+        </ul>
+      </div>
+      <svg-icon class="advantage__img-box" src="../../../../assets/icons/advantages.svg"></svg-icon>
+    </div>
+  </div>
+</section>
+
+<section class="team">
+  <div class="container">
+    <div class="team__wrapper">
+      <div class="team__text-content">
+        <h2 class='team__title title'>{{ "WELCOME.TEAM.TITLE" | translate }}</h2>
+        <ul class="team__list">
+          <li class="team__item">
+            <a href="https://github.com/m9t3zhn1k" class="team__link" target="_blank">
+              <img src="../../../../assets/images/welcome/pavel.jpeg" alt="Pavel">
+            </a>
+            <span>
+              {{ "WELCOME.TEAM.PARTICIPATED.PAVEL" | translate }}
+            </span>
+          </li>
+          <li class="team__item">
+            <a href="https://github.com/hamsilver" class="team__link" target="_blank">
+              <img src="../../../../assets/images/welcome/stanislav.jpeg" alt="Stanislav">
+            </a>
+            <span>
+              {{ "WELCOME.TEAM.PARTICIPATED.STANISLAV" | translate }}
+            </span>
+          </li>
+          <li class="team__item">
+            <a href="https://github.com/greg-front-end" class="team__link" target="_blank">
+              <img src="../../../../assets/images/welcome/greg.png" alt="Greg">
+            </a>
+            <span>
+              {{ "WELCOME.TEAM.PARTICIPATED.GREG" | translate }}
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div class="team__img-box">
+        <img src="../../../../assets/images/welcome/team.jpg" alt="team">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="course">
+  <div class="container">
+    <div class="course__wrapper">
+      <div class="text-content">
+        <h2 class='course__title title'>{{ "WELCOME.COURSE.TITLE" | translate }}</h2>
+        <div class="course__content">
+          <div class="course__content-wrapper">
+            <h3 class="course__content-title">
+              {{ "WELCOME.COURSE.DESCRIPTIONTITLE" | translate }}
+            </h3>
+            <p class="course__content-description">
+              {{ "WELCOME.COURSE.DESCRIPTION" | translate }}
+            </p>
+          </div>
+          <ul class="course__content-benefits-list">
+            <li class="course__content-benefits-item">
+              <svg-icon 
+                src="../../../../assets/icons/free.svg" 
+                class="course__content-benefits-item-icon">
+              </svg-icon>
+              <h4 class="course__content-benefits-item-title">
+                {{ "WELCOME.COURSE.BENEFITS.FREE.TITLE" | translate }}
+              </h4>
+              <p class="course__content-benefits-item-description">
+                {{ "WELCOME.COURSE.BENEFITS.FREE.DESCRIPTION" | translate }}
+              </p>
+            </li>
+            <li class="course__content-benefits-item">
+              <svg-icon 
+                src="../../../../assets/icons/period.svg" 
+                class="course__content-benefits-item-icon">
+              </svg-icon>
+              <h4 class="course__content-benefits-item-title">
+                {{ "WELCOME.COURSE.BENEFITS.PERIOD.TITLE" | translate }}
+              </h4>
+              <p class="course__content-benefits-item-description">
+                {{ "WELCOME.COURSE.BENEFITS.PERIOD.DESCRIPTION" | translate }}
+              </p>
+            </li>
+            <li class="course__content-benefits-item">
+              <svg-icon 
+                src="../../../../assets/icons/for.svg" 
+                class="course__content-benefits-item-icon">
+              </svg-icon>
+              <h4 class="course__content-benefits-item-title">
+                {{ "WELCOME.COURSE.BENEFITS.FOR.TITLE" | translate }}
+              </h4>
+              <p class="course__content-benefits-item-description">
+                {{ "WELCOME.COURSE.BENEFITS.FOR.DESCRIPTION" | translate }}
+              </p>
+            </li>
+            <li class="course__content-benefits-item">
+              <svg-icon 
+                src="../../../../assets/icons/certificate.svg" 
+                class="course__content-benefits-item-icon">
+              </svg-icon>
+              <h4 class="course__content-benefits-item-title">
+                {{ "WELCOME.COURSE.BENEFITS.SERTIFICATE.TITLE" | translate }}
+              </h4>
+              <p class="course__content-benefits-item-description">
+                {{ "WELCOME.COURSE.BENEFITS.SERTIFICATE.DESCRIPTION" | translate }}
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="course__img-box">
+        <img src="../../../../assets/images/welcome/angular-bg.png" alt="angular">
+      </div>
+    </div>
+  </div>
+</section>

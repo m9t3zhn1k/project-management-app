@@ -3,13 +3,12 @@
 @tailwind utilities;
 @import './styles/fonts';
 @import './styles/reset';
-@import './styles/constants';
-@import './styles/colors';
+@import './styles/components';
 @import './styles/dark-mode';
 
 @layer base {
   html {
-    @apply min-h-screen font-main w-[100vw] overflow-hidden;
+    @apply min-h-screen font-main w-[100vw];
   }
 
   body {
@@ -27,8 +26,7 @@
   }
 
   .main {
-    @apply flex-auto flex-shrink-0 relative;
-    margin-top: $headerHeight;
+    @apply flex-auto flex-shrink-0 relative mt-20;
   }
 
   .page {

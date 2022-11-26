@@ -9,8 +9,8 @@ module.exports = {
       'text-dark-hover': '#6554b6',
       'text-grey': '#787486',
       'bg-grey': '#f5f5f5',
-      'bg-blue-lilac': '#5030e5',
-      'bg-blue-lilac-hover': '#6d53dd',
+      'bg-blue-lilac': '#B8860B',
+      'bg-blue-lilac-hover': '#c5a964',
       'bg-disabled': '#b4b4b4',
       'bg-dark': '#323232',
       'bg-light-gold': 'rgb(255 237 213)',
@@ -43,6 +43,9 @@ module.exports = {
         inh: 'inherit',
       },
     },
+    listStyleType: {
+      square: 'square',
+    }
   },
   plugins: [],
 };

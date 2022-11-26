@@ -1,25 +1,23 @@
-@import './constants';
-
 @mixin tablet {
-  @media (min-width: $tablet) and (max-width: ($desktop - 1px)) {
+  @media (min-width: 768px) and (max-width: (1023px)) {
     @content;
   }
 }
 
 @mixin smallScreen {
-  @media (max-width: $tablet) {
+  @media (max-width: 768px) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (min-width: $desktop) {
+  @media (min-width: 1024px) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (max-width: $mobile) {
+  @media (max-width: 520px) {
     @content;
   }
 }

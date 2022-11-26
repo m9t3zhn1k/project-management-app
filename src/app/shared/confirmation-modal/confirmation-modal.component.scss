@@ -1,12 +1,12 @@
 .modal {
-  @apply mt-[15vh] mx-auto bg-white rounded-lg w-full max-w-xs sm:max-w-sm md:max-w-md overflow-hidden;
+  @apply mt-[15vh] mx-auto rounded-lg w-full max-w-xs sm:max-w-sm md:max-w-md overflow-hidden;
 
   &__notice {
-    @apply px-8 py-4 text-left text-lg font-semibold text-text-dark;
+    @apply px-8 py-4 text-left text-lg font-semibold;
   }
 
   &__question {
-    @apply text-left text-base py-6 px-8 text-text-grey border-t-grey-light border-t;
+    @apply text-left text-base py-6 px-8 border-t-grey-light border-t;
   }
 
   &__buttons {
