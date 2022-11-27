@@ -58,10 +58,8 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.boardService.loadingOn();
     this.subscriptions.add(this.userService.getUsers().subscribe(() => this.getBoards()));
-    
     this.subscriptions.add(
       this.boardService.trigger$.subscribe((value) => {
-        console.log(value);
         this.isBoardModalVisible = value;
         this.addBoard();
       }),

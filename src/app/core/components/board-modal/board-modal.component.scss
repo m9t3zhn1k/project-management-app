@@ -35,7 +35,7 @@
   }
   &__input {
     @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mb-1 placeholder-text-grey
-    focus:border-bg-blue-lilac sm:text-sm;
+    focus:border-bg-blue-lilac text-sm;
 
     &.error {
       @apply border-red;
@@ -48,7 +48,7 @@
     @apply text-sm pt-2 ml-2;
   }
   &__textarea {
-    @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mb-1 placeholder-text-grey focus:border-bg-blue-lilac sm:text-sm;
+    @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mb-1 placeholder-text-grey focus:border-bg-blue-lilac text-sm;
   }
   &__footer {
     @apply flex flex-wrap items-center gap-2 justify-end flex-shrink-0 pt-4;
