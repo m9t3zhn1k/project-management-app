@@ -20,3 +20,5 @@
   </div>
 </section>
 <app-board-modal [(isBoardModalVisible)]="isBoardModalVisible" [boardToEdit]="boardToEdit"></app-board-modal>
+<app-spinner *ngIf="(isLoading | async)"></app-spinner>
+
