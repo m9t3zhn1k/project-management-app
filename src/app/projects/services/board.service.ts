@@ -18,6 +18,10 @@ export class BoardService {
 
   isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
+  private _trigger: Subject<boolean> = new Subject<boolean>();
+
+  trigger$: Observable<boolean> = this._trigger.asObservable();
+
   private readonly userData = this.store.select(userSelector);
 
   currentUser: IUser = new IUser('', '', '');
@@ -113,5 +117,10 @@ export class BoardService {
   createBoard(board: IBoard): Observable<IBoard> {
     const { title, owner, users } = board;
     return this.http.post<IBoard>('boards', { title, owner, users });
+  }
+
+  onNewBoardButton(isOpenModal: boolean): void {
+    console.log(isOpenModal);
+    this._trigger.next(isOpenModal);
   }
 }

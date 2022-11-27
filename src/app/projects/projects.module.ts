@@ -9,8 +9,6 @@ import { ColumnComponent } from './components/column/column.component';
 import { BoardPageComponent } from './pages/board-page/board-page.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { TaskModalComponent } from './components/task-modal/task-modal.component';
-import { BoardService } from './services/board.service';
-import { BoardModalComponent } from './components/board-modal/board-modal.component';
 import { ProjectsPageComponent } from './pages/projects-page/projects-page.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
@@ -23,6 +21,7 @@ import { UserService } from './services/user.service';
 import { InitialPipe } from './pipes/initial.pipe';
 import { UserNamePipe } from './pipes/username.pipe';
 import { TranslateModule } from '@ngx-translate/core';
+import { BoardModalComponent } from '@app/core/components/board-modal/board-modal.component';
 import { BoardSearchDirective } from './directives/board-search.directive';
 import { SpinnerModule } from '@app/shared/spinner/spinner.module';
 
@@ -54,6 +53,6 @@ import { SpinnerModule } from '@app/shared/spinner/spinner.module';
     AngularSvgIconModule,
     SpinnerModule,
   ],
-  providers: [BoardService, ColumnService, TaskService, UserService],
+  providers: [ColumnService, TaskService, UserService],
 })
 export class ProjectsModule {}

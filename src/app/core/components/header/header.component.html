@@ -10,6 +10,7 @@
           <button 
             class="header__new-board-btn nav-btn" 
             *ngIf="user$ | async"
+            (click)="addBoard()"
           >
             {{ "MENU.NEWBOARD" | translate }}
           </button>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BoardService } from '@app/projects/services/board.service';
 import { userSelector } from '@core/store/selectors/auth.selectors';
 import { Store } from '@ngrx/store';
 
@@ -12,5 +13,9 @@ export class HeaderComponent {
 
   isDarkMode: boolean = false;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private boardService: BoardService) {}
+
+  addBoard(): void {
+    this.boardService.onNewBoardButton(true);
+  }
 }

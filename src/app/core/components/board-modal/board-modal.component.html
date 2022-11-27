@@ -1,4 +1,4 @@
-<div *ngIf="isBoardModalVisible" class="modal__wrapper backdrop" tabindex="-1">
+<div class="modal__wrapper backdrop" [class.is-open-modal]="isBoardModalVisible" tabindex="-1">
   <div class="modal__container">
     <div class="modal__window">
       <div class="modal__header">
