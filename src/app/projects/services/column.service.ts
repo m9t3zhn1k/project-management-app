@@ -68,7 +68,6 @@ export class ColumnService {
       tap((value) => {
         this.columns = value;
         this.allColumns.next(value);
-        this.boardService.loadingOff();
       }),
     );
   }

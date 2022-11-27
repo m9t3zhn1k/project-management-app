@@ -33,7 +33,7 @@ export class BoardPageComponent implements OnDestroy, OnInit {
 
   private subscriptions: Subscription = new Subscription();
 
-  isLoading = this.boardService.isLoading;
+  isLoading: boolean = true;
 
   searchForm: FormGroup = new FormGroup({
     search: new FormControl<string>(''),
@@ -71,7 +71,6 @@ export class BoardPageComponent implements OnDestroy, OnInit {
     this.subscriptions.add(
       this.board.subscribe((value) => {
         this.userList.next([value.owner, ...value.users]);
-        this.boardService.loadingOff();
       }),
     );
   }
@@ -85,12 +84,24 @@ export class BoardPageComponent implements OnDestroy, OnInit {
     );
   }
 
+  subscribeForLoader(): void {
+    this.subscriptions.add(
+      this.boardService.isLoading.subscribe((value) => {
+        this.isLoading = value;
+      }),
+    );
+  }
+
   subscribeForBoard(): void {
-    this.boardService.loadingOn();
     this.subscriptions.add(
       this.boardService.board.subscribe((value) => {
         this.board.next(value);
-        this.subscriptions.add(this.columnService.allColumns.subscribe((columns) => this.columns.next(columns)));
+        this.subscriptions.add(
+          this.columnService.allColumns.subscribe((columns) => {
+            this.columns.next(columns);
+            this.boardService.loadingOff();
+          }),
+        );
       }),
     );
   }
@@ -121,6 +132,8 @@ export class BoardPageComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
+    // this.boardService.loadingOn();
+    this.subscribeForLoader();
     this.subscribeForSequence();
     this.subscribeForUsers();
     this.subscribeForFormValueChanges();

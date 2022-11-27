@@ -31,7 +31,7 @@ export class TaskService {
       tap((tasks) => {
         this.taskStore = tasks;
         this.allTasks.next(tasks);
-        this.boardService.loadingOff();
+        // this.boardService.loadingOff();
       }),
     );
   }
