@@ -14,8 +14,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ConfirmationModalModule } from '@shared/confirmation-modal/confirmation-modal.module';
 import { ToastModule } from '@shared/toast/toast.module';
-import { BoardModalComponent } from './components/board-modal/board-modal.component';
-
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WelcomePageComponent } from './pages/welcome-page/welcome-page.component';

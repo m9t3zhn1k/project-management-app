@@ -120,7 +120,6 @@ export class BoardService {
   }
 
   onNewBoardButton(isOpenModal: boolean): void {
-    console.log(isOpenModal);
     this._trigger.next(isOpenModal);
   }
 }
