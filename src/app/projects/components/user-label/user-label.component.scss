@@ -1,6 +1,6 @@
 .projects {
   &__users {
-    @apply flex;
+    @apply flex sm:px-[5px];
   }
 
   &__users-list {

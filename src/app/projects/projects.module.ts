@@ -23,6 +23,7 @@ import { UserService } from './services/user.service';
 import { InitialPipe } from './pipes/initial.pipe';
 import { UserNamePipe } from './pipes/username.pipe';
 import { TranslateModule } from '@ngx-translate/core';
+import { BoardSearchDirective } from './directives/board-search.directive';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TranslateModule } from '@ngx-translate/core';
     UserNamePipe,
     BoardModalComponent,
     ProjectsFilterPipe,
+    BoardSearchDirective,
   ],
   imports: [
     TranslateModule,

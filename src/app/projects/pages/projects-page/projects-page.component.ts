@@ -67,7 +67,7 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
   addBoard(): void {
     this.boardToEdit = new IBoard();
     this.boardToEdit.title = 'New board';
-    this.boardToEdit.owner = this.boardService.owner;
+    this.boardToEdit.owner = this.boardService.currentUser._id;
     this.isBoardModalVisible = true;
   }
 
