@@ -1,12 +1,13 @@
 .projects {
-  @apply pr-4 pl-4 pt-6 pb-10 mx-auto max-w-7xl;
+  @apply pb-0 pt-4 h-[calc(100vh_-_265px)] md:h-[calc(100vh_-_200px)] lg:h-[calc(100vh_-_138px)] overflow-auto;
 
   &__search {
-    @apply my-6;
+    @apply my-6 top-[-1rem] sticky z-[10];
   }
 
   &__list {
-    @apply flex gap-6 flex-wrap mx-auto overflow-y-scroll h-[calc(100vh_-_305px)];
+    @apply grid gap-2 gap-x-4 lg:gap-4 overflow-y-scroll;
+    grid-template-columns: repeat(auto-fit, minmax(294px, 1fr));
   }
 
   &__create-board {
@@ -18,10 +19,8 @@
   }
 
   &__button-add {
-    @apply w-72 h-24 mb-2 bg-white rounded-xl justify-center items-center shadow-lg hover:scale-95
-    transition duration-300 ease-in-out text-text-dark border-2 border-bg-disabled border-dashed
-    opacity-50 hover:opacity-100;
-
+    @apply w-full h-24 mb-2 rounded-xl justify-center items-center shadow-lg hover:scale-95
+    transition-all border-2 border-dashed opacity-50 hover:opacity-100;
     span {
       @apply text-3xl;
     }

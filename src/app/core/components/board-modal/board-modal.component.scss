@@ -1,13 +1,20 @@
 .modal {
   &__wrapper {
-    @apply z-[50] opacity-0 invisible fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none bg-semi-grey transition-all;
+    @apply z-[50] opacity-0 invisible fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none transition-all;
   }
   &__container {
     @apply relative flex items-center justify-center w-auto h-full pointer-events-none;
   }
   &__window {
     @apply relative flex flex-col w-full text-text-dark bg-white border-none rounded-xl shadow-lg
-    outline-none pointer-events-auto max-w-[500px] bg-clip-padding;
+    outline-none pointer-events-auto max-w-[500px] bg-clip-padding transition-all opacity-0;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateX(-70deg);
+    -moz-transform: rotateX(-70deg);
+    -ms-transform: rotateX(-70deg);
+    transform: rotateX(-70deg);
   }
   &__header {
     @apply flex items-center justify-between flex-shrink-0 p-4 pb-2 rounded-t-md;
@@ -29,6 +36,14 @@
   @apply opacity-100 visible;
 }
 
+.modal__wrapper.is-open-modal .modal__window {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  -ms-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  opacity: 1;
+}
+
 .task-form {
   &__input-container {
     @apply flex flex-col;
@@ -45,7 +60,7 @@
     @apply mt-0 ml-2 text-xs text-red;
   }
   &__label {
-    @apply text-sm pt-2 ml-2;
+    @apply text-sm py-2 ml-2;
   }
   &__textarea {
     @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mb-1 placeholder-text-grey focus:border-bg-blue-lilac sm:text-sm;
