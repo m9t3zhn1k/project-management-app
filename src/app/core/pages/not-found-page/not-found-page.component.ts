@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-not-found-page',
   templateUrl: './not-found-page.component.html',
   styleUrls: ['./not-found-page.component.scss'],
 })
-export class NotFoundPageComponent {}
+export class NotFoundPageComponent {
+  @HostBinding('class') classes = 'page';
+}

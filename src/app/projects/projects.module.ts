@@ -16,6 +16,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
 import { UserLabelComponent } from './components/user-label/user-label.component';
 import { SearchItemComponent } from './components/search-item/search-item.component';
+import { ProjectsFilterPipe } from './pipes/projects-filter.pipe';
 import { ColumnService } from './services/column.service';
 import { TaskService } from './services/task.service';
 import { UserService } from './services/user.service';
@@ -36,6 +37,7 @@ import { TranslateModule } from '@ngx-translate/core';
     InitialPipe,
     UserNamePipe,
     BoardModalComponent,
+    ProjectsFilterPipe,
   ],
   imports: [
     TranslateModule,

@@ -60,6 +60,14 @@ export const reducer = createReducer(
         login: user.login,
       },
       isPending: false,
+      isFetched: true,
+    }),
+  ),
+  on(
+    AuthActions.getUserFailed,
+    (state: AuthState): AuthState => ({
+      ...state,
+      isFetched: true,
     }),
   ),
   on(

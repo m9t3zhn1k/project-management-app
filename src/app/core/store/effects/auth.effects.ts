@@ -105,13 +105,6 @@ export class AuthEffects {
         ofType(AuthActions.LogOut),
         tap((): void => localStorage.clear()),
         tap((): Promise<boolean> => this.router.navigateByUrl('')),
-        tap((): void => {
-          this.toastService.showToast({
-            title: 'Log out',
-            description: 'You have successfully logged out!',
-            status: 'success',
-          });
-        }),
       ),
     { dispatch: false },
   );

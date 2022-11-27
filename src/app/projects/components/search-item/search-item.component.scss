@@ -1,12 +1,16 @@
-.search-form {
-  @apply bg-white mx-auto;
-}
-
 .search-form,
 .search-input {
-  @apply w-full p-2 max-w-xs;
+  @apply w-full p-2 max-w-xs bg-bg-grey;
+}
+
+.search-form {
+  @apply placeholder-text-grey mx-auto border border-transparent transition-all;
+
+  &:has(.search-input:focus) {
+    @apply shadow-lg bg-white;
+  }
 }
 
 .search-input {
-  @apply py-2;
+  @apply py-2 transition-all focus:bg-white;
 }

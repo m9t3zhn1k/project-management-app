@@ -8,30 +8,32 @@ import {
   ErrorResponseModel,
 } from '@core/models/backend-api.model';
 
-const actionSource: string = '[Auth]';
+const authAction: string = '[Auth]';
 
-export const SignUp = createAction(`${actionSource} SignUp`, props<SignUpRequestModel>());
+const userAction: string = '[User]';
 
-export const SignUpFailed = createAction(`${actionSource} SignUp Failed`, props<ErrorResponseModel>());
+export const SignUp = createAction(`${authAction} SignUp`, props<SignUpRequestModel>());
 
-export const LogIn = createAction(`${actionSource} LogIn`, props<LoginRequestModel>());
+export const SignUpFailed = createAction(`${authAction} SignUp Failed`, props<ErrorResponseModel>());
 
-export const LogInSuccess = createAction(`${actionSource} LogIn Success`, props<LoginResponseModel>());
+export const LogIn = createAction(`${authAction} LogIn`, props<LoginRequestModel>());
 
-export const LogInFailed = createAction(`${actionSource} LogIn Failed`, props<ErrorResponseModel>());
+export const LogInSuccess = createAction(`${authAction} LogIn Success`, props<LoginResponseModel>());
 
-export const LogOut = createAction(`${actionSource} LogOut`);
+export const LogInFailed = createAction(`${authAction} LogIn Failed`, props<ErrorResponseModel>());
 
-export const getUser = createAction(`${actionSource} Get User`, props<LoginResponseModel>());
+export const LogOut = createAction(`${authAction} LogOut`);
 
-export const getUserSuccess = createAction(`${actionSource} Get User Success`, props<UserModel>());
+export const getUser = createAction(`${userAction} Get User`, props<LoginResponseModel>());
 
-export const getUserFailed = createAction(`${actionSource} Get User Failed`);
+export const getUserSuccess = createAction(`${userAction} Get User Success`, props<UserModel>());
 
-export const UpdateUser = createAction(`${actionSource} Update User`, props<UpdateUserRequestModel>());
+export const getUserFailed = createAction(`${userAction} Get User Failed`);
 
-export const UpdateUserSuccess = createAction(`${actionSource} Update User Success`, props<UserModel>());
+export const UpdateUser = createAction(`${userAction} Update User`, props<UpdateUserRequestModel>());
 
-export const UpdateUserFailed = createAction(`${actionSource} Update User Failed`, props<ErrorResponseModel>());
+export const UpdateUserSuccess = createAction(`${userAction} Update User Success`, props<UserModel>());
 
-export const DeleteUser = createAction(`${actionSource} Delete User`);
+export const UpdateUserFailed = createAction(`${userAction} Update User Failed`, props<ErrorResponseModel>());
+
+export const DeleteUser = createAction(`${userAction} Delete User`);
