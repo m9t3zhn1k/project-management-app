@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -14,6 +14,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ConfirmationModalModule } from '@shared/confirmation-modal/confirmation-modal.module';
 import { ToastModule } from '@shared/toast/toast.module';
+import { BoardModalComponent } from './components/board-modal/board-modal.component';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -31,6 +32,7 @@ import { AuthService } from '@auth/services/auth.service';
 import { interceptors } from './interceptors/interceptors';
 
 import { AuthGuard } from './guards/auth.guard';
+import { BoardService } from '@app/projects/services/board.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -40,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   imports: [
     CoreRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
     RouterModule,
@@ -70,7 +73,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SpinnerComponent,
   ],
   exports: [HeaderComponent, FooterComponent, SpinnerComponent, ConfirmationModalModule, ToastModule],
-  providers: [AuthService, interceptors, AuthGuard],
+  providers: [AuthService, interceptors, AuthGuard, BoardService],
 })
 export class CoreModule {
   constructor(private iconReg: SvgIconRegistryService) {

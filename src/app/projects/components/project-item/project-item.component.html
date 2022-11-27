@@ -1,5 +1,5 @@
 <li class="projects__item">
-  <a class="projects__header" [routerLink]="'board/1'">
+  <a class="projects__header" [routerLink]="'board/' + project._id">
     <h4 class="projects__title">{{ project.title }}</h4>
     <div class="projects__users-wrapper">
       <app-user-label [userList]="userList"></app-user-label>

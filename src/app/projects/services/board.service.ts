@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IBoard } from '@app/shared/models';
-import { BehaviorSubject, catchError, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, Subject, tap } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -15,6 +15,10 @@ export class BoardService {
   board: BehaviorSubject<IBoard> = new BehaviorSubject<IBoard>(this.boardObj);
 
   isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+
+  private _trigger: Subject<boolean> = new Subject<boolean>();
+
+  trigger$: Observable<boolean> = this._trigger.asObservable();
 
   private readonly userData = this.store.select(userSelector);
 
@@ -95,5 +99,10 @@ export class BoardService {
   createBoard(board: IBoard): Observable<IBoard> {
     const { title, owner, users } = board;
     return this.http.post<IBoard>('boards', { title, owner, users });
+  }
+
+  onNewBoardButton(isOpenModal: boolean): void {
+    console.log(isOpenModal);
+    this._trigger.next(isOpenModal);
   }
 }
