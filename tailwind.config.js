@@ -4,7 +4,7 @@ module.exports = {
   content: ['./src/**/*.{html,ts}'],
   darkMode: 'class',
   theme: {
-      colors: {
+    colors: {
       'text-dark': '#0d062d',
       'text-dark-hover': '#6554b6',
       'text-grey': '#787486',

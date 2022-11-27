@@ -25,6 +25,14 @@
   &__btn-wrapper {
     @apply text-semi-grey;
   }
+
+  &__users-item {
+    @apply bg-bg-light-gold dark:bg-semi-grey text-text-grey dark:text-white border-2 border-white dark:border-bg-light-gold transition-all;
+  }
+
+  &__button-add {
+    @apply bg-white border-bg-disabled dark:bg-transparent dark:text-white;
+  }
 }
 
 .users-logo {
@@ -34,8 +42,17 @@
   }
 }
 
+.search-form,
+.search-input {
+  @apply bg-bg-grey;
+}
+
 .search-form {
-  @apply dark:text-semi-grey;
+  @apply border-b-[4px] border-grey-light  dark:text-semi-grey dark:border-b-[0] dark:border-transparent;;
+
+  &:has(.search-input:focus) {
+    @apply border-b-[0] border-transparent; 
+  }
 }
 
 .column {
@@ -61,6 +78,12 @@
 
   &__title {
     @apply text-text-dark dark:text-semi-grey transition-all;
+  }
+}
+
+.task-form {
+  &__label {
+    @apply dark:text-grey-light;
   }
 }
 
