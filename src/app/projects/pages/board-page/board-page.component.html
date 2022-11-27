@@ -42,4 +42,4 @@
 </article>
 <app-task-modal [(isModalVisible)]="isModalVisible" [taskToEdit]="taskToEdit"></app-task-modal>
 <app-board-modal [(isBoardModalVisible)]="isBoardModalVisible" [boardToEdit]="boardToEdit"></app-board-modal>
-<app-spinner *ngIf="(isLoading | async)"></app-spinner>
+<app-spinner *ngIf="isLoading"></app-spinner>

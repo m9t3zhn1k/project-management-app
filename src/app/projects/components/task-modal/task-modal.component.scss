@@ -1,6 +1,6 @@
 .modal {
   &__wrapper {
-    @apply z-[100] fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none bg-semi-grey;
+    @apply z-[100] fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none;
   }
   &__container {
     @apply relative flex items-center justify-center w-auto h-full pointer-events-none;
@@ -10,7 +10,7 @@
     outline-none pointer-events-auto max-w-[500px] bg-clip-padding;
   }
   &__header {
-    @apply flex items-center justify-between flex-shrink-0 p-4 pb-2 rounded-t-md;
+    @apply flex items-center justify-between flex-shrink-0 p-4 pb-2;
   }
   &__title {
     @apply text-xl font-medium leading-normal text-text-dark;
@@ -21,7 +21,7 @@
     hover:bg-bg-blue-lilac-hover;
   }
   &__content {
-    @apply relative p-4 pt-0;
+    @apply relative p-4 pt-0 rounded-xl;
   }
 }
 .task-form {
@@ -30,7 +30,7 @@
   }
   &__input {
     @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mb-1 placeholder-text-grey
-    focus:border-bg-blue-lilac sm:text-sm;
+    focus:border-bg-blue-lilac text-sm;
 
     &.error {
       @apply border-red;
@@ -43,7 +43,7 @@
     @apply text-sm pt-2 ml-2;
   }
   &__textarea {
-    @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mb-1 placeholder-text-grey focus:border-bg-blue-lilac sm:text-sm;
+    @apply block w-full appearance-none border rounded-md bg-bg-grey border-transparent px-3 py-2 mb-1 placeholder-text-grey focus:border-bg-blue-lilac text-sm;
   }
   &__footer {
     @apply flex flex-wrap items-center gap-2 justify-end flex-shrink-0 pt-4;

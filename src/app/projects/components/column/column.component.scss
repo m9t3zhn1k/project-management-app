@@ -29,17 +29,17 @@ $colors: red, blue, green, indigo, gold, pink, orange;
   }
 
   &__tasks {
-    @apply relative z-10 min-h-[48px] mb-2 sm:ml-2 overflow-auto h-full mr-[-8px];
+    @apply relative z-10 min-h-[48px] mb-2 ml-2 md:ml-0 overflow-auto h-full mr-[-8px];
     scrollbar-gutter: stable;
 
     &::-webkit-scrollbar {
-      @apply w-[8px] sm:w-[15px];
+      @apply md:w-[8px] w-[15px];
     }
     &::-webkit-scrollbar-track {
       @apply bg-transparent rounded-xl mb-1;
     }
     &::-webkit-scrollbar-thumb {
-      @apply border-[3px] sm:border-[5px] border-solid border-transparent rounded-xl bg-light-blue
+      @apply md:border-[3px] border-[5px] border-solid border-transparent rounded-xl bg-light-blue
       bg-clip-content;
     }
   }
@@ -49,7 +49,7 @@ $colors: red, blue, green, indigo, gold, pink, orange;
   }
 
   &__button-add-task {
-    @apply p-2 mb-2 sm:mx-[6px] text-xl border-2 border-bg-disabled border-dashed
+    @apply p-2 mb-2 mx-[6px] md:mx-0 text-xl border-2 border-bg-disabled border-dashed
      opacity-50 rounded-xl hover:border-solid hover:opacity-100
      hover:drop-shadow-[0_3px_3px_rgba(0,0,0,0.1)] transition duration-75;
   }
