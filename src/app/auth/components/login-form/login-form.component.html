@@ -1,5 +1,5 @@
 <div class="login__container">
-  <h2 class="login__title">Sign In</h2>
+  <h2 class="login__title">{{ 'LOGIN-FORM.TITLE' | translate }}</h2>
   <form class="login__form" [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
     <div>
       <div class="login__input-container">
@@ -14,7 +14,7 @@
           *ngIf="loginForm.controls['login'].invalid && loginForm.controls['login'].touched"
           class="login__error-message"
         >
-          Login must be at least 3 characters long
+        {{ 'LOGIN-FORM.LOGIN_INPUT_ERROR' | translate }}
         </p>
       </div>
       <div class="login__input-container">
@@ -28,11 +28,11 @@
           *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
           class="login__error-message"
         >
-          Password must be at least 8 characters long
+          {{ 'LOGIN-FORM.PASSWORD_INPUT_ERROR' | translate }}
         </p>
       </div>
     </div>
-    <button [disabled]="loginForm.invalid" type="submit" class="login__submit-button">Sign in</button>
-    <a class="login__link" routerLink="/auth/sign-up">Don't have an account yet?</a>
+    <button [disabled]="loginForm.invalid" type="submit" class="login__submit-button">{{ 'LOGIN-FORM.TITLE' | translate }}</button>
+    <a class="login__link" routerLink="/auth/sign-up">{{ 'LOGIN-FORM.ANOTHER_ACCOUNT' | translate }}</a>
   </form>
 </div>

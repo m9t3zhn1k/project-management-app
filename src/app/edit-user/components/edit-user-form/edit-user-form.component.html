@@ -1,5 +1,5 @@
 <div class="edit-user__container">
-  <h2 class="edit-user__title">Edit user</h2>
+  <h2 class="edit-user__title">{{ 'EDIT-FORM.TITLE' | translate }}</h2>
   <form class="edit-user__form" [formGroup]="editUserForm" (ngSubmit)="submitForm()" novalidate>
     <div>
       <div class="edit-user__input-container">
@@ -85,8 +85,8 @@
         </p>
       </div>
     </div>
-    <button [disabled]="editUserForm.invalid" type="submit" class="edit-user__submit-button">Save changes</button>
-    <button class="edit-user__submit-button" (click)="onOpenConfirmModal($event)">Delete user</button>
-    <button routerLink="" class="edit-user__back-button">Back</button>
+    <button [disabled]="editUserForm.invalid" type="submit" class="edit-user__submit-button">{{ 'EDIT-FORM.SAVE' | translate }}</button>
+    <button class="edit-user__submit-button" (click)="onOpenConfirmModal($event)">{{ 'EDIT-FORM.DELETE' | translate }}</button>
+    <button routerLink="" class="edit-user__back-button">{{ 'EDIT-FORM.BACK' | translate }}</button>
   </form>
 </div>

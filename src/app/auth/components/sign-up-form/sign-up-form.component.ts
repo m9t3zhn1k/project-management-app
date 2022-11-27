@@ -4,6 +4,9 @@ import { ValidatorsModule } from '@auth/validators/validators.module';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '@core/store/actions/auth.actions';
 import { SignUpRequestModel } from '@app/core/models/backend-api.model';
+import { TranslateService } from '@ngx-translate/core';
+import { AppLanguage } from '@shared/enums/AppLanguage';
+import { LocalStorageKeys } from '@shared/enums/LocalStorageKeys';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -21,7 +24,15 @@ export class SignUpFormComponent {
     { validators: this.customValidators.confirmPassword },
   );
 
-  constructor(private customValidators: ValidatorsModule, private store: Store) {}
+  appLanguage: string = localStorage.getItem(LocalStorageKeys.LANG) || AppLanguage.En;
+
+  constructor(
+    private customValidators: ValidatorsModule,
+    private store: Store,
+    private translateService: TranslateService,
+  ) {
+    this.translateService.use(this.appLanguage);
+  }
 
   submitForm(): void {
     const data: SignUpRequestModel = {
