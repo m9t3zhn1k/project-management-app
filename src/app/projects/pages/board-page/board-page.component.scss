@@ -84,10 +84,6 @@
   @apply transition-transform duration-300 ease-in-out;
 }
 
-.loader {
-  @apply z-[100];
-}
-
 .search {
 @apply bg-whitish rounded-lg  sm:mb-1;
 

@@ -21,7 +21,7 @@ export class BoardPageComponent implements OnDestroy, OnInit {
 
   columns: Subject<IColumn[]> = new Subject<IColumn[]>();
 
-  userList: string[] = [];
+  userList: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
   isModalVisible: boolean = false;
 
@@ -70,7 +70,8 @@ export class BoardPageComponent implements OnDestroy, OnInit {
   subscribeForUsers(): void {
     this.subscriptions.add(
       this.board.subscribe((value) => {
-        this.userList = [value.owner, ...value.users];
+        this.userList.next([value.owner, ...value.users]);
+        this.boardService.loadingOff();
       }),
     );
   }
@@ -85,9 +86,11 @@ export class BoardPageComponent implements OnDestroy, OnInit {
   }
 
   subscribeForBoard(): void {
+    this.boardService.loadingOn();
     this.subscriptions.add(
       this.boardService.board.subscribe((value) => {
         this.board.next(value);
+        this.subscriptions.add(this.columnService.allColumns.subscribe((columns) => this.columns.next(columns)));
       }),
     );
   }
@@ -98,7 +101,6 @@ export class BoardPageComponent implements OnDestroy, OnInit {
         .getBoard(this.boardId)
         .pipe(
           tap((board) => {
-            this.board.next(board);
             this.boardToEdit = board;
             this.isOwner.next(this.boardService.currentUser._id === this.boardService.owner);
           }),
@@ -112,18 +114,16 @@ export class BoardPageComponent implements OnDestroy, OnInit {
         )
         .subscribe((columns) => {
           this.columns.next(columns);
-          this.boardService.loadingOff();
+          this.subscribeForEditTask();
+          this.subscribeForBoard();
         }),
     );
   }
 
   ngOnInit(): void {
+    this.subscribeForSequence();
     this.subscribeForUsers();
     this.subscribeForFormValueChanges();
-    this.subscribeForSequence();
-    this.subscribeForEditTask();
-    this.subscribeForBoard();
-    this.subscriptions.add(this.columnService.allColumns.subscribe((columns) => this.columns.next(columns)));
   }
 
   ngOnDestroy(): void {

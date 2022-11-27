@@ -19,7 +19,7 @@
       </form>
     </div>
     <div class="board__users-wrapper">
-      <app-user-label [userList]="userList"></app-user-label>
+      <app-user-label [userList]="userList | async"></app-user-label>
     </div>
   </div>
   <div
@@ -42,4 +42,4 @@
 </article>
 <app-task-modal [(isModalVisible)]="isModalVisible" [taskToEdit]="taskToEdit"></app-task-modal>
 <app-board-modal [(isBoardModalVisible)]="isBoardModalVisible" [boardToEdit]="boardToEdit"></app-board-modal>
-<div *ngIf="isLoading | async" class="loader backdrop" tabindex="-1"></div>
+<app-spinner *ngIf="(isLoading | async)"></app-spinner>
