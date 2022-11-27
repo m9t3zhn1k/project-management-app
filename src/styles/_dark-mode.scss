@@ -103,10 +103,10 @@
   }
 
   &__link {
-    @apply border-bg-blue-lilac text-bg-blue-lilac dark:border-grey-light dark:text-white;
+    @apply bg-bg-blue-lilac text-white border-bg-blue-lilac;
 
     &:hover {
-      @apply bg-bg-blue-lilac border-bg-blue-lilac text-white dark:bg-white dark:border-white dark:text-text-dark;
+      @apply border-bg-blue-lilac text-text-dark bg-white;
     }
   }
 }
