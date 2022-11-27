@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { IBoard } from '@app/shared/models';
-import { BehaviorSubject, catchError, Observable, tap } from 'rxjs';
+import { IBoard, IUser } from '@app/shared/models';
+import { BehaviorSubject, catchError, Observable, Subject, tap, map } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -14,14 +14,31 @@ export class BoardService {
 
   board: BehaviorSubject<IBoard> = new BehaviorSubject<IBoard>(this.boardObj);
 
+  search: Subject<string> = new Subject();
+
   isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   private readonly userData = this.store.select(userSelector);
 
+  currentUser: IUser = new IUser('', '', '');
+
   constructor(private http: HttpClient, private router: Router, private readonly store: Store) {
-    this.userData.subscribe((user) => {
-      this.owner = user?.id ?? '';
-    });
+    this.userData
+      .pipe(
+        map((user): IUser => {
+          if (user) {
+            return { _id: user.id, name: user.name, login: user.login };
+          }
+          return new IUser('', '', '');
+        }),
+      )
+      .subscribe((user) => {
+        this.currentUser = user;
+      });
+  }
+
+  setSearch(value: string): void {
+    this.search.next(value);
   }
 
   get owner(): string {
@@ -60,6 +77,7 @@ export class BoardService {
         this.boardObj._id = value._id;
         this.boardObj.title = value.title;
         this.boardObj.owner = value.owner;
+        this.owner = value.owner;
         this.boardObj.users = value.users;
         this.board.next(this.boardObj);
       }),
@@ -67,7 +85,7 @@ export class BoardService {
   }
 
   get allBoards(): Observable<IBoard[]> {
-    return this.http.get<IBoard[]>(`boardsSet/${this.owner}`).pipe(
+    return this.http.get<IBoard[]>(`boardsSet/${this.currentUser._id}`).pipe(
       catchError((error: HttpErrorResponse) => {
         if (!error.ok) {
           this.router.navigateByUrl('/error404');

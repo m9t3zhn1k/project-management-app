@@ -98,6 +98,7 @@
     "DELETETASK":"Delete task",
     "SEARCH": "Search",
     "SEARCHPLACEHOLDER": "Search for board or user...",
+    "INTERNALSEARCHPLACEHOLDER": "Search for task or user...",
     "DELETECOLUMN": "Delete column"
   },
   "LOGIN-FORM": {

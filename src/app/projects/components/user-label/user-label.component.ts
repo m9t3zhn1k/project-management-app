@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./user-label.component.scss'],
 })
 export class UserLabelComponent {
-  @Input() userList: string[] = [];
+  @Input() userList: string[] | null = [];
 }

@@ -23,6 +23,8 @@ import { UserService } from './services/user.service';
 import { InitialPipe } from './pipes/initial.pipe';
 import { UserNamePipe } from './pipes/username.pipe';
 import { TranslateModule } from '@ngx-translate/core';
+import { BoardSearchDirective } from './directives/board-search.directive';
+import { SpinnerModule } from '@app/shared/spinner/spinner.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { TranslateModule } from '@ngx-translate/core';
     UserNamePipe,
     BoardModalComponent,
     ProjectsFilterPipe,
+    BoardSearchDirective,
   ],
   imports: [
     TranslateModule,
@@ -49,6 +52,7 @@ import { TranslateModule } from '@ngx-translate/core';
     DragDropModule,
     OverlayModule,
     AngularSvgIconModule,
+    SpinnerModule,
   ],
   providers: [BoardService, ColumnService, TaskService, UserService],
 })

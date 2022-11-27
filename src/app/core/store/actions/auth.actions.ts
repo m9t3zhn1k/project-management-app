@@ -9,7 +9,6 @@ import {
 } from '@core/models/backend-api.model';
 
 const authAction: string = '[Auth]';
-
 const userAction: string = '[User]';
 
 export const SignUp = createAction(`${authAction} SignUp`, props<SignUpRequestModel>());

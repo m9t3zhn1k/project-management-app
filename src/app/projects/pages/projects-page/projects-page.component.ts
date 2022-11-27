@@ -23,6 +23,8 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
 
   _filter: string;
 
+  isLoading = this.boardService.isLoading;
+
   constructor(
     private boardService: BoardService,
     private userService: UserService,
@@ -54,20 +56,21 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getBoards();
-    this.subscriptions.add(this.userService.getUsers().subscribe(() => {}));
+    this.boardService.loadingOn();
+    this.subscriptions.add(this.userService.getUsers().subscribe(() => this.getBoards()));
   }
 
   getBoards(): void {
     this.boardService.allBoards.subscribe((boards) => {
       this.boards.next(boards);
+      this.boardService.loadingOff();
     });
   }
 
   addBoard(): void {
     this.boardToEdit = new IBoard();
     this.boardToEdit.title = 'New board';
-    this.boardToEdit.owner = this.boardService.owner;
+    this.boardToEdit.owner = this.boardService.currentUser._id;
     this.isBoardModalVisible = true;
   }
 

@@ -2,7 +2,7 @@
   @apply flex flex-col w-full h-[calc(100vh-138px)] bg-[url('/assets/images/board-bg-1.webp')] bg-cover pb-2;
 
   &__header {
-    @apply flex justify-between items-center py-3 px-5 mb-2 bg-whitish;
+    @apply flex flex-row sm:flex-col justify-between items-center py-3 px-5 mb-2 bg-whitish sm:p-2;
   }
 
   &__title-wrapper {
@@ -17,12 +17,16 @@
     @apply text-text-dark text-xl;
   }
 
+  &__search {
+    @apply w-[18rem];
+  }
+
   &__users-wrapper {
     @apply flex justify-end w-72;
   }
 
   &__all-columns {
-    @apply flex items-start w-full max-w-full mx-0 px-5 h-full min-h-[280px] grow-0 flex-row gap-2
+    @apply flex items-start w-full max-w-full mx-0 px-5 h-full min-h-[280px] grow-0 flex-row gap-2 sm:gap-3
     overflow-x-auto overflow-y-hidden;
     scrollbar-gutter: stable;
 
@@ -80,6 +84,14 @@
   @apply transition-transform duration-300 ease-in-out;
 }
 
-.loader {
-  @apply z-[100];
+.search {
+@apply bg-whitish rounded-lg  sm:mb-1;
+
+  &__form {
+    @apply flex w-full items-center gap-x-2 rounded-md p-2 sm:p-[2px];
+
+    input {
+      @apply w-full;
+    }
+  }
 }
