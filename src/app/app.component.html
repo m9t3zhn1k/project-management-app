@@ -3,9 +3,9 @@
 </header>
 <main class="main">
   <app-spinner *ngIf="isPending | async"></app-spinner>
-  <app-confirmational-modal *ngIf="isModalOpened$ | async"></app-confirmational-modal>
   <app-toast></app-toast>
-  <router-outlet></router-outlet>
+  <router-outlet *ngIf="isFetched | async"></router-outlet>
+  <app-confirmational-modal *ngIf="isModalOpened$ | async"></app-confirmational-modal>
 </main>
 <footer class="footer">
   <app-footer></app-footer>

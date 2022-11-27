@@ -5,7 +5,7 @@
       <app-user-label [userList]="userList"></app-user-label>
     </div>
   </a>
-  <div class="projects__btn-wrapper">
+  <div class="projects__btn-wrapper" *ngIf="isOwner">
     <button class="projects__edit projects__btn" (click)="edit.emit()" title="{{ 'BOARD.EDIT' | translate }}">
       <svg-icon src="../../../../assets/icons/pencil.svg"></svg-icon>
     </button>

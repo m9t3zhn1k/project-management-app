@@ -1,5 +1,6 @@
-import { Component, Input, OnChanges } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Component, Input, OnChanges } from '@angular/core';
+import { CdkDragDrop, CdkDragMove, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { IColumn, ITask } from '@app/shared/models';
 import { BoardService } from '@app/projects/services/board.service';
 import { ColumnService } from '@app/projects/services/column.service';
@@ -16,11 +17,15 @@ import { ConfirmationTitles } from '@app/shared/confirmation-modal/confirmation-
 export class ColumnComponent implements OnChanges {
   @Input() column: IColumn = new IColumn();
 
+  searchTerm = this.boardService.search;
+
   color: string = '';
 
   columnTitle: string = '';
 
   tasks: ITask[] = [];
+
+  userList: string[] = [];
 
   columnId: string = '';
 
@@ -37,7 +42,25 @@ export class ColumnComponent implements OnChanges {
     private columnService: ColumnService,
     private taskService: TaskService,
     public confirmationService: ConfirmationService,
+    @Inject(DOCUMENT) private document: Document,
   ) {}
+
+  onDragMoved(event: CdkDragMove<ITask[]>): void {
+    const scrollSpeed = 30;
+    const containerClassName = 'board__all-columns';
+
+    const div = <HTMLElement>this.document.querySelector(`.${containerClassName}`);
+    const x = event.pointerPosition.x;
+    const clientWidth = div.clientWidth;
+    const scrollWidth = div.scrollWidth;
+    const scrollDelta = scrollWidth - clientWidth;
+    if (clientWidth - x < clientWidth / 4 && event.delta.x !== -1) {
+      div.scrollLeft += (scrollDelta - div.scrollLeft) / scrollSpeed;
+    }
+    if (x < clientWidth / 4 && event.delta.x !== 1) {
+      div.scrollLeft -= div.scrollLeft / scrollSpeed;
+    }
+  }
 
   ngOnChanges(): void {
     this.columnTitle = this.column.title ?? '';

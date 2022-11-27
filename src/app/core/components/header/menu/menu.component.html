@@ -40,14 +40,6 @@
     >
       {{ 'MENU.EDITUSER' | translate }}
     </a>
-    <a class="nav-link menu-item" 
-      *ngIf="user$ | async" 
-      [routerLinkActive]="'nav-link_active'"
-      [routerLinkActiveOptions]="{ exact:true }"
-      (click)="onOpenConfirmModal()"
-    >
-      {{ 'MENU.DELETEACCOUNT' | translate }}
-    </a>
     <a class="nav-link menu-item"
       *ngIf="user$ | async"
       routerLink="/"

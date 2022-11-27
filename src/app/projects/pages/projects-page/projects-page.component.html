@@ -1,12 +1,12 @@
 <section class="projects">
   <div class="projects__wrapper">
     <div class="projects__search">
-      <app-search-item></app-search-item>
+      <app-search-item (search)="filter = $event"></app-search-item>
     </div>
     <p class="projects__create-board" *ngIf="!(boards | async)?.length">{{ 'BOARD.ABSENT' | translate }}</p>
-    <ul class="projects__list" *ngIf="(boards | async)?.length">
+    <ul class="projects__list" >
       <app-project-item
-        *ngFor="let project of boards | async"
+        *ngFor="let project of boards | async | projectsFilter : filter"
         [project]="project"
         (edit)="editProject(project)"
         (delete)="onOpenConfirmModal(project)"
@@ -20,3 +20,5 @@
   </div>
 </section>
 <app-board-modal [(isBoardModalVisible)]="isBoardModalVisible" [boardToEdit]="boardToEdit"></app-board-modal>
+<app-spinner *ngIf="(isLoading | async)"></app-spinner>
+

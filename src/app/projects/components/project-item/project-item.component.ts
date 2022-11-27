@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
+import { BoardService } from '@app/projects/services/board.service';
 import { IBoard } from '@app/shared/models';
 
 @Component({
@@ -15,7 +16,12 @@ export class ProjectItemComponent implements OnChanges {
 
   userList: string[] = [];
 
+  isOwner: boolean = false;
+
+  constructor(private boardService: BoardService) {}
+
   ngOnChanges(): void {
     this.userList = [this.project.owner, ...this.project.users];
+    this.isOwner = this.boardService.currentUser._id === this.project.owner;
   }
 }

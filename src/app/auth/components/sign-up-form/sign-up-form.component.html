@@ -1,6 +1,6 @@
 <div class="sign-up__container">
-  <h2 class="sign-up__title">Create a new account</h2>
-  <p class="sign-up__subtitle">It's quick and easy</p>
+  <h2 class="sign-up__title">{{ 'SIGNUP-FORM.TITLE' | translate }}</h2>
+  <p class="sign-up__subtitle">{{ 'SIGNUP-FORM.SUBTITLE' | translate }}</p>
   <form class="sign-up__form" [formGroup]="signUpForm" (ngSubmit)="submitForm()" novalidate>
     <div>
       <div class="sign-up__input-container">
@@ -72,7 +72,7 @@
         </p>
       </div>
     </div>
-    <button [disabled]="signUpForm.invalid" type="submit" class="sign-up__submit-button">Sign up</button>
-    <a class="sign-up__link" routerLink="/auth/login">Already have an account?</a>
+    <button [disabled]="signUpForm.invalid" type="submit" class="sign-up__submit-button">{{ 'SIGNUP-FORM.BUTTON' | translate }}</button>
+    <a class="sign-up__link" routerLink="/auth/login">{{ 'SIGNUP-FORM.ANOTHER_ACCOUNT' | translate }}</a>
   </form>
 </div>

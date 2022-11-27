@@ -3,6 +3,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ValidatorsModule } from './validators/validators.module';
 import { DirectivesModule } from '@shared/directives/directives.module';
@@ -22,6 +23,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     HttpClientModule,
     ValidatorsModule,
     DirectivesModule,
+    TranslateModule,
   ],
 })
 export class AuthModule {}

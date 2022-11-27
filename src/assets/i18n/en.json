@@ -98,6 +98,27 @@
     "DELETETASK":"Delete task",
     "SEARCH": "Search",
     "SEARCHPLACEHOLDER": "Search for board or user...",
+    "INTERNALSEARCHPLACEHOLDER": "Search for task or user...",
     "DELETECOLUMN": "Delete column"
+  },
+  "LOGIN-FORM": {
+    "TITLE": "Sign In",
+    "LOGIN_INPUT": "Login",
+    "LOGIN_INPUT_ERROR": "Login must be at least 3 characters long",
+    "PASSWORD_INPUT": "New password",
+    "PASSWORD_INPUT_ERROR": "Password must be at least 8 characters long",
+    "ANOTHER_ACCOUNT": "Don't have an account yet?"
+  },
+  "SIGNUP-FORM": {
+    "TITLE": "Create a new account",
+    "SUBTITLE": "It's quick and easy",
+    "BUTTON": "Create",
+    "ANOTHER_ACCOUNT": "Already have an account?"
+  },
+  "EDIT-FORM": {
+    "TITLE": "Edit user",
+    "SAVE": "Save changes",
+    "DELETE": "Delete user",
+    "BACK": "Back"
   }
 }

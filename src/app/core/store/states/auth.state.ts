@@ -4,10 +4,12 @@ export interface AuthState {
   user: UserModel | null;
   token: string | null;
   isPending: boolean;
+  isFetched: boolean;
 }
 
 export const initialAuthState: AuthState = {
   user: JSON.parse(localStorage.getItem('user') ?? 'null'),
   token: localStorage.getItem('token'),
   isPending: false,
+  isFetched: false,
 };

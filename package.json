@@ -5,8 +5,7 @@
   "scripts": {
     "start": "ng serve --open",
     "build": "ng build",
-    "lint": "ng lint --fix",
-    "test": "ng test"
+    "lint": "ng lint --fix"
   },
   "author": "Greg <greg-front-end> Martinos, Pavel <m9t3zhn1k> Korshunau, Stanislav <hamsilver> Kolpakov",
   "dependencies": {
@@ -49,7 +48,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",

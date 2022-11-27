@@ -10,8 +10,14 @@
   }
 
   &__menu {
+    @apply sm:flex flex-col absolute z-50 right-1 p-2 rounded-lg bg-white sm:drop-shadow-[0_3px_3px_rgba(0,0,0,0.3)];
+
     button {
-      @apply hidden;
+      @apply hidden px-[5px] items-center w-7 h-7 rounded-md transition sm:flex opacity-30 hover:opacity-100 sm:opacity-100;
+    }
+
+    span {
+      @apply sm:hidden;
     }
 
     &:hover {
@@ -22,7 +28,7 @@
       }
 
       button {
-        @apply flex px-[5px] items-center w-7 h-7 rounded-md opacity-30 hover:opacity-100 transition;
+        @apply flex;
       }
     }
   }
