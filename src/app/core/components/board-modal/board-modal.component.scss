@@ -1,6 +1,6 @@
 .modal {
   &__wrapper {
-    @apply z-[50] opacity-0 invisible fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none bg-semi-grey transition-all;
+    @apply z-[50] invisible fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto outline-none transition-all;
   }
   &__container {
     @apply relative flex items-center justify-center w-auto h-full pointer-events-none;
@@ -10,7 +10,7 @@
     outline-none pointer-events-auto max-w-[500px] bg-clip-padding;
   }
   &__header {
-    @apply flex items-center justify-between flex-shrink-0 p-4 pb-2 rounded-t-md;
+    @apply flex items-center justify-between flex-shrink-0 p-4 pb-2;
   }
   &__title {
     @apply text-xl font-medium leading-normal text-text-dark;
@@ -21,7 +21,7 @@
     hover:bg-bg-blue-lilac-hover;
   }
   &__content {
-    @apply relative p-4 pt-0;
+    @apply relative p-4 pt-0 rounded-xl;
   }
 }
 
