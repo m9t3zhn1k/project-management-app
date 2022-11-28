@@ -14,6 +14,7 @@ import { LoginRequestModel, LoginResponseModel, ErrorResponseModel } from '@core
 import { UserModel } from '@core/models/user.model';
 
 import { userSelector } from '@app/core/store/selectors/auth.selectors';
+import { LocalStorageKeys } from '@app/shared/enums/LocalStorageKeys';
 
 @Injectable()
 export class AuthEffects {
@@ -38,7 +39,7 @@ export class AuthEffects {
           .pipe(
             map((): LoginRequestModel => ({ login: action.login, password: action.password })),
             map((data: LoginRequestModel) => AuthActions.LogIn(data)),
-            catchError((error: ErrorResponseModel) => of(AuthActions.SignUpFailed(error))),
+            catchError(({ error }) => of(AuthActions.SignUpFailed(error))),
           );
       }),
     ),
@@ -51,7 +52,7 @@ export class AuthEffects {
         tap((error: ErrorResponseModel): void => {
           this.toastService.showToast({
             title: 'Sign up error',
-            description: error.statusCode === '409' ? 'Login already exist' : 'Bad Request',
+            description: error.statusCode == '409' ? 'Login already exist' : 'Bad Request',
             status: 'error',
           });
         }),
@@ -69,9 +70,9 @@ export class AuthEffects {
             password: action.password,
           })
           .pipe(
-            tap((data: LoginResponseModel): void => localStorage.setItem('token', data.token)),
+            tap((data: LoginResponseModel): void => localStorage.setItem(LocalStorageKeys.TOKEN, data.token)),
             map((data: LoginResponseModel) => AuthActions.LogInSuccess(data)),
-            catchError((error: ErrorResponseModel) => of(AuthActions.LogInFailed(error))),
+            catchError(({ error }) => of(AuthActions.LogInFailed(error))),
           );
       }),
     ),
@@ -91,7 +92,7 @@ export class AuthEffects {
         tap((error: ErrorResponseModel): void => {
           this.toastService.showToast({
             title: 'Login error',
-            description: error.statusCode === '400' ? 'Bad Request' : 'Authorization error',
+            description: error.statusCode == '400' ? 'Bad Request' : 'Authorization error',
             status: 'error',
           });
         }),
@@ -103,7 +104,10 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.LogOut),
-        tap((): void => localStorage.clear()),
+        tap((): void => {
+          localStorage.removeItem(LocalStorageKeys.USER);
+          localStorage.removeItem(LocalStorageKeys.TOKEN);
+        }),
         tap((): Promise<boolean> => this.router.navigateByUrl('')),
       ),
     { dispatch: false },
@@ -115,7 +119,7 @@ export class AuthEffects {
       switchMap((action) => {
         const id: string = this.authService.parseJwt(action).id;
         return this.authService.getUser(id).pipe(
-          tap((user: UserModel) => localStorage.setItem('user', JSON.stringify(user))),
+          tap((user: UserModel) => localStorage.setItem(LocalStorageKeys.USER, JSON.stringify(user))),
           map((user: UserModel) => AuthActions.getUserSuccess(user)),
           catchError(() => of(AuthActions.getUserFailed())),
         );
@@ -165,7 +169,7 @@ export class AuthEffects {
         return this.authService
           .updateUser(user?.id!, { name: action.name, login: action.login, password: action.password })
           .pipe(
-            tap((response: UserModel) => localStorage.setItem('user', JSON.stringify(response))),
+            tap((response: UserModel) => localStorage.setItem(LocalStorageKeys.USER, JSON.stringify(response))),
             map((response: UserModel) => AuthActions.UpdateUserSuccess(response)),
             tap((): Promise<boolean> => this.router.navigateByUrl('')),
             catchError((error: ErrorResponseModel) => of(AuthActions.UpdateUserFailed(error))),

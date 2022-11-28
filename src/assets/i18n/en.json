@@ -120,5 +120,8 @@
     "SAVE": "Save changes",
     "DELETE": "Delete user",
     "BACK": "Back"
+  },
+  "SIGN-UP-FORM": {
+    "CONFIRM": "Please enter a confirmational password"
   }
 }
