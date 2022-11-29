@@ -1,0 +1,31 @@
+.btn-inline {
+  @apply bg-semi-grey rounded-md border border-footer-grey p-2 text-white outline-none transition-all;
+
+  &:hover {
+    @aplly bg-semi-grey border-transparent text-white;
+  }
+}
+
+.tab-inline {
+  @apply bg-transparent border-2 border-solid border-semi-grey p-[7px] rounded-md transition-all text-white;
+
+  &_active {
+    @apply bg-semi-grey border-footer-grey;
+  }
+
+  &:not(.tab-inline_active):hover {
+    @apply bg-footer-grey;
+  }
+}
+
+.container {
+  @apply mx-auto px-4;
+}
+
+.title {
+  @apply text-3xl relative tracking-[4px]  mb-4;
+
+  &:before {
+    @apply content-[''] absolute left-[-4px] bottom-0 w-8 h-full bg-dark-gold z-[-1] rounded-md;
+  }
+}

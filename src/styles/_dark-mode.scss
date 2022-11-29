@@ -1,0 +1,198 @@
+.header {
+  @apply bg-white dark:bg-bg-dark transition-all;
+}
+
+.logo {
+    &__link {
+    svg {
+        @apply w-10 h-10 transition-all fill-dark-gold;
+    }
+  }
+
+  &__link:hover {
+    svg {
+      @apply fill-semi-grey;
+    }
+  }
+}
+
+.projects {
+  &__item {
+    @apply bg-white dark:bg-bg-light-gold shadow-lg dark:shadow-footer-grey transition-all;
+  }
+
+  &__btn-wrapper {
+    @apply text-semi-grey;
+  }
+
+  &__users-item {
+    @apply bg-bg-light-gold dark:bg-semi-grey text-text-grey dark:text-white border-2 border-white dark:border-bg-light-gold transition-all;
+  }
+
+  &__button-add {
+    @apply bg-white border-bg-disabled dark:bg-transparent dark:text-white;
+  }
+}
+
+.users-logo {
+  &__owner,
+  &__users-item {
+    @apply bg-bg-light-gold dark:bg-semi-grey text-text-grey dark:text-white transition-all;
+  }
+}
+
+.search-form,
+.search-input {
+  @apply bg-bg-grey;
+}
+
+.search-form {
+  @apply border-b-[4px] border-grey-light  dark:text-semi-grey dark:border-b-[0] dark:border-transparent;;
+
+  &:has(.search-input:focus) {
+    @apply border-b-[0] border-transparent; 
+  }
+}
+
+.column {
+  &__wrapper {
+    @apply bg-bg-grey dark:bg-footer-grey dark:text-white transition-all;
+  }
+
+  &__title {
+    @apply text-text-dark dark:text-white transition-all dark:focus:text-semi-grey;
+  }
+
+  &__tasks {
+    @apply drop-shadow-[0_3px_1px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_3px_1px_rgba(255,255,255,0.6)] transition-all;
+  }
+
+  &__button-add-task {
+    @apply bg-white hover:bg-white dark:bg-semi-grey dark:hover:bg-semi-grey;
+  }
+}
+
+.task {
+  @apply bg-white dark:bg-bg-light-gold transition-all;
+
+  &__title {
+    @apply text-text-dark dark:text-semi-grey transition-all;
+  }
+}
+
+.task-form {
+  &__label {
+    @apply dark:text-grey-light;
+  }
+}
+
+.sign-up,
+.login,
+.edit-user {
+  &__title,
+  &__subtitle {
+    @apply text-text-dark dark:text-grey-light;
+  }
+
+  &__input {
+    @apply bg-grey-light dark:bg-bg-light-gold text-text-dark dark:text-semi-grey;
+  }
+
+  &__link {
+    @apply text-text-dark hover:text-text-grey dark:text-grey-light dark:hover:text-dark-gold;
+  }
+}
+
+.modal {
+  &__content {
+    @apply bg-white dark:bg-bg-dark;
+  }
+
+  &__notice {
+    @apply text-text-dark dark:text-white;
+  }
+
+  &__question {
+    @apply text-text-grey dark:text-grey-light;
+  }
+}
+
+.hero {
+  &__text-content {
+    &:before {
+      @apply content-[''] bg-white dark:bg-footer-grey;
+    }
+  }
+
+  &__link {
+    @apply bg-bg-blue-lilac text-white border-bg-blue-lilac;
+
+    &:hover {
+      @apply border-bg-blue-lilac text-text-dark bg-white;
+    }
+  }
+}
+
+.advantage {
+  &__img-box {
+    svg {
+      @apply dark:stroke-grey-light;
+    }
+  }
+}
+
+.team {
+  &__link {
+    img {
+      @apply border-4 border-semi-grey dark:border-dark-gold;
+    }
+  }
+}
+
+.course {
+  &__content-title, 
+  &__content-benefits-item-title {
+    @apply text-text-dark dark:text-white;
+  }
+
+  &__content-description,
+  &__content-benefits-item-description {
+    @apply dark:text-bg-disabled;
+  }
+  
+  &__content-benefits-item-icon {
+    svg {
+      @apply fill-semi-grey dark:fill-grey-light;
+    }
+  }
+}
+
+.not-found {
+  @apply text-text-dark dark:text-white;
+
+  &__text {
+    @apply text-text-dark dark:text-white;
+  }
+}
+
+.illustration {
+  &__circle {
+    @apply bg-text-dark dark:bg-white;
+  }
+
+  &__paper {
+    @apply border-text-dark bg-white dark:border-white dark:bg-text-dark;
+
+    &::before {
+      @apply bg-bg-grey border-text-dark dark:bg-bg-dark dark:border-white;
+    }
+  }
+
+  &__eye {
+    @apply bg-text-dark dark:bg-white;
+  }
+
+  &__mouth {
+    @apply bg-text-dark dark:bg-white;
+  }
+}

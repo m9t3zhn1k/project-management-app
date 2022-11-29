@@ -1,0 +1,92 @@
+<div class="edit-user__container">
+  <h2 class="edit-user__title">{{ 'EDIT-FORM.TITLE' | translate }}</h2>
+  <form class="edit-user__form" [formGroup]="editUserForm" (ngSubmit)="submitForm()" novalidate>
+    <div>
+      <div class="edit-user__input-container">
+        <input
+          formControlName="name"
+          type="text"
+          autocomplete="name"
+          class="edit-user__input"
+          [class.error]="editUserForm.controls['name'].invalid && editUserForm.controls['name'].touched"
+          placeholder="Name" />
+        <p
+          *ngIf="editUserForm.controls['name'].invalid && editUserForm.controls['name'].touched"
+          class="edit-user__error-message"
+        >
+          {{
+            editUserForm.controls['name'].errors?.error
+          }}
+        </p>
+      </div>
+      <div class="edit-user__input-container">
+        <input
+          formControlName="login"
+          type="text"
+          class="edit-user__input"
+          [class.error]="editUserForm.controls['login'].invalid && editUserForm.controls['login'].touched"
+          placeholder="Login" />
+        <p
+          *ngIf="editUserForm.controls['login'].invalid && editUserForm.controls['login'].touched"
+          class="edit-user__error-message"
+        >
+          {{
+            editUserForm.controls['login'].errors?.error
+          }}
+        </p>
+      </div>
+      <!-- <div class="edit-user__input-container">
+        <input
+          appAutoFocus
+          formControlName="currentPassword"
+          type="password"
+          class="edit-user__input"
+          [class.error]="editUserForm.controls['currentPassword'].invalid && editUserForm.controls['currentPassword'].touched"
+          placeholder="Current password" />
+        <p
+          *ngIf="editUserForm.controls['currentPassword'].invalid && editUserForm.controls['currentPassword'].touched"
+          class="edit-user__error-message"
+        >
+          Password must be at least 8 characters long
+        </p>
+      </div> -->
+      <div class="edit-user__input-container">
+        <input
+          formControlName="password"
+          type="password"
+          class="edit-user__input"
+          [class.error]="editUserForm.controls['password'].invalid && editUserForm.controls['password'].touched"
+          placeholder="New password" />
+        <p
+          *ngIf="editUserForm.controls['password'].invalid && editUserForm.controls['password'].touched"
+          class="edit-user__error-message"
+        >
+          {{
+            editUserForm.controls['password'].errors?.error
+          }}
+        </p>
+      </div>
+      <div class="edit-user__input-container">
+        <input
+          formControlName="passwordConfirm"
+          type="password"
+          class="edit-user__input"
+          [class.error]="editUserForm.controls['passwordConfirm'].invalid && editUserForm.controls['passwordConfirm'].touched"
+          placeholder="Confirm new password" />
+        <p
+          *ngIf="(editUserForm.errors?.error || editUserForm.controls['passwordConfirm'].invalid) && editUserForm.controls['passwordConfirm'].touched"
+          class="edit-user__error-message"
+        >
+          {{
+            editUserForm.controls['passwordConfirm'].invalid ?
+            'Please enter a confirmational password' :
+            this.editUserForm.errors?.error
+          }}
+        </p>
+      </div>
+    </div>
+    <button [disabled]="editUserForm.invalid" type="submit" class="edit-user__submit-button">{{ 'EDIT-FORM.SAVE' | translate }}</button>
+    <button class="edit-user__submit-button" (click)="onOpenConfirmModal($event)">{{ 'EDIT-FORM.DELETE' | translate }}</button>
+    <button routerLink="" class="edit-user__back-button">{{ 'EDIT-FORM.BACK' | translate }}</button>
+  </form>
+</div>

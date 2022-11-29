@@ -1,0 +1,7 @@
+.dark-mode {
+  @apply cursor-pointer w-10 h-10 bg-[url('../../../../../assets/icons/moon.svg')] transition-all ml-auto mb-4;
+
+  &_active {
+    @apply w-10 h-10 bg-[url('../../../../../assets/icons/sun.svg')];
+  }
+}

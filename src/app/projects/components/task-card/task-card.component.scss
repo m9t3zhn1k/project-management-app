@@ -1,0 +1,60 @@
+.task {
+  @apply w-full p-2 mb-2 rounded-xl;
+
+  &__header {
+    @apply flex justify-between;
+  }
+
+  &__title {
+    @apply text-lg font-semibold;
+  }
+
+  &__menu {
+    @apply md:block flex flex-col absolute z-50 right-1 p-2 rounded-lg bg-white md:drop-shadow-none drop-shadow-[0_3px_3px_rgba(0,0,0,0.3)];
+
+    button {
+      @apply md:hidden px-[5px] items-center w-7 h-7 rounded-md transition flex md:block md:opacity-30 hover:opacity-100 opacity-100;
+    }
+
+    span {
+      @apply hidden md:block;
+    }
+
+    &:hover {
+      @apply absolute z-50 right-1 p-2 rounded-lg bg-white drop-shadow-[0_3px_3px_rgba(0,0,0,0.3)];
+
+      span {
+        @apply hidden;
+      }
+
+      button {
+        @apply flex;
+      }
+    }
+  }
+
+  &__description {
+    @apply text-text-grey text-xs h-[45px];
+  }
+
+  &__footer {
+    @apply flex justify-between items-center;
+  }
+
+  &__user {
+    @apply flex items-center justify-center w-7 h-7 bg-malva rounded-3xl text-text-dark;
+  }
+
+  &__files {
+    @apply flex items-center gap-2 text-text-grey text-xs;
+  }
+}
+
+.menu {
+  &__button-edit {
+    @apply hover:bg-light-blue;
+  }
+  &__button-delete {
+    @apply hover:bg-caramel;
+  }
+}

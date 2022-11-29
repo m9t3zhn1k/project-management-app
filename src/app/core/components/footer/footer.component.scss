@@ -1,0 +1,62 @@
+@import '../../../../styles/functions';
+
+.footer {
+  @apply text-white bg-footer-grey;
+  
+  &__wrapper {
+    @apply flex items-center justify-between gap-y-2 gap-x-8 py-4;
+    
+    @include smallScreen() {
+      @apply flex-col;
+    }
+  }
+
+  &__team {
+    @apply flex gap-2;
+    
+    @include smallScreen() {
+      @apply justify-center items-center flex-col
+    }
+  }
+
+  &__team-list {
+    @apply flex items-center gap-x-4;
+
+    @include mobile() {
+      @apply gap-2 flex-col;
+    }
+  }
+
+  .team-title { 
+    @apply text-dark-gold;
+  }
+
+  .team-list-item,
+  .team-list-item:before {
+    @apply transition-all;
+  }
+
+  .rs-link {
+    svg {
+      @apply w-11 inline-block transition-all;
+
+      &:hover {
+        @apply scale-110;
+      }
+    }
+  }
+
+  .team-list {
+    &-item {
+      @apply relative;
+    }
+
+    &-item:before {
+      @apply absolute content-[''] h-[2px] bottom-[-2px] left-0 bg-white w-0;
+    }
+
+    &-item:hover::before {
+      @apply w-full;
+    }
+  }
+}

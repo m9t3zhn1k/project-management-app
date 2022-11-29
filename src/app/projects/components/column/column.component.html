@@ -1,0 +1,21 @@
+<div class="column__wrapper">
+  <header class="{{ color }} column__header">
+    <input
+      type="search"
+      [(ngModel)]="columnTitle"
+      (blur)="columnNameChange()"
+      (keydown.enter)="columnNameChange($event)"
+      class="column__title"
+      [appAutoFocus]="disableAutoFocus"
+    />
+    <button class="column__button-delete" title="{{ 'BOARD.DELETECOLUMN' | translate }}" (click)="onOpenConfirmModal(column)">
+      <img src="/assets/icons/trash.svg" alt="{{ 'BOARD.DELETECOLUMN' | translate }}" height="18" width="22" />
+    </button>
+  </header>
+  <div class="column__tasks" cdkDropList [id]="columnId" [cdkDropListData]="tasks" (cdkDropListDropped)="drop($event)">
+    <div class="column__task" *ngFor="let task of tasks" cdkDrag (cdkDragMoved)="onDragMoved($event)" appBoardSearch [task]="task" [searchTerm]="searchTerm | async">
+      <app-task-card [task]="task" (delete)="onOpenConfirmModal($event)"></app-task-card>
+    </div>
+  </div>
+  <button class="column__button-add-task" title="{{ 'BOARD.NEWTASK' | translate }}" (click)="newTask()" [disabled]="!columnId">+</button>
+</div>
