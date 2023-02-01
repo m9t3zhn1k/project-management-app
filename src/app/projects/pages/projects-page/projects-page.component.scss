@@ -1,0 +1,34 @@
+.projects {
+  @apply pb-0 pt-4 h-[calc(100vh_-_265px)] md:h-[calc(100vh_-_200px)] lg:h-[calc(100vh_-_138px)] overflow-auto;
+
+  &__search {
+    @apply my-6 top-[-1rem] sticky z-[10];
+  }
+
+  &__list {
+    @apply grid gap-2 gap-x-4 lg:gap-4 overflow-y-scroll;
+    grid-template-columns: repeat(auto-fit, minmax(294px, 1fr));
+  }
+
+  &__create-board {
+    @apply text-center text-text-grey mt-14 mb-4;
+
+    button {
+      @apply text-light-blue transition duration-300 ease-in-out hover:text-orange;
+    }
+  }
+
+  &__button-add {
+    @apply w-full h-24 mb-2 rounded-xl justify-center items-center shadow-lg hover:scale-95
+    transition-all border-2 border-dashed opacity-50 hover:opacity-100;
+    span {
+      @apply text-3xl;
+    }
+  }
+
+  &__button-add-task {
+    @apply p-2 mb-2 text-xl bg-white border-2 border-bg-disabled border-dashed
+     opacity-50 rounded-xl hover:bg-white hover:border-solid hover:opacity-100
+     hover:drop-shadow-[0_3px_3px_rgba(0,0,0,0.1)] transition duration-75;
+  }
+}

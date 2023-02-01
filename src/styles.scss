@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './styles/fonts';
+@import './styles/reset';
+@import './styles/components';
+@import './styles/dark-mode';
+
+@layer base {
+  html {
+    @apply min-h-screen font-main w-[100vw] overflow-x-hidden;
+  }
+
+  body {
+    @apply bg-white text-text-grey min-h-screen transition-all dark:bg-bg-dark dark:text-white;
+  }
+
+  button {
+    @apply cursor-pointer disabled:cursor-auto placeholder:select-none;
+  }
+}
+
+@layer components {
+  .root {
+    @apply flex flex-col min-h-inh;
+  }
+
+  .main {
+    @apply flex-auto flex-shrink-0 relative mt-20;
+  }
+
+  .page {
+    @apply max-w-[1200px] p-2 block mx-auto box-content absolute left-0 right-0 top-0 bottom-0;
+  }
+
+  .backdrop {
+    @apply fixed top-0 p-2 z-10 bottom-0 left-0 right-0 bg-backdrop backdrop-blur-sm;
+  }
+
+  .spinner {
+    @apply absolute z-[60] left-0 right-0 top-0 bottom-0;
+  }
+}

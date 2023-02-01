@@ -1,0 +1,14 @@
+.projects {
+  &__users {
+    @apply flex px-[5px] md:px-0;
+  }
+
+  &__users-list {
+    @apply flex;
+  }
+
+  &__owner,
+  &__users-item {
+    @apply flex items-center justify-center w-6 h-6 rounded-3xl text-xs -mr-1;
+  }
+}

@@ -1,0 +1,38 @@
+<div class="login__container">
+  <h2 class="login__title">{{ 'LOGIN-FORM.TITLE' | translate }}</h2>
+  <form class="login__form" [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
+    <div>
+      <div class="login__input-container">
+        <input
+          appAutoFocus
+          formControlName="login"
+          type="text"
+          class="login__input"
+          [class.error]="loginForm.controls['login'].invalid && loginForm.controls['login'].touched"
+          placeholder="Login" />
+        <p
+          *ngIf="loginForm.controls['login'].invalid && loginForm.controls['login'].touched"
+          class="login__error-message"
+        >
+        {{ 'LOGIN-FORM.LOGIN_INPUT_ERROR' | translate }}
+        </p>
+      </div>
+      <div class="login__input-container">
+        <input
+          formControlName="password"
+          type="password"
+          class="login__input"
+          [class.error]="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
+          placeholder="New password" />
+        <p
+          *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
+          class="login__error-message"
+        >
+          {{ 'LOGIN-FORM.PASSWORD_INPUT_ERROR' | translate }}
+        </p>
+      </div>
+    </div>
+    <button [disabled]="loginForm.invalid" type="submit" class="login__submit-button">{{ 'LOGIN-FORM.TITLE' | translate }}</button>
+    <a class="login__link" routerLink="/auth/sign-up">{{ 'LOGIN-FORM.ANOTHER_ACCOUNT' | translate }}</a>
+  </form>
+</div>

@@ -1,0 +1,23 @@
+.header {
+  @apply fixed top-0 left-0 w-full z-40 shadow-[1px_1px_#d1d5db];
+
+  &__container {
+    @apply container mx-auto px-4;
+  }
+
+  &__wrapper {
+    @apply flex justify-between items-center h-20;
+  }
+
+  &__nav-wrapper {
+    @apply flex items-center gap-x-4 mr-[0.9rem];
+  }
+
+  &__new-board-btn {
+    @apply text-sm;
+  }
+}
+
+.logo {
+  @apply flex items-center gap-x-4;
+}

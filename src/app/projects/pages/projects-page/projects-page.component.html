@@ -1,0 +1,26 @@
+<section class="projects">
+  <div class="container">
+    <div class="projects__wrapper">
+      <div class="projects__search">
+        <app-search-item (search)="filter = $event"></app-search-item>
+      </div>
+      <p class="projects__create-board" *ngIf="!(boards | async)?.length">{{ 'BOARD.ABSENT' | translate }}</p>
+      <ul class="projects__list" >
+        <app-project-item
+          *ngFor="let project of boards | async | projectsFilter : filter"
+          [project]="project"
+          (edit)="editProject(project)"
+          (delete)="onOpenConfirmModal(project)"
+        ></app-project-item>
+        <li>
+          <button class="projects__button-add" title="{{ 'BOARD.ADD' | translate }}" (click)="addBoard()">
+            {{ 'BOARD.ADD' | translate }}<br /><span>+</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<app-board-modal [(isBoardModalVisible)]="isBoardModalVisible" [boardToEdit]="boardToEdit"></app-board-modal>
+<app-spinner *ngIf="(isLoading | async)"></app-spinner>
+

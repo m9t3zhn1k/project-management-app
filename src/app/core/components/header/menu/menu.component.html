@@ -1,0 +1,71 @@
+<menu class="menu" [class.active]="isActiveMenu" appClickOutSIde (clickOutside)="onCloseMenu()">
+  <button class="menu__btn" (click)="onToggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span> 
+  </button>
+  <nav class="menu__nav nav items-wrapper">
+    <app-dark-mode></app-dark-mode>
+    <div class="lang flex items-center gap-x-2">
+      <button class="tab-inline menu__lang"
+        [class.tab-inline_active]="appLanguage === 'ru'"
+        (click)="onToggleLang('ru')"
+        (click)="onCloseMenu()"
+      >
+      {{ 'MENU.LANG.RU' | translate }}
+      </button>
+      <button  class="tab-inline menu__lang"
+        [class.tab-inline_active]="appLanguage === 'en'"
+        (click)="onToggleLang('en')"
+        (click)="onCloseMenu()"
+      >
+        {{ 'MENU.LANG.EN' | translate }}
+      </button>
+    </div>
+    <a class="nav-link menu-item" 
+      *ngIf="user$ | async"
+      routerLink="/projects" 
+      [routerLinkActive]="'nav-link_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onCloseMenu()"
+    >
+      {{ 'MENU.PROJECTS' | translate }}
+    </a>
+    <a class="nav-link menu-item" 
+      *ngIf="user$ | async"
+      routerLink="/auth/edit" 
+      [routerLinkActive]="'nav-link_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onCloseMenu()"
+    >
+      {{ 'MENU.EDITUSER' | translate }}
+    </a>
+    <a class="nav-link menu-item"
+      *ngIf="user$ | async"
+      routerLink="/"
+      [routerLinkActive]="'nav-link_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onCloseMenu()"
+      (click)="onLogOut()"
+    >
+      {{ 'MENU.LOGOUT' | translate }}
+    </a>
+    <a class="nav-link menu-item" 
+      *ngIf="(user$ | async) === null" routerLink="/auth/login" 
+      [routerLinkActive]="'nav-link_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onCloseMenu()"
+    >
+      {{ 'MENU.LOGIN' | translate }}
+    </a>
+    <a class="btn-inline menu-item nav-link__sign-up" 
+      *ngIf="(user$ | async) === null" 
+      routerLink="/auth/sign-up" 
+      [routerLinkActive]="'btn-inline_active'"
+      [routerLinkActiveOptions]="{ exact:true }"
+      (click)="onCloseMenu()"
+    >
+      {{ 'MENU.SIGNUP' | translate }}
+    </a>
+  </nav>
+</menu>

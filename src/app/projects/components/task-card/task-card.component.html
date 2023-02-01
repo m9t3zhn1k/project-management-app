@@ -1,0 +1,24 @@
+<div class="column__task task">
+  <div class="task__header">
+    <p class="task__title">{{ task.title }}</p>
+    <div class="task__menu menu">
+      <span class="menu__points">...</span>
+      <button class="menu__button-edit" title="{{ 'BOARD.EDITTASK' | translate }}" (click)="editTask()">
+        <img src="/assets/icons/pencil.svg" alt="{{ 'BOARD.EDITTASK' | translate }}" height="18" width="18" />
+      </button>
+      <button class="menu__button-delete" title="{{ 'BOARD.DELETETASK' | translate }}" (click)="deleteTask()">
+        <img src="/assets/icons/trash.svg" alt="{{ 'BOARD.DELETETASK' | translate }}" height="18" width="18" />
+      </button>
+    </div>
+  </div>
+  <p class="task__description">{{ task.description }}</p>
+  <div class="task__footer">
+    <div class="projects__users-wrapper">
+      <app-user-label [userList]="userList"></app-user-label>
+    </div>
+    <div class="task__files">
+      <img src="/assets/icons/files.svg" alt="Folder sign" height="16" width="16" />
+      <span>0 files</span>
+    </div>
+  </div>
+</div>
