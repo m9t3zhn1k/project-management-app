@@ -2,20 +2,26 @@
   <div class="board__header">
     <div class="board__title-wrapper">
       <h2 class="board__title">{{ (board | async)?.title }}</h2>
-      <button *ngIf="isOwner | async" class="board__button-edit" (click)="editBoard()" title="{{ 'BOARD.EDIT' | translate }}">
-        <svg-icon src="../../../../assets/icons/pencil.svg"></svg-icon>
+      <button
+        *ngIf="isOwner | async"
+        class="board__button-edit"
+        (click)="editBoard()"
+        title="{{ 'BOARD.EDIT' | translate }}"
+      >
+        <svg-icon src="assets/icons/pencil.svg"></svg-icon>
       </button>
     </div>
     <div class="board__search search">
       <form class="search__form" [formGroup]="searchForm">
-        <img src="../../../../assets/images/search.png" alt="{{ 'BOARD.SEARCH' | translate }}">
+        <img src="assets/images/search.png" alt="{{ 'BOARD.SEARCH' | translate }}" />
         <input
-            class="search-input rounded-md"
-            type="search" name="search"
-            formControlName="search"
-            [placeholder]="'BOARD.INTERNALSEARCHPLACEHOLDER' | translate"
-            autocomplete="off"
-          >
+          class="search-input rounded-md"
+          type="search"
+          name="search"
+          formControlName="search"
+          [placeholder]="'BOARD.INTERNALSEARCHPLACEHOLDER' | translate"
+          autocomplete="off"
+        />
       </form>
     </div>
     <div class="board__users-wrapper">

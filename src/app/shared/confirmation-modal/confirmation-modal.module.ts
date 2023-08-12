@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpLoaderFactory } from '@app/core/core.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ConfirmationModalComponent } from './confirmation-modal.component';
 import { ConfirmationService } from './confirmation.service';
@@ -9,15 +7,7 @@ import { ConfirmationService } from './confirmation.service';
 @NgModule({
   declarations: [ConfirmationModalComponent],
   exports: [ConfirmationModalComponent],
-  imports: [
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
-  ],
+  imports: [TranslateModule],
   providers: [ConfirmationService],
 })
 export class ConfirmationModalModule {}

@@ -1,12 +1,12 @@
 <form class="search-form flex items-center gap-x-2 rounded-md" *ngIf="true">
-  <img src="../../../../assets/images/search.png" alt="{{ 'BOARD.SEARCH' | translate }}">
+  <img src="assets/images/search.png" alt="{{ 'BOARD.SEARCH' | translate }}" />
   <input
-      #searchInput
-      class="search-input rounded-md"
-      type="search"
-      name="search"
-      [placeholder]="'BOARD.SEARCHPLACEHOLDER' | translate"
-      autocomplete="off"
-      autofocus
-    >
+    #searchInput
+    class="search-input rounded-md"
+    type="search"
+    name="search"
+    [placeholder]="'BOARD.SEARCHPLACEHOLDER' | translate"
+    autocomplete="off"
+    autofocus
+  />
 </form>

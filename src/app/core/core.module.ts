@@ -31,9 +31,9 @@ import { interceptors } from './interceptors/interceptors';
 import { AuthGuard } from './guards/auth.guard';
 import { BoardService } from '@app/projects/services/board.service';
 
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
+// Set the path here
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 @NgModule({
   imports: [
@@ -52,7 +52,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: httpTranslateLoader,
         deps: [HttpClient],
       },
     }),
@@ -73,7 +73,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 })
 export class CoreModule {
   constructor(private iconReg: SvgIconRegistryService) {
-    this.iconReg.loadSvg('../assets/icons/logo.svg', 'logo')?.subscribe();
-    this.iconReg.loadSvg('../assets/icons/rs-logo.svg', 'rs-logo')?.subscribe();
+    this.iconReg.loadSvg('./assets/icons/logo.svg', 'logo')?.subscribe();
+    this.iconReg.loadSvg('./assets/icons/rs-logo.svg', 'rs-logo')?.subscribe();
   }
 }
